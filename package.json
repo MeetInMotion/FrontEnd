@@ -4,7 +4,17 @@
   "description": "Front end for MeetInMotion",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "eslint src && webpack",
+    "start": "eslint src && webpack-dev-server --hot",
+    "lint": "eslint src",
+    "test": "eslint src && mocha-webpack",
+    "test:watch": "eslint src && mocha-webpack -w --reporter min",
+    "webpack:dev": "eslint -c ./eslintrc-dev src && webpack",
+    "start:dev": "eslint -c ./eslintrc-dev src && webpack-dev-server --hot",
+    "lint:dev": "eslint -c ./eslintrc-dev src",
+    "test:dev": "eslint -c ./eslintrc-dev src && mocha-webpack",
+    "test:watch:dev": "eslint -c ./eslintrc-dev src && mocha-webpack -w --reporter min"
+
   },
   "repository": {
     "type": "git",
@@ -29,9 +39,9 @@
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.0",
     "eslint": "^3.19.0",
-    "eslint-loader": "^1.7.1",
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-react": "^6.10.3",
+    "html-webpack-plugin": "^2.28.0",
     "jsdom": "^9.12.0",
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",

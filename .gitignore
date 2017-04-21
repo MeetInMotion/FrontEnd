@@ -254,3 +254,8 @@ typings/
 
 # dotenv environment variables file
 .env
+
+
+# Project specific folders and files
+dist/
+eslintrc-dev
