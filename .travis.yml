@@ -7,6 +7,7 @@ cache: yarn
 script:
   - yarn run lint
   - yarn run test
+  - yarn run webpack
 env:
   - CXX=g++-4.8
 addons:
