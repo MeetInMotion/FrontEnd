@@ -4,11 +4,11 @@
   "description": "Front end for MeetInMotion",
   "main": "index.js",
   "scripts": {
-    "webpack": "eslint src && webpack",
-    "start": "eslint src && webpack-dev-server --hot",
+    "webpack": "webpack",
+    "start": "webpack-dev-server --hot",
     "lint": "eslint src",
-    "test": "eslint src && mocha-webpack",
-    "test:watch": "eslint src && mocha-webpack -w --reporter min",
+    "test": "mocha-webpack",
+    "test:watch": "mocha-webpack -w --reporter min",
     "webpack:dev": "eslint -c ./eslintrc-dev src && webpack",
     "start:dev": "eslint -c ./eslintrc-dev src && webpack-dev-server --hot",
     "lint:dev": "eslint -c ./eslintrc-dev src",
@@ -17,7 +17,8 @@
   },
   "pre-push": [
     "lint",
-    "test"
+    "test",
+    "webpack"
   ],
   "repository": {
     "type": "git",
