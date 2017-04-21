@@ -14,8 +14,11 @@
     "lint:dev": "eslint -c ./eslintrc-dev src",
     "test:dev": "eslint -c ./eslintrc-dev src && mocha-webpack",
     "test:watch:dev": "eslint -c ./eslintrc-dev src && mocha-webpack -w --reporter min"
-
   },
+  "pre-push": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MeetInMotion/FrontEnd.git"
@@ -46,6 +49,7 @@
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",
     "postcss-modules": "^0.6.4",
+    "pre-push": "^0.1.1",
     "proj4": "^2.4.3",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
