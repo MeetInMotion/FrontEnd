@@ -1,0 +1,8 @@
+// Copy this file and then remove these comments and the .template extension (of the copied file)
+// to use :dev scripts that use the eslint
+{
+  "extendes": "eslintrc",
+  "rules": {
+    "no-console": 0,
+  }
+}

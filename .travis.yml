@@ -1,0 +1,20 @@
+language: node_js
+notifications:
+  email: false
+  slack:
+    secure: X9spJOh1hfHAfMD//VDtgOIweUr6IhIrkIALGcGDvqYnVFfMWZwXa/GoVwCQ6lta5D+c6N/10lLA8lVWxqhhVCwAqVBomowaHs0DUBkQIaA+EDlf19YmxYq+LsUS23+dPVNCJZIBydwyBW/Sz9wK+mwUFuyPeY9woqk+jQZFJU7P31IU9KMKQj3C74fROIvY7UMvE0g3+pC2wEPalAE6Par6G+LuGK6DwSR+uMlRJvnxhkG9V36CUMFGtckMVy8adLt9NpAjhoUZ6y4S6gcSCOIEnFk0IMtzR6pColtUazgNUE/ZDUwSvSxdd5SzzxFKuIdYMjlqmBmss0wcmPrvdJ0bnnuBQPbiOXQ9M02CgrjPJ7u0TbN8YmbCCbwS3IECTmDnSkVjyXWHPsQ8sIfxAlc8HGQUbUj70obB7sFDN6tMb4nTAzK9LPRBA05wqtns0UGx/tM86WaWc3ZqsPP3ZgtDIFshVpnaFdBRTpok6f3XRA5mbpNpCJewaYxivRdSvKzINOpYgGRtkwygTtVEWlBaf59rAxKsfJijQrH6mbu46jFtGnraxkre6o79c5n1E01yt8mXgJCfK2HPz4Tzopg3qRf7qE3DXGeQFlCCwNYlRtWJCeFV8gO7JNtEkaadV+jaCGc9xxbGWmtrOY0l03JUd3FsyIom1D+sybUKkWU=
+node_js:
+- '7'
+cache: yarn
+script:
+- yarn run lint
+- yarn run test
+- yarn run webpack
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
