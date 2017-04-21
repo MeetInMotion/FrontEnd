@@ -1,13 +1,14 @@
-var path = require('path');
-var HTMLWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HTMLWebpackPlugin from 'html-webpack-plugin'
+import Config from 'webpack-config';
 
-HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: path.resolve(__dirname, 'src/index.html'),
   filename: "index.html",
   inject: "body"
 });
 
-var config = {
+module.exports = new Config().merge({
   context: path.resolve(__dirname, 'src'),
   entry: './index.js',
 
@@ -23,6 +24,7 @@ var config = {
 
   module: {
     rules: [
+      
       {
         test: /\.jsx?$/,
         exclude: path.resolve(__dirname, 'node_modules'),
@@ -39,6 +41,4 @@ var config = {
   plugins: [
     HTMLWebpackPluginConfig
   ]
-}
-
-module.exports = config;
+});
