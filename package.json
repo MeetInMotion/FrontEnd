@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "cross-env NODE_ENV=production webpack",
+    "webpack:fix": "cross-env NODE_ENV=production FIX=true webpack",
     "start": "cross-env NODE_ENV=production webpack-dev-server --hot",
     "test": "cross-env NODE_ENV=production mocha-webpack",
     "test:watch": "cross-env NODE_ENV=production mocha-webpack -w --reporter min",

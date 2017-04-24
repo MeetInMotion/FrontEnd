@@ -21,7 +21,8 @@
         "classes/name": [2, "class", "function"],
         "filenames/match-exported": [2, "kebab"],
         "filenames/no-index": 2,
-        "comma-dangle": [2, "always-multiline"]
+        "comma-dangle": [2, "always-multiline"],
+        "react/jsx-indent": 2,
     },
     
     "env": {

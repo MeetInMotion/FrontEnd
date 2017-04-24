@@ -258,4 +258,4 @@ typings/
 
 # Project specific folders and files
 dist/
-eslintrc-dev
+.eslintrc-dev
