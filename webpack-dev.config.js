@@ -8,7 +8,7 @@ config.module.rules.push(
     exclude: path.resolve(__dirname, 'node_modules'),
     loader: 'eslint-loader',
     options: {
-      "configFile": './eslintrc-dev'
+      "configFile": './.eslintrc-dev'
     }
   }
 )
