@@ -13,52 +13,40 @@ import Categories from './containers/categories_page/categories-page.js';
 
 class Root extends React.Component {
   render() {
+    const { store } = this.props;
+
     return (
-      <Provider store={this.props.store}>
+      <Provider store={ store }>
         <Router>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={matchProps => (
-                <DefaultLayout>
-                  <Home {...matchProps} />
-                </DefaultLayout>
-              )}
-            />
-            <Route
-              path="/settings"
-              render={matchProps => (
-                <DefaultLayout>
-                  <Settings {...matchProps} />
-                </DefaultLayout>
-              )}
-            />
-            <Route
-              path="/events"
-              render={matchProps => (
-                <DefaultLayout>
-                  <Events {...matchProps} />
-                </DefaultLayout>
-              )}
-            />
-            <Route
-              path="/categories"
-              render={matchProps => (
-                <DefaultLayout>
-                  <Categories {...matchProps} />
-                </DefaultLayout>
-              )}
-            />
-            <Route
-              path="/favourites"
-              render={matchProps => (
-                <DefaultLayout>
-                  <Favourits {...matchProps} />
-                </DefaultLayout>
-              )}
-            />
-          </Switch>
+          <DefaultLayout>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={ matchProps => (<Home {...matchProps} />) }
+              />
+
+              <Route
+                path="/settings"
+                render={ matchProps => (<Settings {...matchProps} />) }
+              />
+
+              <Route
+                path="/events"
+                render={ matchProps => (<Events {...matchProps} />) }
+              />
+
+              <Route
+                path="/categories"
+                render={ matchProps => (<Categories {...matchProps} />) }
+              />
+
+              <Route
+                path="/favourites"
+                render={ matchProps => (<Favourits {...matchProps} />) }
+              />
+            </Switch>
+          </DefaultLayout>
         </Router>
       </Provider>
     );

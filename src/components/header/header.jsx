@@ -5,9 +5,10 @@ import CSSModules from 'react-css-modules';
 class Header extends React.Component{
   render () {
     const { headerTitle } = this.props.header;
+
     return(
       <header>
-        <h1 styleName='title' >{headerTitle}</h1>
+        <h1 styleName='title' >{ headerTitle }</h1>
       </header>
     );
   }
