@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../containers/header_container/header-container.js';
+import Footer from '../../containers/footer_container/footer-container.js';
 import PropTypes from 'prop-types';
 
 class DefaultLayout extends React.Component {
@@ -7,9 +8,11 @@ class DefaultLayout extends React.Component {
     return(
       <div>
         <Header />
-        {this.props.children}
-      </div>
 
+        { this.props.children }
+
+        <Footer />
+      </div>
     );
   }
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { NavLink } from 'react-router-dom';
-//import {connect} from 'react-redux';
 
 class Home extends React.Component {
   componentWillMount() {
@@ -12,12 +10,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          <li><NavLink to="/categories">Categories</NavLink></li>
-          <li><NavLink to="/settings">Settings</NavLink></li>
-          <li><NavLink to="/events">Events</NavLink></li>
-          <li><NavLink to="/favourites">Favourits</NavLink></li>
-        </ul>
+        <h1>
+          Home
+        </h1>
       </div>
     );
   }
