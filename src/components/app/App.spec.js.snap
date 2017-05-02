@@ -1,6 +1,0 @@
-exports[`App renders correctly`] = `
-<div
-  className="app__mystyle__19gmr">
-  Hello world!
-</div>
-`;

@@ -9,7 +9,7 @@ export default {
                 enforce: 'pre',
                 test: /\.jsx?$/,
                 exclude: path.resolve(__dirname, 'node_modules'),
-                loader: 'eslint-loader'
+                loader: 'eslint-loader',
             },
             {
                 test: /\.jsx?$/,

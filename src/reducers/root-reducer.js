@@ -1,22 +1,11 @@
 import {combineReducers} from 'redux';
-
-const initialState = {
-  
-};
-
-function testReducer(state = initialState, action){
-    //bara för att få eslint att funka. Tas bort direkt när vi
-    // har en riktig reducer.
-    switch(action){
-    case 'TEST_ACTION': {
-        return state;
-    }
-    }
-    return state;
-}
-
+import footer from './footer/footer.js';
+import header from './header/header.js';
+import categories from './categories/categories.js';
 const rootReducer = combineReducers({
-    testReducer,
+  header,
+  footer,
+  categories,
 });
 
 export default rootReducer;

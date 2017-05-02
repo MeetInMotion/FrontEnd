@@ -4,7 +4,7 @@
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
-            "experimentalObjectRestSpread": true    
+            "experimentalObjectRestSpread": true
         }
     },
     "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:mocha/recommended"],
@@ -14,17 +14,17 @@
         "classes",
         "filenames"
     ],
-    
+
     "rules": {
-        "semi": 2,  
-        "indent": 2,
+        "semi": 2,
+        "indent": ["error", 2],
         "classes/name": [2, "class", "function"],
         "filenames/match-exported": [2, "kebab"],
-        "filenames/no-index": 2,
-        "comma-dangle": [2, "always-multiline"],
-        "react/jsx-indent": 2,
+      "filenames/no-index": 2,
+      "comma-dangle": [2, "always-multiline"],
+      "react/jsx-indent": ["error", 2],
     },
-    
+
     "env": {
         "browser": true,
         "node": true,
