@@ -1,5 +1,5 @@
 import Events from './events.jsx';
-import { loadingPage } from '../page-actions.js';
+import { loadingPage } from '../../page-actions.js';
 import {connect } from 'react-redux';
 
 function mapDispatchToProps(dispatch) {

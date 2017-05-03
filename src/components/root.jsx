@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './root.scss';
 import CSSModules from 'react-css-modules';
 
-import Home from './home/home-page.js';
-import Settings from './settings/settings-page.js';
-import Events from './events/events-page.js';
-import Favourits from './favourites/favourites-page.js';
-import Categories from './categories/categories-page.js';
+import Home from './app/home/home-page.js';
+import Settings from './app/settings/settings-page.js';
+import Events from './app/events/events-page.js';
+import Favourits from './app/favourites/favourites-page.js';
+import Categories from './app/categories/categories-page.js';
 
 class Root extends React.Component {
   render() {

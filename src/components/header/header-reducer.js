@@ -1,4 +1,4 @@
-import { LOADING_PAGE } from '../app/page-actions.js';
+import { LOADING_PAGE } from '../page-actions.js';
 
 const initialState = {
   headerTitle: 'Meet in Motion',
