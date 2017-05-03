@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import Root from './root.jsx';
-import rootReducer from './reducers/root-reducer.js';
+import Root from './components/app/root.jsx';
+import rootReducer from './components/app/root-reducer.js';
 var store = createStore(rootReducer,
                         applyMiddleware(
                             thunkMiddleware

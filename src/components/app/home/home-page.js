@@ -1,6 +1,6 @@
-import Home from '../../pages/home/home.jsx';
+import Home from './home.jsx';
 import { connect } from 'react-redux';
-import { loadingPage } from '../../actions/page_actions/page-actions.js';
+import { loadingPage } from '../page-actions.js';
 
 
 

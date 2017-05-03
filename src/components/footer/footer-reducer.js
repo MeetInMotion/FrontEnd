@@ -2,13 +2,13 @@ import {
   LOADING_FOOTER,
   LOADING_FOOTER_SUCCEEDED,
   LOADING_FOOTER_FAILED,
-} from '../../actions/footer_actions/footer-actions.js';
+} from './footer-actions.js';
 
 const initialState = {
   navLinks: [],
 };
 
-function footer(state = initialState, action) {
+function footerReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
   case LOADING_FOOTER: {
@@ -27,4 +27,4 @@ function footer(state = initialState, action) {
   return state;
 }
 
-export default footer;
+export default footerReducer;

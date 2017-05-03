@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Footer from '../../components/footer/footer.jsx';
+import Footer from './footer.jsx';
 
 function mapStateToProps(state) {
   return {
