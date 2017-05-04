@@ -9,7 +9,7 @@ import CSSModules from 'react-css-modules';
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
 import Events from './components/app/events/events-page.js';
-import Favourits from './components/app/favourites/favourites-page.js';
+import Favourites from './components/app/favourites/favourites-page.js';
 import Categories from './components/app/categories/categories-page.js';
 
 class Root extends React.Component {
@@ -38,7 +38,7 @@ class Root extends React.Component {
 
               <Route
                 path="/favourites"
-                render={ matchProps => (<Favourits {...matchProps} />) }
+                render={ matchProps => (<Favourites {...matchProps} />) }
               />
 
               <Route
