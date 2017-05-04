@@ -1,16 +1,16 @@
 import React from 'react';
-import DefaultLayout from './default_layout/default-layout.jsx';
+import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './root.scss';
 import CSSModules from 'react-css-modules';
 
-import Home from './app/home/home-page.js';
-import Settings from './app/settings/settings-page.js';
-import Events from './app/events/events-page.js';
-import Favourits from './app/favourites/favourites-page.js';
-import Categories from './app/categories/categories-page.js';
+import Home from './components/app/home/home-page.js';
+import Settings from './components/app/settings/settings-page.js';
+import Events from './components/app/events/events-page.js';
+import Favourits from './components/app/favourites/favourites-page.js';
+import Categories from './components/app/categories/categories-page.js';
 
 class Root extends React.Component {
   render() {
