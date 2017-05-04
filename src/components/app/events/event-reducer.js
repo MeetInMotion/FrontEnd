@@ -4,7 +4,7 @@ const initialState = {
       id: '1',
       title: "Tyngdlyftning av luft",
       location_name: "Rålambshovsparkens utegym",
-      GeographicalPosition: {
+      geographical_position: {
         X: 6587056,
         Y: 1619460,
       },
@@ -13,7 +13,7 @@ const initialState = {
       id: '2',
       title: "Jaga flugor",
       location_name: "Sveriges riksdag",
-      GeographicalPosition: {
+      geographical_position: {
         X: 6587056,
         Y: 1619460,
       },
@@ -22,7 +22,7 @@ const initialState = {
       id: '3',
       title: "Benpass deluxe",
       location_name: "Gärdets utegym",
-      GeographicalPosition: {
+      geographical_position: {
         X: 6587056,
         Y: 1619460,
       },

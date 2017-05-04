@@ -11,15 +11,18 @@ class SingleEvent extends React.Component{
       (e) => e.id === this.props.match.params.eventId
     );
 
-    console.log(event) // eslint-disable-line
+    console.log(event.geographical_position.X) // eslint-disable-line
 
     return(
       <div>
         <h2>
           { event.title }
         </h2>
-        <p> location: { event.location_name } </p>
-        <p> coordinate: { event.coordinate } </p>
+        <h3> Location </h3> 
+        { event.location_name }
+        <h3> Geographical position </h3>
+        <p> x: { event.geographical_position.X } </p>
+        <p> y: { event.geographical_position.Y } </p>
       </div>
     );
   }
@@ -36,7 +39,7 @@ SingleEvent.propTypes = {
       id: PropTypes.string,
       title: PropTypes.string,
       location_name: PropTypes.string,
-      GeographicalPosition: PropTypes.array,
+      geographical_position: PropTypes.object,
     })
   ),
 };
