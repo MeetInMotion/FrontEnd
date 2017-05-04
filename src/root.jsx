@@ -8,7 +8,8 @@ import CSSModules from 'react-css-modules';
 
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
-import Events from './components/app/events/events-page.js';
+import Events from './components/app/events/event-page.js';
+import SingleEvent from './components/app/single_event/single-event-page.js';
 import Favourits from './components/app/favourites/favourites-page.js';
 import Categories from './components/app/categories/categories-page.js';
 
@@ -24,6 +25,10 @@ class Root extends React.Component {
               <Route
                 path="/settings"
                 render={ matchProps => (<Settings {...matchProps} />) }
+              />
+              <Route
+                path="/events/:eventId"
+                render={ matchProps => (<SingleEvent {...matchProps} />) }
               />
 
               <Route
