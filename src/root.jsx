@@ -22,12 +22,6 @@ class Root extends React.Component {
           <DefaultLayout>
             <Switch>
               <Route
-                exact
-                path="/"
-                render={ matchProps => (<Home {...matchProps} />) }
-              />
-
-              <Route
                 path="/settings"
                 render={ matchProps => (<Settings {...matchProps} />) }
               />
@@ -45,6 +39,12 @@ class Root extends React.Component {
               <Route
                 path="/favourites"
                 render={ matchProps => (<Favourits {...matchProps} />) }
+              />
+
+              <Route
+                exact
+                path="/"
+                render={ matchProps => (<Home {...matchProps} />) }
               />
             </Switch>
           </DefaultLayout>
