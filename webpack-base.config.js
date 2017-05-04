@@ -10,7 +10,7 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 
 module.exports = new Config().merge({
   context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  entry: './main.js',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,8 +18,9 @@ module.exports = new Config().merge({
   },
 
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    port: 8080
+      contentBase: path.resolve(__dirname, 'dist'),
+      port: 8080,
+      historyApiFallback: true,
   },
 
   module: {
@@ -32,9 +33,10 @@ module.exports = new Config().merge({
       },
       {
         exclude: path.resolve(__dirname, 'node_modules'),
-        test: /\.css$/,
+        test: /\.scss$/,
         loaders:[ 'style-loader?sourceMap',
-                  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]']
+                  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
+                'sass-loader']
       }
     ]
   },
