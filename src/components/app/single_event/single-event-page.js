@@ -1,0 +1,19 @@
+// import SingleEvent from './single-event.jsx';
+import { loadingPage } from '../page-actions.js';
+import * as actions from './event-actions.js';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+function mapStateToProps(state) {
+  return {
+    events: state.event.event,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ ...actions, loadingPage: loadingPage }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleEvent);

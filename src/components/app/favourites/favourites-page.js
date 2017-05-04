@@ -1,5 +1,5 @@
-import Favourites from '../../pages/favourites/favourites.jsx';
-import { loadingPage } from '../../actions/page_actions/page-actions.js';
+import Favourites from './favourites.jsx';
+import { loadingPage } from '../../page-actions.js';
 import { connect } from 'react-redux';
 
 function mapDispatchToProps(dispatch) {

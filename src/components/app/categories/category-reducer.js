@@ -2,14 +2,14 @@ import {
   LOADING_CATEGORIES,
   LOADING_CATEGORIES_SUCCEEDED,
   LOADING_CATEGORIES_FAILED,
-} from '../../actions/categories_actions/categories-actions.js';
+} from './category-actions.js';
 
 const initialState = {
   loading: false,
   isError: false,
   categoriesList: [],
 };
-function categories(state = initialState, action) {
+function categoryReducer(state = initialState, action) {
   const { type, ...rest} = action;
 
   switch (type) {
@@ -32,4 +32,4 @@ function categories(state = initialState, action) {
   return state;
 }
 
-export default categories;
+export default categoryReducer;

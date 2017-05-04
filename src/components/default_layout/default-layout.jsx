@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../containers/header_container/header-container.js';
-import Footer from '../../containers/footer_container/footer-container.js';
+import Header from '../header/header-container.js';
+import Footer from '../footer/footer-container.js';
 import PropTypes from 'prop-types';
 
 class DefaultLayout extends React.Component {

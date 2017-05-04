@@ -1,6 +1,6 @@
-import Settings from '../../pages/settings/settings.jsx';
+import Settings from './settings.jsx';
 import { connect } from 'react-redux';
-import { loadingPage } from '../../actions/page_actions/page-actions.js';
+import { loadingPage } from '../../page-actions.js';
 
 function mapDispatchToProps(dispatch){
   return {

@@ -1,15 +1,16 @@
 import React from 'react';
-import DefaultLayout from './layouts/default_layout/default-layout.jsx';
+import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './root.scss';
 import CSSModules from 'react-css-modules';
-import Home from './containers/home_page/home-page.js';
-import Settings from './containers/settings_page/settings-page.js';
-import Events from './containers/events_page/events-page.js';
-import Favourits from './containers/favourites_page/favourites-page.js';
-import Categories from './containers/categories_page/categories-page.js';
+
+import Home from './components/app/home/home-page.js';
+import Settings from './components/app/settings/settings-page.js';
+import Events from './components/app/events/events-page.js';
+import Favourits from './components/app/favourites/favourites-page.js';
+import Categories from './components/app/categories/categories-page.js';
 
 class Root extends React.Component {
   render() {
@@ -20,12 +21,6 @@ class Root extends React.Component {
         <Router>
           <DefaultLayout>
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={ matchProps => (<Home {...matchProps} />) }
-              />
-
               <Route
                 path="/settings"
                 render={ matchProps => (<Settings {...matchProps} />) }
@@ -44,6 +39,12 @@ class Root extends React.Component {
               <Route
                 path="/favourites"
                 render={ matchProps => (<Favourits {...matchProps} />) }
+              />
+
+              <Route
+                exact
+                path="/"
+                render={ matchProps => (<Home {...matchProps} />) }
               />
             </Switch>
           </DefaultLayout>
