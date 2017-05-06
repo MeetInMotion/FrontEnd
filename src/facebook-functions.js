@@ -2,7 +2,7 @@
 
 export function loadFbSdk(appId, version) {
   return new Promise(resolve => {
-    window.fbAsyncInit = function () { // eslint-disable-line func-names
+    window.fbAsyncInit = function () {
       FB.init({
         appId,
         xfbml: true,
@@ -12,7 +12,7 @@ export function loadFbSdk(appId, version) {
       FB.AppEvents.logPageView();
       resolve('SDK Loaded!');
     };
-    (function (d, s, id) { // eslint-disable-line func-names
+    (function (d, s, id) {
       const fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       const js = d.createElement(s); js.id = id;
@@ -35,8 +35,12 @@ export function fbLogin(options) {
     window.FB.login(response => resolve(response), options);
   });
 }
+
 export function fbLogout() {
   return new Promise(resolve => {
     window.FB.logout(response => resolve(response));
   });
 }
+
+
+//http://stackoverflow.com/questions/42773224/react-native-redux-facebook-login-error?rq=1

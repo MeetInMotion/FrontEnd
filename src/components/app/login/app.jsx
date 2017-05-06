@@ -85,3 +85,5 @@ const styles = {
     alignItems: 'center',
   },
 };
+
+//http://stackoverflow.com/questions/34990674/react-redux-login-with-facebook?rq=1

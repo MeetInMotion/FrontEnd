@@ -119,3 +119,5 @@ FacebookLogin.defaultProps = {
   onLogoutEvent: () => {},
   onClick: () => {},
 };
+
+//https://github.com/keppelen/react-facebook-login/blob/master/src/facebook.js
