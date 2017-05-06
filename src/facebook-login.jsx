@@ -11,21 +11,16 @@ export default class FacebookLogin extends Component {
     this.buttonClicked = this.buttonClicked.bind(this);
     this.showFBLogo = this.showFBLogo.bind(this);
     this.state = {
-      //isLoggedIn: false,
       isConnected: false,
     };
   }
   componentWillMount() {
-    /*this.setState({
-      isLoggedIn: true,
-    });*/
     loadFbSdk(this.props.appId, this.props.version)
       .then(() => getFbLoginStatus())
       .then(response => {
         if (response.status === 'connected') {
           this.setState({ isConnected: true });
         }
-        //this.setState({ isLoggedIn: false });
         this.props.onMountEvent(response);
       });
   }
@@ -51,7 +46,6 @@ export default class FacebookLogin extends Component {
 
   showFBLogo() {
     if (this.state.isLoggedIn) {
-    //if (this.state.isConnected) {
       return <FBlogo style={this.styles.spinner} />;
     } else {
       return <div style={styles.fbIcon} />;
@@ -59,23 +53,18 @@ export default class FacebookLogin extends Component {
   }
 
   login() {
-    //this.setState({ isLoggedIn: true });
     fbLogin(this.props.loginOptions).then(response => {
       if (response.status === 'connected') {
-        //this.setState({ isConnected: true, isLoggedIn: false });
         this.setState({ isConnected: true });
       } else {
-        //this.setState({ isConnected: true, isLoggedIn: false });
         this.setState({ isConnected: false });
       }
       this.props.onLoginEvent(response);
     });
   }
   logout() {
-    //this.setState({ isLoggedIn: true });
     fbLogout().then(response => {
       this.setState({
-        //isLoggedIn: false,
         isConnected: false,
       });
       this.props.onLogoutEvent(response);
@@ -130,18 +119,3 @@ FacebookLogin.defaultProps = {
   onLogoutEvent: () => {},
   onClick: () => {},
 };
-
-/*
-render() {
-  this.styles = merge({}, styles, this.props.style);
-  return (
-    <div>
-      {this.props.loginOptions.color}
-      <button onClick={this.buttonClicked} style={this.styles.loginBtn}>
-        {this.showFBLogo()}
-        {this.getButtonText()}
-      </button>
-    </div>
-  );
-}
-*/
