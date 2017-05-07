@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import FacebookLogin from '../../../../src/facebook-login.jsx';
+import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
 import { PropTypes } from 'prop-types';
 
