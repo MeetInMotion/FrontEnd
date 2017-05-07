@@ -1,6 +1,3 @@
-/* global FB */
-// this global statement is needed to call Faceebook functions
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -18,7 +15,7 @@ class App extends Component {
 
   getUserInformation() {
     if (this.props.loginConnection.isConnected && !this.props.userInformation) {
-      FB.api('/me', 'GET', { fields: 'name,email' },
+      window.FB.api('/me', 'GET', {},
         userInformation => {
           this.props.getUserInformation(userInformation);
         }
@@ -33,23 +30,16 @@ class App extends Component {
     this.props.getUserInformation(null);
   }
   render() {
-    const { name, email } = this.props.userInformation || { name: null, email: null };
     this.getUserInformation();
     return (
       <div style={styles.container}>
         <FacebookLogin
           appId="278320365928562"
-          verbose={false}
-          onWillMount={this.login}
+          mountedDataEvent={this.login}
           onLoginEvent={this.login}
           onLogoutEvent={this.logout}
           onClick={() => this.props.getUserData()}
         />
-        <br />
-        <ul>
-          <li>{name}</li>
-          <li>{email}</li>
-        </ul>
       </div>
     );
   }
@@ -85,5 +75,3 @@ const styles = {
     alignItems: 'center',
   },
 };
-
-//http://stackoverflow.com/questions/34990674/react-redux-login-with-facebook?rq=1
