@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({ ...actions, loadingPage: loadingPage }, dispatch),
+    loadingPage: () => dispatch(loadingPage('single-event')),
   };
 }
 
