@@ -5,7 +5,7 @@ import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
 import { PropTypes } from 'prop-types';
 
-class App extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
@@ -35,9 +35,9 @@ class App extends Component {
       <div style={styles.container}>
         <FacebookLogin
           appId="278320365928562"
-          mountedDataEvent={this.login}
-          onLoginEvent={this.login}
-          onLogoutEvent={this.logout}
+          userDataState={this.login}
+          onLoginState={this.login}
+          onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}
         />
       </div>
@@ -45,7 +45,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+Login.propTypes = {
   getUserLoginStatus: PropTypes.func,
   getUserData: PropTypes.func,
   getUserInformation: PropTypes.func,
@@ -66,7 +66,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 const styles = {
   container: {
