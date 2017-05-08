@@ -4,6 +4,12 @@ import { PropTypes } from 'prop-types';
 // import styles from './events.scss';
 
 class SingleEvent extends React.Component{
+
+  componentWillMount() {
+    const { loadingPage } = this.props;
+    loadingPage();
+  }
+
   render() {
     console.log(this.props) // eslint-disable-line
 
@@ -29,6 +35,7 @@ class SingleEvent extends React.Component{
 }
 
 SingleEvent.propTypes = {
+  loadingPage: PropTypes.func,
   match: PropTypes.shape({
     params: PropTypes.shape({
       eventId: PropTypes.string,
