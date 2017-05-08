@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './root.scss';
 import CSSModules from 'react-css-modules';
-import Login from './components/app/login/app.jsx';
+import Login from './components/app/login/app.js';
 //import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
 import Events from './components/app/events/event-page.js';
