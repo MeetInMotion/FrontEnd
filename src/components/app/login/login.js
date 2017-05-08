@@ -35,7 +35,7 @@ class Login extends Component {
       <div style={styles.container}>
         <FacebookLogin
           appId="278320365928562"
-          mountedUserData={this.login}
+          userDataState={this.login}
           onLoginState={this.login}
           onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}

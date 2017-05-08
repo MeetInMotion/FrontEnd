@@ -22,7 +22,7 @@ export default class FacebookLogin extends Component {
         if (response.status === 'connected') {
           this.setState({ isConnected: true });
         }
-        this.props.mountedUserData(response);
+        this.props.userDataState(response);
       });
   }
 
@@ -38,7 +38,7 @@ export default class FacebookLogin extends Component {
 FacebookLogin.propTypes = {
   appId: PropTypes.string.isRequired,
   version: PropTypes.string,
-  mountedUserData: PropTypes.func,
+  userDataState: PropTypes.func,
   onLoginState: PropTypes.func,
   onLogoutState: PropTypes.func,
   onClick: PropTypes.func,
@@ -46,7 +46,7 @@ FacebookLogin.propTypes = {
 
 FacebookLogin.defaultProps = {
   version: 'v2.9',
-  mountedUserData: () => {},
+  userDataState: () => {},
   onLoginState: () => {},
   onLogoutState: () => {},
   onClick: () => {},
