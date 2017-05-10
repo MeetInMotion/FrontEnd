@@ -45,7 +45,6 @@ class Root extends React.Component {
                 path="/favourites"
                 render={ matchProps => (<Favourites {...matchProps} />) }
               />
-
               <Route
                 exact
                 path="/"
