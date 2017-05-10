@@ -2,7 +2,6 @@ import Event from './events.jsx';
 import { loadingPage } from '../../page-actions.js';
 import * as actions from './event-actions.js';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 
 function mapStateToProps(state) {
   return {

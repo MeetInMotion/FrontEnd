@@ -11,13 +11,9 @@ class SingleEvent extends React.Component{
   }
 
   render() {
-    console.log(this.props) // eslint-disable-line
-
     const event = this.props.events.find(
       (e) => e.id === this.props.match.params.eventId
     );
-
-    console.log(event.geographical_position.X) // eslint-disable-line
 
     return(
       <div>

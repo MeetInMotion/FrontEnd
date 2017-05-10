@@ -11,7 +11,7 @@ class Favourites extends React.Component {
   render() {
     return (
       <div>
-        <h1>Favourits</h1>
+        <h2>Favourites</h2>
         <NavLink to="/">Home</NavLink>
       </div>
     );
