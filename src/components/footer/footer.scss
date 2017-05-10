@@ -1,13 +1,18 @@
 .menuposition {
-    color: blue;
-    position: absolute;
-    bottom: 0;
-    right: 10;
-    width: 500px;
+  color: blue;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .navigation-link {
+  text-decoration: none;
+  color: black;
+  font-family: "Arial", Times, Sans-serif;
   padding: 0px 10px;
   word-wrap: normal;
   display: inline-block;
+  font-size: 15px;
 }

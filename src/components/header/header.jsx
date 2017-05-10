@@ -1,25 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './header.scss';
 import CSSModules from 'react-css-modules';
+import { NavLink } from 'react-router-dom';
 class Header extends React.Component{
   render () {
-    const { headerTitle } = this.props.header;
-
+    
     return(
-      <header>
-        <h1 styleName='title' >{ headerTitle }</h1>
-      </header>
+      <nav styleName='title'>
+        <NavLink styleName='nav' to="/"> MEET IN MOTION </NavLink>
+      </nav>
     );
   }
 }
-
-Header.propTypes = {
-  header: PropTypes.shape({
-    headerTitle: PropTypes.string,
-  }),
-};
-
-
 
 export default CSSModules(Header, styles);

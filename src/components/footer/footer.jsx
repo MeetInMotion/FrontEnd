@@ -7,10 +7,10 @@ class Footer extends React.Component {
   render() {
     return(
       <nav styleName="menuposition">
-        <NavLink styleName="navigation-link" to="/categories">Categories</NavLink>
-        <NavLink styleName="navigation-link" to="/settings">Settings</NavLink>
-        <NavLink styleName="navigation-link" to="/events">Events</NavLink>
-        <NavLink styleName="navigation-link" to="/favourites">Favourits</NavLink>
+        <NavLink styleName="navigation-link" to="/categories">CATEGORIES</NavLink>
+        <NavLink styleName="navigation-link" to="/settings">SETTINGS</NavLink>
+        <NavLink styleName="navigation-link" to="/events">EVENTS</NavLink>
+        <NavLink styleName="navigation-link" to="/favourites">FAVOURITES</NavLink>
       </nav>
     );
   }
