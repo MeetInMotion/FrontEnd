@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './root.scss';
 import CSSModules from 'react-css-modules';
-import Login from './components/app/login/login.js';
-//import Home from './components/app/home/home-page.js';
+//import Login from './components/app/login/login.js';
+import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
 import Events from './components/app/events/event-page.js';
 import SingleEvent from './components/app/single_event/single-event-page.js';
@@ -23,8 +23,8 @@ class Root extends React.Component {
           <DefaultLayout>
             <Switch>
               <Route
-                path="/login"
-                render={ matchProps => (<Settings {...matchProps} />) }
+                exact path="/"
+                render={ matchProps => (<Home {...matchProps} />) }
               />
               <Route
                 path="/settings"
@@ -50,11 +50,6 @@ class Root extends React.Component {
                 render={ matchProps => (<Favourites {...matchProps} />) }
               />
 
-              <Route
-                exact
-                path="/"
-                render={ matchProps => (<Login {...matchProps} />) }
-              />
             </Switch>
           </DefaultLayout>
         </Router>

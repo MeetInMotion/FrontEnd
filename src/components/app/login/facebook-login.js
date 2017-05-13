@@ -9,11 +9,12 @@ export default class FacebookLogin extends Component {
       isConnected: false,
     };
   }
-
+/*
   getFbLoginStatus() {
     return window.FB.getLoginStatus(responseStatus => {(responseStatus);
     });
   }
+*/
 
   componentWillMount() {
     loadFbSdk(this.props.appId, this.props.version)

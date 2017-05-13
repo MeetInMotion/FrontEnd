@@ -75,3 +75,19 @@ const styles = {
     alignItems: 'center',
   },
 };
+/*
+render() {
+  this.getUserInformation();
+  return (
+    <div style={styles.container}>
+      <FacebookLogin
+        appId="278320365928562"
+        userDataState={this.login}
+        onLoginState={this.login}
+        onLogoutState={this.logout}
+        onClick={() => this.props.getUserData()}
+      />
+    </div>
+  );
+}
+*/
