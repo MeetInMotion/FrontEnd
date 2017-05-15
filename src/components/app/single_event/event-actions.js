@@ -1,3 +1,4 @@
+/*
 export const EVENT_CHOOSEN = 'EVENT_CHOOSEN';
 
 
@@ -8,3 +9,4 @@ export function eventChoosen(id) {
     id: id,
   };
 }
+*/

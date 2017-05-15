@@ -1,9 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import CSSModules from 'react-css-modules';
-// import styles from './events.scss';
 
-class SingleEvent extends React.Component{
+class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { loadingPage } = this.props;

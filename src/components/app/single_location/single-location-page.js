@@ -1,4 +1,4 @@
-import SingleEvent from './single-event.jsx';
+import SingleLocation from './single-location.jsx';
 import { loadingPage } from '../../page-actions.js';
 //import * as actions from './event-actions.js';
 import { connect } from 'react-redux';
@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    events: state.events.events,
+    locations: state.locations,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     //actions: bindActionCreators({ ...actions, loadingPage: loadingPage }, dispatch),
-    loadingPage: () => dispatch(loadingPage('single-event')),
+    loadingPage: () => dispatch(loadingPage('single-location')),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleLocation);
