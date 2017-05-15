@@ -9,6 +9,7 @@ const initialState = {
   isError: false,
   categoriesList: [],
 };
+
 function categoryReducer(state = initialState, action) {
   const { type, ...rest} = action;
 
