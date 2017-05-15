@@ -29,8 +29,15 @@ class Login extends Component {
     this.props.getUserLoginStatus(response.status);
     this.props.getUserInformation(null);
   }
+
   render() {
     this.getUserInformation();
+
+    const myFun = () => {
+      console.log('test');// eslint-disable-line
+      this.props.getUserData();
+    };
+
     return (
       <div style={styles.container}>
         <FacebookLogin
@@ -38,7 +45,7 @@ class Login extends Component {
           userDataState={this.login}
           onLoginState={this.login}
           onLogoutState={this.logout}
-          onClick={() => this.props.getUserData()}
+          onClick={myFun()}
         />
       </div>
     );
