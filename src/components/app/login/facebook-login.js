@@ -16,7 +16,7 @@ export default class FacebookLogin extends Component {
   }
 */
 
-  componentWillMount() {
+  componentDidMount() {
     loadFbSdk(this.props.appId, this.props.version)
       .then(() => getFbLoginStatus())
       .then(response => {
@@ -30,7 +30,7 @@ export default class FacebookLogin extends Component {
   render() {
     return (
       <div>
-        <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="true"></div>
+        <div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="true"></div>
       </div>
     );
   }
