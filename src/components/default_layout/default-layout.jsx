@@ -2,14 +2,19 @@ import React from 'react';
 import Header from '../header/header-container.js';
 import Footer from '../footer/footer-container.js';
 import PropTypes from 'prop-types';
+import styles from './default-layout.scss';
+import CSSModules from 'react-css-modules';
 
 class DefaultLayout extends React.Component {
   render() {
     return(
-      <div>
+      <div styleName="default-layout">
+        
         <Header />
-
-        { this.props.children }
+        
+        <div styleName="content">
+          { this.props.children }
+        </div>
 
         <Footer />
       </div>
@@ -21,4 +26,4 @@ DefaultLayout.propTypes = {
   children: PropTypes.object,
 };
 
-export default DefaultLayout;
+export default CSSModules(DefaultLayout, styles);

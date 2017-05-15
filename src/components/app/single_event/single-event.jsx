@@ -1,9 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import CSSModules from 'react-css-modules';
-// import styles from './events.scss';
 
-class SingleEvent extends React.Component{
+class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { loadingPage } = this.props;
@@ -11,13 +9,9 @@ class SingleEvent extends React.Component{
   }
 
   render() {
-    console.log(this.props) // eslint-disable-line
-
     const event = this.props.events.find(
       (e) => e.id === this.props.match.params.eventId
     );
-
-    console.log(event.geographical_position.X) // eslint-disable-line
 
     return(
       <div>

@@ -2,9 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
-
 import styles from './events.scss';
-// import SingleEvent from '../single-event/single-event.jsx';
 
 class Events extends React.Component{
 
