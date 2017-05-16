@@ -21,18 +21,21 @@ export function loadFbSdk(appId, version) {
   });
 }
 
-export function auth_response_change_callback (response) {
-  console.log("auth_response_change_callback");// eslint-disable-line
-  console.log(response);// eslint-disable-line
-}
-
-export function auth_status_change_callback (response) {
-  console.log("auth_status_change_callback: " + response.status);// eslint-disable-line
-}
 export function getFbLoginStatus() {
   return new Promise(resolve => {
     window.FB.getLoginStatus(responseStatus => {
       resolve(responseStatus);
     });
+  });
+}
+
+export function fbLogin(options) {
+  return new Promise(resolve => {
+    window.FB.login(response => resolve(response), options);
+  });
+}
+export function fbLogout() {
+  return new Promise(resolve => {
+    window.FB.logout(response => resolve(response));
   });
 }

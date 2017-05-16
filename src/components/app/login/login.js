@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
-import { PropTypes } from 'prop-types';
+import Show from './show.jsx';
+import ListItem from './list-item.jsx';
 
 class Login extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class Login extends Component {
 
   getUserInformation() {
     if (this.props.loginConnection.isConnected && !this.props.userInformation) {
-      window.FB.api('/me', 'GET', {},
+      window.FB.api('/me', 'GET', {fields: 'id,name,email,picture.width(200).height(200)'},
         userInformation => {
           this.props.getUserInformation(userInformation);
         }
@@ -29,15 +31,14 @@ class Login extends Component {
     this.props.getUserLoginStatus(response.status);
     this.props.getUserInformation(null);
   }
-
   render() {
-    this.getUserInformation();
-
+    const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null };
     const myFun = () => {
-      console.log('test');// eslint-disable-line
+      console.log('test onClick');// eslint-disable-line
       this.props.getUserData();
     };
 
+    this.getUserInformation();
     return (
       <div style={styles.container}>
         <FacebookLogin
@@ -46,7 +47,13 @@ class Login extends Component {
           onLoginState={this.login}
           onLogoutState={this.logout}
           onClick={myFun()}
+          //onClick={() => this.props.getUserData()}
         />
+        <Show isDisplayed={this.props.userInformation}>
+          <img src={picture}/>
+          <ListItem text={name} />
+        </Show>
+
       </div>
     );
   }
