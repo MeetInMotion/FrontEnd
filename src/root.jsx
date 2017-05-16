@@ -19,7 +19,6 @@ import FacebookLogin from './components/app/login/login';
 class Root extends React.Component {
 
   requireAuth(nextState, replace) {
-    console.log('requireAuth called');
     if (this.props.isConnected == null) {
       replace({
         pathname: "/login",
