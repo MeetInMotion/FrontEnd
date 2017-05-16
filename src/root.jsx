@@ -18,9 +18,7 @@ import FacebookLogin from './components/app/login/login';
 class Root extends React.Component {
   render() {
     const { store, isConnected } = this.props;
-    if (isConnected) {
-    } else {
-    }
+
     return (
       <Provider store={ store }>
         <Router>
