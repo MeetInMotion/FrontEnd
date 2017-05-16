@@ -19,9 +19,7 @@ class Root extends React.Component {
   render() {
     const { store, isConnected } = this.props;
     if (isConnected) {
-      console.log('connection status: ', isConnected);
     } else {
-      console.log('connection status: ', isConnected);
     }
     return (
       <Provider store={ store }>
