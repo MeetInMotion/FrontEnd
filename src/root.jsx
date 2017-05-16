@@ -17,14 +17,19 @@ import SingleLocation from './components/app/single_location/single-location-pag
 import FacebookLogin from './components/app/login/login';
 
 class Root extends React.Component {
-  render() {
-    const { store, isConnected } = this.props;
 
-    if (isConnected) {
-      console.log('isConnected:  ', isConnected);
-    } else {
-      console.log('isConnected:  ', isConnected);
-    }
+  requireAuth(nextState, replace) {
+    console.log('requireAuth called');
+    if (this.props.isConnected == null) {
+      replace({
+        pathname: "/login",
+      });
+    }    
+  }
+
+  render() {
+    const { store } = this.props;
+    // const { isConnected } = this.props;
 
     return (
       <Provider store={ store }>
@@ -33,7 +38,8 @@ class Root extends React.Component {
             <Switch>
               <Route
                 path="/settings"
-                render={ matchProps => (<Settings {...matchProps} />) }
+                component={ Settings }
+                onEnter={ this.requireAuth }
                ></Route>
 
               <Route
@@ -65,7 +71,12 @@ class Root extends React.Component {
                 path="/favourites"
                 render={ matchProps => (<Favourites {...matchProps} />) }
               ></Route>
-              
+
+              <Route
+                path="/login"
+                render={ matchProps => (<FacebookLogin {...matchProps} />) }
+              ></Route>
+
               <Route
                 exact
                 path="/"
@@ -75,7 +86,7 @@ class Root extends React.Component {
           </DefaultLayout>
         </Router>
       </Provider>
-    );
+    ); 
   }
 }
 
@@ -86,7 +97,7 @@ Root.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isConnected: state.loginConnection,
+    isConnected: state.loginConnection.isConnected,
   };
 }
 
