@@ -1,10 +1,13 @@
+/*
+ This Facebook React Redux login code is from:
+      Liran Cohen and his repostory is:  github.com:iliran11/facebook-login-redux-react.git
+*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
-import Show from './show.jsx';
 
 class Login extends Component {
   constructor(props) {
@@ -47,11 +50,10 @@ class Login extends Component {
           onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}
         />
-        <Show isDisplayed={this.props.userInformation}>
+        <div className={this.props.userInformation}>
           <img src={picture_address}/>
           <div>{name}</div>
-        </Show>
-
+        </div>
       </div>
     );
   }
