@@ -33,11 +33,6 @@ class Login extends Component {
   }
   render() {
     const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null };
-    const myFun = () => {
-      console.log('test onClick');// eslint-disable-line
-      this.props.getUserData();
-    };
-
     this.getUserInformation();
     return (
       <div style={styles.container}>
@@ -46,8 +41,7 @@ class Login extends Component {
           userDataState={this.login}
           onLoginState={this.login}
           onLogoutState={this.logout}
-          onClick={myFun()}
-          //onClick={() => this.props.getUserData()}
+          onClick={() => this.props.getUserData()}
         />
         <Show isDisplayed={this.props.userInformation}>
           <img src={picture}/>
