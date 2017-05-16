@@ -15,12 +15,6 @@ export default class FacebookLogin extends Component {
       isConnected: false,
     };
   }
-/*
-  getFbLoginStatus() {
-    return window.FB.getLoginStatus(responseStatus => {(responseStatus);
-    });
-  }
-*/
 
   componentDidMount() {
     this.setState({
@@ -71,10 +65,8 @@ export default class FacebookLogin extends Component {
       if (this.props.verbose) console.info('login response', response);// eslint-disable-line
       if (response.status === 'connected') {
         this.setState({ isConnected: true, isWorking: false });
-      //  this.setState({ isConnected: true});
       } else {
         this.setState({ isConnected: false, isWorking: false });
-      //  this.setState({ isConnected: true});
       }
       this.props.onLoginState(response);
       console.log(this.props.onLoginState(response));// eslint-disable-line

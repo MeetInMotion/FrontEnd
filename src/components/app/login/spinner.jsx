@@ -1,9 +1,6 @@
-/* eslint  no-unsed-vars:0 */
-
 import React, { Component } from 'react';
 import merge from 'lodash/merge';
 import { PropTypes } from 'prop-types';
-import animation from './spinner.scss'; // eslint-disable-line no-unused-vars
 
 export default class Spinner extends Component {
 

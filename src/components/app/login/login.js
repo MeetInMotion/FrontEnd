@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
 import Show from './show.jsx';
-import ListItem from './list-item.jsx';
 
 class Login extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class Login extends Component {
 
   getUserInformation() {
     if (this.props.loginConnection.isConnected && !this.props.userInformation) {
-      window.FB.api('/me', 'GET', {fields: 'id,name,email,picture.width(200).height(200)'},
+      window.FB.api('/me', 'GET', {fields: 'id,name,email,picture.width(100).height(100)'},
         userInformation => {
           this.props.getUserInformation(userInformation);
         }
@@ -34,6 +33,11 @@ class Login extends Component {
   render() {
     const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null };
     this.getUserInformation();
+    var picture_address = '';
+    if (picture) {
+      picture_address = picture.data.url;
+    }
+
     return (
       <div style={styles.container}>
         <FacebookLogin
@@ -44,8 +48,8 @@ class Login extends Component {
           onClick={() => this.props.getUserData()}
         />
         <Show isDisplayed={this.props.userInformation}>
-          <img src={picture}/>
-          <ListItem text={name} />
+          <img src={picture_address}/>
+          <div>{name}</div>
         </Show>
 
       </div>
@@ -83,19 +87,3 @@ const styles = {
     alignItems: 'center',
   },
 };
-/*
-render() {
-  this.getUserInformation();
-  return (
-    <div style={styles.container}>
-      <FacebookLogin
-        appId="278320365928562"
-        userDataState={this.login}
-        onLoginState={this.login}
-        onLogoutState={this.logout}
-        onClick={() => this.props.getUserData()}
-      />
-    </div>
-  );
-}
-*/
