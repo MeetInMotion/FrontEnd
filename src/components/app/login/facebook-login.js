@@ -44,6 +44,7 @@ export default class FacebookLogin extends Component {
       return 'this is default';
     }
   }
+
   buttonClicked() {
     this.props.onClick();
     if (this.state.isConnected) {
@@ -52,6 +53,7 @@ export default class FacebookLogin extends Component {
       this.login();
     }
   }
+
   showSpinner() {
     if (this.state.isWorking) {
       return <Spinner style={this.styles.spinner} />;
@@ -59,6 +61,7 @@ export default class FacebookLogin extends Component {
       return <div style={styles.fbIcon} />;
     }
   }
+
   login() {
     this.setState({ isWorking: true });
     fbLogin(this.props.loginOptions).then(response => {
@@ -69,9 +72,9 @@ export default class FacebookLogin extends Component {
         this.setState({ isConnected: false, isWorking: false });
       }
       this.props.onLoginState(response);
-      console.log(this.props.onLoginState(response));// eslint-disable-line
     });
   }
+
   logout() {
     this.setState({ isWorking: true });
     fbLogout().then(response => {
@@ -84,6 +87,7 @@ export default class FacebookLogin extends Component {
     }
     );
   }
+  
   render() {
     this.styles = merge({}, styles, this.props.style);
     return (
