@@ -35,7 +35,7 @@ class Login extends Component {
     this.props.getUserLoginStatus(response.status);
     this.props.getUserInformation(null);
   }
-  
+
   render() {
     const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null };
     this.getUserInformation();
@@ -46,6 +46,7 @@ class Login extends Component {
 
     return (
       <div style={styles.container}>
+
         <FacebookLogin
           appId="278320365928562"
           userDataState={this.login}
@@ -53,10 +54,12 @@ class Login extends Component {
           onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}
         />
+        
         <div className={this.props.userInformation}>
           <img src={picture_address}/>
           <div>{name}</div>
         </div>
+
       </div>
     );
   }
