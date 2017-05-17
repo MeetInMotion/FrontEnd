@@ -41,6 +41,11 @@ class Root extends React.Component {
               ></Route>
 
               <Route
+                path="/categories/locations/location/:Name/create-event"
+                render={ matchProps => (<CreateEvent {...matchProps} />) }
+              ></Route>
+
+              <Route
                 path="/categories/locations/location/:Name"
                 render={ matchProps => (<SingleLocation {...matchProps} />) }
               ></Route>
@@ -59,12 +64,7 @@ class Root extends React.Component {
                 path="/favourites"
                 render={ matchProps => (<Favourites {...matchProps} />) }
               ></Route>
-
-              <Route
-                path="/login"
-                render={ matchProps => (<FacebookLogin {...matchProps} />) }
-              ></Route>
-
+              
               <Route
                 exact
                 path="/"
@@ -83,10 +83,4 @@ Root.propTypes = {
   isConnected: PropTypes.bool,
 };
 
-function mapStateToProps(state) {
-  return {
-    isConnected: state.loginConnection.isConnected,
-  };
-}
-
-export default connect(mapStateToProps)(Root);
+export default Root;
