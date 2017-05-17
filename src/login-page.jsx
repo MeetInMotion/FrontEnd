@@ -14,7 +14,10 @@ class LoginPage extends React.Component {
       );
     } else {
       return(
-        <Login store={ store } />
+        <div style={styles.container}>
+          <h3>To access Meet In Motion</h3>
+          <Login store={ store } />
+        </div>
       );
     }
   }
@@ -22,9 +25,9 @@ class LoginPage extends React.Component {
   render() {
     return(
       <div>
-        
+
         { this.requireAuth() }
-        
+
       </div>
     );
   }
@@ -42,5 +45,13 @@ function mapStateToProps(state) {
     isConnected: state.loginConnection.isConnected,
   };
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+};
 
 export default connect(mapStateToProps)(LoginPage);
