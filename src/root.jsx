@@ -3,7 +3,7 @@ import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
@@ -74,7 +74,7 @@ class Root extends React.Component {
           </DefaultLayout>
         </Router>
       </Provider>
-    ); 
+    );
   }
 }
 
