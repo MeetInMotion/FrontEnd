@@ -1,4 +1,5 @@
 export default function (state = { isConnected: null, isWorking: null }, action) {
+  
   switch (action.type) {
   case 'loginResponse':
     if (action.payload === 'connected') {

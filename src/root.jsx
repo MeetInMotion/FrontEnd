@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'; 
 
-//import Login from './components/app/login/login.js';
-// import Home from './components/app/home/home-page.js';
+import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
 import Events from './components/app/events/event-page.js';
 import SingleEvent from './components/app/single_event/single-event-page.js';
@@ -18,17 +17,8 @@ import FacebookLogin from './components/app/login/login';
 
 class Root extends React.Component {
 
-  requireAuth(nextState, replace) {
-    if (this.props.isConnected == null) {
-      replace({
-        pathname: "/login",
-      });
-    }    
-  }
-
   render() {
     const { store } = this.props;
-    // const { isConnected } = this.props;
 
     return (
       <Provider store={ store }>
@@ -37,8 +27,7 @@ class Root extends React.Component {
             <Switch>
               <Route
                 path="/settings"
-                component={ Settings }
-                onEnter={ this.requireAuth }
+                render={ matchProps => (<Settings {...matchProps} />) }
                ></Route>
 
               <Route
@@ -79,7 +68,7 @@ class Root extends React.Component {
               <Route
                 exact
                 path="/"
-                render={ matchProps => (<FacebookLogin {...matchProps} />) }
+                render={ matchProps => (<Home {...matchProps} />) }
               ></Route>
             </Switch>
           </DefaultLayout>
