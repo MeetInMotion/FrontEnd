@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 class SingleLocation extends React.Component {
 
@@ -21,7 +22,11 @@ class SingleLocation extends React.Component {
 
         <h2>Geographical position:</h2>
         <p>X: { myLocation.GeographicalPosition.X }</p>
-        <p>Y: { myLocation.GeographicalPosition.Y }</p>        
+        <p>Y: { myLocation.GeographicalPosition.Y }</p>
+
+        <NavLink to={ `/categories/locations/location/${myLocation.Name}/create-event` } >
+          Create event
+        </NavLink>
 
       </div>
     );
