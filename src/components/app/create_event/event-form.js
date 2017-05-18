@@ -21,10 +21,7 @@ class EventForm extends React.Component {
             <label htmlFor="description">Description: </label>
             <Field name="description" component="input" type="text"/>
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <Field name="email" component="input" type="email"/>
-          </div>
+
           <button type="submit">Submit</button>
         </form>
 

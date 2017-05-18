@@ -12,6 +12,11 @@ class CreateEvent extends React.Component {
     actions.loadingPage('create event');
   }
 
+  submitInput(values) {
+    // this is where tha action can be fired
+    console.log(values);
+  }
+
   render() {
     const eventLocation = this.props.locations.locationsList.find(
       (el) => el.Name === this.props.match.params.Name
@@ -20,7 +25,7 @@ class CreateEvent extends React.Component {
     return(
       <div> Create event at <br/> { eventLocation.Name }
 
-        <EventForm />
+        <EventForm onSubmit={this.submitInput} />
 
       </div>
     );
