@@ -15,7 +15,7 @@ class LoginPage extends React.Component {
     } else {
       return(
         <div style={styles.container}>
-          <h3>To access Meet In Motion</h3>
+          <h3>MEET IN MOTION</h3>
           <Login store={ store } />
         </div>
       );
@@ -51,7 +51,13 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    fontFamily: 'Arial',
+    fontStyle: 'italic',
+    backgroundColor: '#86D1B8',
+    height: '100vh',
+    width: '100vw',
   },
+
 };
 
 export default connect(mapStateToProps)(LoginPage);
