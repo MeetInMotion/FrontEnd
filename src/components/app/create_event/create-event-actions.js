@@ -26,21 +26,17 @@ function creatingEventFailed(error) {
 }
 
 
-// some input validation here before
-// sending it to the API
-// when OK from the API place it in store for rendering the event so that the user
-// know it was created
-
-export function createEvent(date, time, title, description, userId) {
+export function createEvent(userId) {
+  console.log(userId);
   return function(dispatch) {
     dispatch(creatingEvent());
 
     const newEvent = [
       {
-        "title": title,
-        "description": description,
-        "date": date,
-        "time": time,
+        "title": "My event",
+        "description": "description",
+        "date": "date",
+        "time": "time",
         "author": userId,
         "participants": [ userId ],
       },
@@ -54,3 +50,32 @@ export function createEvent(date, time, title, description, userId) {
     }
   };
 }
+
+// some input validation here before
+// sending it to the API
+// when OK from the API place it in store for rendering the event so that the user
+// know it was created
+
+// export function createEvent(date, time, title, description, userId) {
+//   return function(dispatch) {
+//     dispatch(creatingEvent());
+
+//     const newEvent = [
+//       {
+//         "title": title,
+//         "description": description,
+//         "date": date,
+//         "time": time,
+//         "author": userId,
+//         "participants": [ userId ],
+//       },
+//     ];
+      
+//     dispatch(creatingEventSucceeded(newEvent));
+//     let isError = false;
+
+//     if (isError) {
+//       dispatch(creatingEventFailed('creating event failed'));
+//     }
+//   };
+// }
