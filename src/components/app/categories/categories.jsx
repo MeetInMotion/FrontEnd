@@ -18,7 +18,6 @@ class Categories extends React.Component {
         <h2>
           Categories
         </h2>
-        <p>De två första kategorierna mappas till &quot; rätt &quot; locations genom fejkade api-anrop med hjälp av Id-numren</p>
         <ul>
           { categoriesList.map(
             (category, i) => (
