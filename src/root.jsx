@@ -3,7 +3,6 @@ import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
@@ -13,6 +12,7 @@ import Favourites from './components/app/favourites/favourites-page.js';
 import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
+import CreateEvent from './components/app/create_event/create-event-page.js';
 import FacebookLogin from './components/app/login/login';
 
 class Root extends React.Component {
@@ -64,6 +64,11 @@ class Root extends React.Component {
                 path="/favourites"
                 render={ matchProps => (<Favourites {...matchProps} />) }
               ></Route>
+
+              <Route
+                path="/login"
+                render={ matchProps => (<FacebookLogin {...matchProps} />) }
+              ></Route>
               
               <Route
                 exact
@@ -80,7 +85,6 @@ class Root extends React.Component {
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  isConnected: PropTypes.bool,
 };
 
 export default Root;

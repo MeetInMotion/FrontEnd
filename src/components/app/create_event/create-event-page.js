@@ -1,8 +1,6 @@
 import CreateEvent from './create-event.jsx';
 import { loadingPage } from '../../page-actions.js';
-//import * as actions from './event-actions.js';
 import { connect } from 'react-redux';
-//import { bindActionCreators } from 'redux';
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +10,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    //actions: bindActionCreators({ ...actions, loadingPage: loadingPage }, dispatch),
     loadingPage: () => dispatch(loadingPage('create-event')),
   };
 }
