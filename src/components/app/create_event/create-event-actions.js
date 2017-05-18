@@ -7,10 +7,9 @@ function creatingEvent() {
 }
 
 export const CREATING_EVENT_SUCCEEDED = 'CREATING_EVENT_SUCCEEDED';
-function creatingEventSucceeded(newEvent) {
+function creatingEventSucceeded() {
   return {
     type: CREATING_EVENT_SUCCEEDED,
-    newEvent: newEvent,
     loading: true,
     isError: false,
   };
@@ -26,23 +25,13 @@ function creatingEventFailed(error) {
 }
 
 
-export function createEvent(userId) {
-  console.log(userId);
+export function createEvent(value) {
+  console.log('action: ', value);
   return function(dispatch) {
     dispatch(creatingEvent());
-
-    const newEvent = [
-      {
-        "title": "My event",
-        "description": "description",
-        "date": "date",
-        "time": "time",
-        "author": userId,
-        "participants": [ userId ],
-      },
-    ];
+    // validating data and send it to API
       
-    dispatch(creatingEventSucceeded(newEvent));
+    dispatch(creatingEventSucceeded());
     let isError = false;
 
     if (isError) {

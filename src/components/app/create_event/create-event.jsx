@@ -12,8 +12,8 @@ class CreateEvent extends React.Component {
   }
 
   submitInput(values) {
-    // this is where tha action can be fired
-    console.log(values);
+    const { actions } = this.props;
+    actions.createEvent(values);
   }
 
   render() {
@@ -22,17 +22,16 @@ class CreateEvent extends React.Component {
     );
 
     return(
-      <div style={{ padding: 15 }}>
+      <div>
         <h2>{ eventLocation.Name }</h2>
-        <EventForm onSubmit={this.submitInput} />
+        <EventForm onSubmit={(e) => this.submitInput(e) } />
       </div>
     );
   }
 }
 
 CreateEvent.propTypes = {
-
-  handleSubmit: PropTypes.func,
+  bind: PropTypes.func,
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     createEvent: PropTypes.func,

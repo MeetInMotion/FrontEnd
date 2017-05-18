@@ -5,7 +5,7 @@ import { Field, reduxForm, propTypes } from 'redux-form';
 // import 'react-date-picker/index.css';
 
 const EventForm = props => {
-  const {handleSubmit, pristine, reset, submitting} = props;
+  const { handleSubmit, pristine, reset, submitting } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -53,9 +53,6 @@ const EventForm = props => {
     </form>
   );
 };
-
-
-
 
 EventForm.propTypes = {
   ...propTypes,

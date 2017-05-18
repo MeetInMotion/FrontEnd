@@ -7,7 +7,6 @@ import {
 const initialState = {
   loading: false,
   isError: false,
-  newEvent: [],
 };
 
 function createEventReducer(state = initialState, action) {
