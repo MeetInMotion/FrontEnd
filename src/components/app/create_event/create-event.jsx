@@ -6,8 +6,9 @@ import 'react-date-picker/index.css';
 class CreateEvent extends React.Component {
 
   componentWillMount() {
-    const { loadingPage } = this.props;
-    loadingPage();
+    const { actions } = this.props;
+    console.log(this.props);
+    actions.loadingPage('create event');
   }
 
   render() {
@@ -21,7 +22,7 @@ class CreateEvent extends React.Component {
           Create event at: { eventLocation.Name }
         </h2>
 
-        <p>Event name: <br/> <input type="text" name="event name" /></p>
+        <p>Event title: <br/> <input type="text" title="event title" /></p>
         Date and time: <br/>
         <DateField
           dateFormat="YYYY-MM-DD HH:mm:ss"
@@ -47,7 +48,10 @@ class CreateEvent extends React.Component {
 }
 
 CreateEvent.propTypes = {
-  loadingPage: PropTypes.func,
+  actions: PropTypes.shape({
+    loadingPage: PropTypes.func,
+    createEvent: PropTypes.func,
+  }),
 
   match: PropTypes.shape({
     params: PropTypes.shape({

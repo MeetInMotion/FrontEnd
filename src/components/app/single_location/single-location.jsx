@@ -6,7 +6,7 @@ class SingleLocation extends React.Component {
 
   componentWillMount() {
     const { loadingPage } = this.props;
-    loadingPage();
+    loadingPage('single location');
   }
 
   render() {
