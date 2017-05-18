@@ -5,7 +5,6 @@ import Login from './components/app/login/login.js';
 import Root from './root.jsx';
 
 class LoginPage extends React.Component {
-
   requireAuth() {
     const { store } = this.props;
     if (this.props.isConnected) {
@@ -14,7 +13,10 @@ class LoginPage extends React.Component {
       );
     } else {
       return(
-        <Login store={ store } />
+        <div style={styles.container}>
+          <h3>MEET IN MOTION</h3>
+          <Login store={ store } />
+        </div>
       );
     }
   }
@@ -22,9 +24,7 @@ class LoginPage extends React.Component {
   render() {
     return(
       <div>
-        
         { this.requireAuth() }
-        
       </div>
     );
   }
@@ -42,5 +42,18 @@ function mapStateToProps(state) {
     isConnected: state.loginConnection.isConnected,
   };
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    fontFamily: 'Arial',
+    fontStyle: 'italic',
+    backgroundColor: '#86D1B8',
+    height: '100vh',
+    width: '100vw',
+  },
+};
 
 export default connect(mapStateToProps)(LoginPage);

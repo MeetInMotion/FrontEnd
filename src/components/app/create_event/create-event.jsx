@@ -20,24 +20,25 @@ class CreateEvent extends React.Component {
         <h2>
           Create event at: { eventLocation.Name }
         </h2>
+
         <p>Event name: <br/> <input type="text" name="event name" /></p>
-        <p>Date and time: <br/>
-          <DateField
-            dateFormat="YYYY-MM-DD HH:mm:ss"
+        Date and time: <br/>
+        <DateField
+          dateFormat="YYYY-MM-DD HH:mm:ss"
+          forceValidDate={true}
+          defaultValue={"2017-05-17 00:00:00"}
+        >
+          <DatePicker
+            navigation={true}
+            locale="en"
             forceValidDate={true}
-            defaultValue={"2017-05-17 00:00:00"}
-          >
-            <DatePicker
-              navigation={true}
-              locale="en"
-              forceValidDate={true}
-              highlightWeekends={true}
-              highlightToday={true}
-              weekNumbers={true}
-              weekStartDay={1}
-            />
-          </DateField>
-        </p>
+            highlightWeekends={true}
+            highlightToday={true}
+            weekNumbers={true}
+            weekStartDay={1}
+          />
+        </DateField>
+
         <p>Description: <br/> <textarea></textarea></p>
         <button>Create button placeholder</button>
       </div>
