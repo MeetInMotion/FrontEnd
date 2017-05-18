@@ -7,7 +7,7 @@ import loginConnection from './components/app/login/login-reducer.js';
 import userInformation from './components/app/login/user-information';
 import locations from './components/app/locations/location-reducer.js';
 import createEvent from './components/app/create_event/create-event-reducer.js';
-var formReducer = require('redux-form').reducer;
+import { reducer as form  } from 'redux-form';
 
 const allReducers = combineReducers({
   loginConnection,
@@ -18,7 +18,7 @@ const allReducers = combineReducers({
   events,
   locations,
   createEvent,
-  formReducer,
+  form,
 });
 
 export default allReducers;
