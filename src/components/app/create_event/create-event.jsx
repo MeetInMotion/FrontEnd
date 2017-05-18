@@ -7,7 +7,6 @@ class CreateEvent extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-    console.log(this.props);
     actions.loadingPage('create event');
   }
 
