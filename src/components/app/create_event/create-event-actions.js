@@ -24,12 +24,32 @@ function creatingEventFailed(error) {
   };
 }
 
+export function createEvent(values, locationId, userId) {
+  console.log('creating...: ', values); // eslint-disable-line no-use-before-define
+  console.log('author: ', userId); // eslint-disable-line no-use-before-define
+  console.log('at: ', locationId); // eslint-disable-line no-use-before-define
 
-export function createEvent(value) {
-  console.log('action: ', value);
   return function(dispatch) {
     dispatch(creatingEvent());
-    // validating data and send it to API
+
+  // add validations
+
+    // const forTheAPI = [
+    //   {
+    //     title: values.title,
+    //     description: values.description,
+    //     // level?
+    //     location: locationId,
+    //     sender: userId,
+    //     participants: userId,
+    //     time: 'undefined',
+    //     date: 'undefined',
+    //   },
+    // ];
+
+    //
+
+    // API sends back an eventID for rendering the new event
       
     dispatch(creatingEventSucceeded());
     let isError = false;
@@ -39,32 +59,3 @@ export function createEvent(value) {
     }
   };
 }
-
-// some input validation here before
-// sending it to the API
-// when OK from the API place it in store for rendering the event so that the user
-// know it was created
-
-// export function createEvent(date, time, title, description, userId) {
-//   return function(dispatch) {
-//     dispatch(creatingEvent());
-
-//     const newEvent = [
-//       {
-//         "title": title,
-//         "description": description,
-//         "date": date,
-//         "time": time,
-//         "author": userId,
-//         "participants": [ userId ],
-//       },
-//     ];
-      
-//     dispatch(creatingEventSucceeded(newEvent));
-//     let isError = false;
-
-//     if (isError) {
-//       dispatch(creatingEventFailed('creating event failed'));
-//     }
-//   };
-// }
