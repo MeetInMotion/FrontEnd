@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import EventForm from './event-form.js';
+// import EventForm from './event-form.js';
 // import SingleEvent from '../single_event/single-event.jsx';
 // import { DateField, DatePicker } from 'react-date-picker';
 // import 'react-date-picker/index.css';
@@ -34,7 +34,14 @@ class CreateEvent extends React.Component {
     return(
       <div>
         <h2>{ this.state.eventLocation.Name }</h2>
-        <EventForm onSubmit={(e) => this.submitInput(e) } />
+        <form>
+          First name:<br/>
+          <input type="text" name="firstname" /><br/>
+          Last name:<br/>
+          <input type="text" name="lastname" />
+
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
@@ -46,7 +53,7 @@ class CreateEvent extends React.Component {
   render() {
     return(
       <div>
-        { this.props.form.values != 'undefined' &&
+        {
          this.renderInputForm() 
        }
       </div>
