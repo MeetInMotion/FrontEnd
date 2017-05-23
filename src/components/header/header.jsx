@@ -7,6 +7,7 @@ class Header extends React.Component{
     
     return(
       <nav styleName='title'>
+        <i className="fa fa-envelope"/>
         <NavLink styleName='nav' to="/"> MEET IN MOTION </NavLink>
       </nav>
     );
