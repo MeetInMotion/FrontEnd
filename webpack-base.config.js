@@ -26,7 +26,7 @@ module.exports = new Config().merge({
 
   module: {
     rules: [
-      
+
       {
         test: /\.jsx?$/,
         exclude: path.resolve(__dirname, 'node_modules'),
@@ -38,8 +38,20 @@ module.exports = new Config().merge({
         loaders:[ 'style-loader?sourceMap',
                   'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
                 'sass-loader']
-      }
-    ]
+      },
+      {
+        test: /\.(gif|png|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: './asset/[hash].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     HTMLWebpackPluginConfig
