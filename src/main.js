@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-// import Root from './root.jsx';
 import LoginPage from './login-page.jsx';
 import allReducers from './all-reducers.js';
 
