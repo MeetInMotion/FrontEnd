@@ -17,7 +17,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     locations: state.locations,
-    form: state.form,
     userInformation: state.userInformation,
   };
 }

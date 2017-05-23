@@ -1,9 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import EventForm from './event-form.js';
-// import SingleEvent from '../single_event/single-event.jsx';
-// import { DateField, DatePicker } from 'react-date-picker';
-// import 'react-date-picker/index.css';
 
 class CreateEvent extends React.Component {
 
@@ -22,13 +18,13 @@ class CreateEvent extends React.Component {
     actions.loadingPage('create event');
   }
 
-  submitInput(values) {
-    const { actions, userInformation } = this.props;
+  // submitInput(values) {
+  //   const { actions, userInformation } = this.props;
 
-    actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
+  //   actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
 
-    alert('Event created! Hopefully');
-  }
+  //   alert('Event created! Hopefully');
+  // }
 
   renderInputForm() {
     return(
@@ -45,6 +41,8 @@ class CreateEvent extends React.Component {
       </div>
     );
   }
+
+  //   https://www.w3schools.com/jsref/event_onchange.asp
 
   // renderEvent() {
   //   <SingleEvent />

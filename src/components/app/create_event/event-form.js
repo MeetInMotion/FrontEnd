@@ -1,8 +1,5 @@
 import React from 'react';
-// import { PropTypes } from 'prop-types';
 import { Field, reduxForm, propTypes } from 'redux-form';
-// import { DateField, DatePicker } from 'react-date-picker';
-// import 'react-date-picker/index.css';
 
 const EventForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
