@@ -14,3 +14,7 @@ export function getUserData() {
 export function getUserInformation(userInformation) {
   return { type: 'getUserInformation', payload: userInformation };
 }
+
+export function getAccessToken(status) {
+  return {type: 'accessToken', payload: status};
+}

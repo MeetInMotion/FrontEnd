@@ -92,7 +92,7 @@ export default class FacebookLogin extends Component {
     }
     );
   }
-  
+
   render() {
     this.styles = merge({}, styles, this.props.style);
     return (
