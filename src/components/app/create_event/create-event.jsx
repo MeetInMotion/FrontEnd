@@ -19,41 +19,62 @@ class CreateEvent extends React.Component {
   }
 
   submitInput(values) {
+    console.log('submitting...');
     const { actions, userInformation } = this.props;
 
     actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
 
     alert('Event created! Hopefully');
+
+
   }
 
-  renderInputForm() {
-    return(
-      <div>
-        <h2>{ this.state.eventLocation.name }</h2>
-        <form onSubmit={this.submitInput}>
-          Title:<br/>
-          <input type="text" name="title" /><br/>
-          Short description:<br/>
-          <input type="text" name="description" />
+  // renderInputForm() {
+  //   return(
+  //     <div>
+  //       <h2>{ this.state.eventLocation.name }</h2>
+  //       <form onSubmit={this.submitInput}>
+  //         Title:<br/>
+  //         <input type="text" name="title" /><br/>
+  //         Short description:<br/>
+  //         <input type="text" name="description" />
 
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    );
-  }
-
-  //   https://www.w3schools.com/jsref/event_onchange.asp
-
-  // renderEvent() {
-  //   <SingleEvent />
+  //         <input type="submit" />
+  //       </form>
+  //     </div>
+  //   );
   // }
 
+  conditionalRendering() {
+    const { eventCreated } = this.props;
+    console.log(eventCreated);
+
+    if(eventCreated) {
+      return(
+        <div>eventCreated</div>
+      );
+    } else {
+      return(
+        <div>
+          <h2>{ this.state.eventLocation.name }</h2>
+          <form onSubmit={this.submitInput}>
+            Title:<br/>
+            <input type="text" name="title" /><br/>
+            Short description:<br/>
+            <input type="text" name="description" />
+
+            <input type="submit" />
+          </form>
+        </div>
+      );
+    }
+  }
+
   render() {
+
     return(
       <div>
-        {
-         this.renderInputForm() 
-       }
+        { this.conditionalRendering() }
       </div>
     );
   }
@@ -78,7 +99,7 @@ CreateEvent.propTypes = {
   }),
 
   userInformation: PropTypes.object,
-  form: PropTypes.object,
+  eventCreated: PropTypes.bool,
 };
 
 export default CreateEvent;

@@ -18,6 +18,7 @@ function mapStateToProps(state) {
   return {
     locations: state.locations,
     userInformation: state.userInformation,
+    eventCreated: state.createEvent.eventCreated,
   };
 }
 

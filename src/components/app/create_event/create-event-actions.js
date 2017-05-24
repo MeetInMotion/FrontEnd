@@ -12,6 +12,7 @@ function creatingEventSucceeded() {
     type: CREATING_EVENT_SUCCEEDED,
     loading: true,
     isError: false,
+    eventCreated: true,
   };
 }
 
