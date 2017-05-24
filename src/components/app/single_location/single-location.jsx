@@ -11,20 +11,20 @@ class SingleLocation extends React.Component {
 
   render() {
     const myLocation = this.props.locations.locationsList.find(
-      (l) => l.Name === this.props.match.params.Name
+      (l) => l.name === this.props.match.params.name
     );
 
     return(
       <div>
         <h2>
-          { myLocation.Name }
+          { myLocation.name }
         </h2>
 
-        <h2>Geographical position:</h2>
-        <p>X: { myLocation.GeographicalPosition.X }</p>
-        <p>Y: { myLocation.GeographicalPosition.Y }</p>
+        <h4>Geographical position(4 dev):</h4>
+        <p>X: { myLocation.coordinates.east }</p>
+        <p>Y: { myLocation.coordinates.north }</p>
 
-        <NavLink to={ `/categories/locations/location/${myLocation.Name}/create-event` } >
+        <NavLink to={ `/categories/locations/location/${myLocation.name}/create-event` } >
           Create event
         </NavLink>
 
@@ -33,12 +33,14 @@ class SingleLocation extends React.Component {
   }
 }
 
+
+
 SingleLocation.propTypes = {
   loadingPage: PropTypes.func,
 
   match: PropTypes.shape({
     params: PropTypes.shape({
-      Name: PropTypes.string,
+      name: PropTypes.string,
     }),
   }),
 

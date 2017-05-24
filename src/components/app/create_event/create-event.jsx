@@ -8,7 +8,7 @@ class CreateEvent extends React.Component {
 
     this.state = {
       eventLocation: props.locations.locationsList.find(
-        (el) => el.Name === this.props.match.params.Name
+        (el) => el.name === this.props.match.params.name
       ),
     };
   }
@@ -29,12 +29,12 @@ class CreateEvent extends React.Component {
   renderInputForm() {
     return(
       <div>
-        <h2>{ this.state.eventLocation.Name }</h2>
+        <h2>{ this.state.eventLocation.name }</h2>
         <form>
-          First name:<br/>
-          <input type="text" name="firstname" /><br/>
-          Last name:<br/>
-          <input type="text" name="lastname" />
+          Title:<br/>
+          <input type="text" name="title" /><br/>
+          Short description:<br/>
+          <input type="text" name="description" />
 
           <input type="submit" value="Submit" />
         </form>
@@ -69,7 +69,7 @@ CreateEvent.propTypes = {
 
   match: PropTypes.shape({
     params: PropTypes.shape({
-      Name: PropTypes.string,
+      name: PropTypes.string,
     }),
   }),
 

@@ -22,8 +22,8 @@ class Categories extends React.Component {
           { categoriesList.map(
             (category, i) => (
               <li key={ i }>
-                <NavLink to={ `/categories/locations/${category.PluralName}` } >
-                  { category.PluralName }
+                <NavLink to={ `/categories/locations/${category.name}` } >
+                  { category.name }
                 </NavLink>
               </li>
               )

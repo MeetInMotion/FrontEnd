@@ -41,17 +41,17 @@ class Root extends React.Component {
               ></Route>
 
               <Route
-                path="/categories/locations/location/:Name/create-event"
+                path="/categories/locations/location/:name/create-event"
                 render={ matchProps => (<CreateEvent {...matchProps} />) }
               ></Route>
 
               <Route
-                path="/categories/locations/location/:Name"
+                path="/categories/locations/location/:name"
                 render={ matchProps => (<SingleLocation {...matchProps} />) }
               ></Route>
 
               <Route
-                path="/categories/locations/:pluralName"
+                path="/categories/locations/:name"
                 render={ matchProps => (<Locations {...matchProps} />) }
               ></Route>
 
