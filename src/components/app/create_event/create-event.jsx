@@ -47,7 +47,7 @@ class CreateEvent extends React.Component {
 
   conditionalRendering() {
     const { eventCreated } = this.props;
-    console.log(eventCreated);
+    alert(eventCreated);
 
     if(eventCreated) {
       return(
