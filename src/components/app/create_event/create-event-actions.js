@@ -25,6 +25,7 @@ function creatingEventFailed(error) {
   };
 }
 
+export const ESLINT_SUCKS = 'ESLINT_SUCKS';
 function fuckYouEsLint(values, locationId, userId) {
   return {
     type: ESLINT_SUCKS,
@@ -35,7 +36,7 @@ function fuckYouEsLint(values, locationId, userId) {
 
 
 export function createEvent(values, locationId, userId) {
-  fuckYouEsLint(values, locationId, userId);
+  dispatch(fuckYouEsLint(values, locationId, userId));
   // console.log('creating...: ', values); // eslint-disable-line no-use-before-define
   // console.log('author: ', userId); // eslint-disable-line no-use-before-define
   // console.log('at: ', locationId); // eslint-disable-line no-use-before-define
