@@ -14,6 +14,7 @@ import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
 import FacebookLogin from './components/app/login/login';
+import Maplayout from './components/app/maps/maps-page.js';
 
 class Root extends React.Component {
 
@@ -64,6 +65,12 @@ class Root extends React.Component {
                 path="/login"
                 render={ matchProps => (<FacebookLogin {...matchProps} />) }
               ></Route>
+
+              <Route
+                path="/maps"
+                render={ matchProps => (<Maplayout {...matchProps} />) }
+              ></Route>
+
 
               <Route
                 exact
