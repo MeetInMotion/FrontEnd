@@ -18,19 +18,19 @@ class CreateEvent extends React.Component {
     actions.loadingPage('create event');
   }
 
-  // submitInput(values) {
-  //   const { actions, userInformation } = this.props;
+  submitInput(values) {
+    const { actions, userInformation } = this.props;
 
-  //   actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
+    actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
 
-  //   alert('Event created! Hopefully');
-  // }
+    alert('Event created! Hopefully');
+  }
 
   renderInputForm() {
     return(
       <div>
         <h2>{ this.state.eventLocation.name }</h2>
-        <form>
+        <form onSubmit={this.submitInput}>
           Title:<br/>
           <input type="text" name="title" /><br/>
           Short description:<br/>
