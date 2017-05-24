@@ -35,15 +35,12 @@ function fuckYouEsLint(values, locationId, userId) {
   };
 }
 
-
 export function createEvent(values, locationId, userId) {
-  
-  // console.log('creating...: ', values); // eslint-disable-line no-use-before-define
-  // console.log('author: ', userId); // eslint-disable-line no-use-before-define
-  // console.log('at: ', locationId); // eslint-disable-line no-use-before-define
 
   return function(dispatch) {
     dispatch(creatingEvent());
+    dispatch(creatingEventSucceeded());
+
     dispatch(fuckYouEsLint(values, locationId, userId));
 
   // add validations
@@ -65,7 +62,7 @@ export function createEvent(values, locationId, userId) {
 
     // API sends back an eventID for rendering the new event
       
-    dispatch(creatingEventSucceeded());
+    
     let isError = false;
 
     if (isError) {

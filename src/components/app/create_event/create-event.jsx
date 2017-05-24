@@ -1,68 +1,92 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 class CreateEvent extends React.Component {
 
   constructor(props) {
     super(props);
 
+    this.submitInput = this.submitInput.bind(this);
+    this.dateChanged = this.dateChanged.bind(this);
+
+    this.eventLocation = props.locations.locationsList.find(
+      (el) => el.name === this.props.match.params.name
+    );
+  
     this.state = {
-      eventLocation: props.locations.locationsList.find(
-        (el) => el.name === this.props.match.params.name
-      ),
+      startDate: moment(),
     };
   }
 
   componentWillMount() {
     const { actions } = this.props;
+
     actions.loadingPage('create event');
   }
 
-  submitInput(values) {
+  submitInput(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
     const { actions, userInformation } = this.props;
 
-    actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);
-
-    alert('Event created! Hopefully');
-
-
+    actions.createEvent(
+      {
+        title: this.titleInput.value,
+        description: this.descriptionInput.value,
+      },
+      this.eventLocation.id,
+      userInformation.id
+    );
   }
 
-  // renderInputForm() {
-  //   return(
-  //     <div>
-  //       <h2>{ this.state.eventLocation.name }</h2>
-  //       <form onSubmit={this.submitInput}>
-  //         Title:<br/>
-  //         <input type="text" name="title" /><br/>
-  //         Short description:<br/>
-  //         <input type="text" name="description" />
-
-  //         <input type="submit" />
-  //       </form>
-  //     </div>
-  //   );
-  // }
+  dateChanged(date) {
+    this.setState({
+      startDate: date,
+    });
+  }
 
   conditionalRendering() {
     const { eventCreated } = this.props;
-    alert(eventCreated);
 
-    if(eventCreated) {
+    if (eventCreated) {
       return(
         <div>eventCreated</div>
       );
     } else {
       return(
         <div>
-          <h2>{ this.state.eventLocation.name }</h2>
-          <form onSubmit={this.submitInput}>
+          <h2>
+            {  this.eventLocation.name }
+          }
+          </h2>
+          <form onSubmit={ this.submitInput } >
             Title:<br/>
-            <input type="text" name="title" /><br/>
+            <input
+              type="text"
+              name="title"
+              ref={ (el) => this.titleInput = el }
+            />
+            <br/>
             Short description:<br/>
-            <input type="text" name="description" />
-
-            <input type="submit" />
+            <input
+              type="text"
+              name="description" 
+              ref={ (el) => this.descriptionInput = el }
+            />
+            <br />
+            <DatePicker
+              selected={ this.state.startDate }
+              onChange={ this.dateChanged }
+            />
+            <br />
+            <button type="submit">
+              Submit
+            </button>
           </form>
         </div>
       );
@@ -70,7 +94,6 @@ class CreateEvent extends React.Component {
   }
 
   render() {
-
     return(
       <div>
         { this.conditionalRendering() }
