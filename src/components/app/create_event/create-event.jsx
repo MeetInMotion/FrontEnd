@@ -19,7 +19,6 @@ class CreateEvent extends React.Component {
   }
 
   submitInput(values) {
-    console.log('submitting...');
     const { actions, userInformation } = this.props;
 
     actions.createEvent(values, this.state.eventLocation.Id, userInformation.id);

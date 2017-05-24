@@ -16,7 +16,6 @@ class Locations extends React.Component {
 
   render() {
     const { locationsList } = this.props.locations;
-    console.log(locationsList);
     return (
       <div>
         <h2>Locations</h2>

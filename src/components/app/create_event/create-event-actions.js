@@ -31,18 +31,20 @@ function fuckYouEsLint(values, locationId, userId) {
     type: ESLINT_SUCKS,
     values: values,
     locationId: locationId,
+    userId: userId,
   };
 }
 
 
 export function createEvent(values, locationId, userId) {
-  dispatch(fuckYouEsLint(values, locationId, userId));
+  
   // console.log('creating...: ', values); // eslint-disable-line no-use-before-define
   // console.log('author: ', userId); // eslint-disable-line no-use-before-define
   // console.log('at: ', locationId); // eslint-disable-line no-use-before-define
 
   return function(dispatch) {
     dispatch(creatingEvent());
+    dispatch(fuckYouEsLint(values, locationId, userId));
 
   // add validations
 
