@@ -29,7 +29,10 @@ class Login extends Component {
 
   login(response) {
     this.props.getUserLoginStatus(response.status);
-    this.props.getAccessToken(response.authResponse.accessToken);
+    if (this.props.loginConnection.isConnected){
+      this.props.getAccessToken(response.authResponse.accessToken);
+    }
+
   }
 
   logout(response) {
@@ -45,11 +48,15 @@ class Login extends Component {
       picture_address = picture.data.url;
     }
 
+    const { loginConnection } = this.props;
+    console.log('login: ', loginConnection);// eslint-disable-line
+
     return (
       <div style={styles.container}>
 
         <FacebookLogin
           appId="278320365928562"
+          isConnected={ loginConnection.isConnected }
           userDataState={this.login}
           onLoginState={this.login}
           onLogoutState={this.logout}

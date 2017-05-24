@@ -129,7 +129,7 @@ FacebookLogin.propTypes = {
 };
 
 FacebookLogin.defaultProps = {
-  loginLabel: 'Continue with Facebook',
+  loginLabel: 'Login with Facebook',
   version: 'v2.9',
   loginOptions: {
     scope: 'email',
