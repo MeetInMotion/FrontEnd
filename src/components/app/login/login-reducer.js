@@ -10,7 +10,7 @@ export default function (state = { isConnected: null, isWorking: null }, action)
     if (action.payload === 'connected') {
       return ({
         isConnected: true,
-        isWorking: true,
+        isWorking: false,
       });
     } else {
       return ({
@@ -21,11 +21,11 @@ export default function (state = { isConnected: null, isWorking: null }, action)
   case 'accessToken':
     return ({
       isConnected: true,
-      isWorking: true,
+      isWorking: false,
     });
   case 'fetching':
     return ({
-      isConnected: state.isConnected,
+      isConnected: true,
       isWorking: true,
     });
   default:

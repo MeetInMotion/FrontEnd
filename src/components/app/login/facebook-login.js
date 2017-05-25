@@ -21,11 +21,10 @@ export default class FacebookLogin extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
       isWorking: true,
     });
-
     loadFbSdk(this.props.appId, this.props.version)
       .then(loadingResult => {
         if (this.props.verbose) console.info(loadingResult, window.FB); // eslint-disable-line
@@ -39,20 +38,26 @@ export default class FacebookLogin extends Component {
         this.props.userDataState(response);
       });
   }
+
+  componentDidMount(){
+    getFbLoginStatus().then(response => {
+      if (response.status === 'connected') {
+        this.setState({ isConnected: true });
+      }
+    });
+  }
+
   getButtonText() {
-    switch (this.state.isConnected) {
-    case true:
+    if (this.state.isConnected === true) {
       return this.props.logoutLabel;
-    case false:
+    } else {
       return this.props.loginLabel;
-    default:
-      return 'this is default';
     }
   }
 
   buttonClicked() {
     this.props.onClick();
-    if (this.state.isConnected) {
+    if (this.state.isConnected === true) {
       this.logout();
     } else {
       this.login();

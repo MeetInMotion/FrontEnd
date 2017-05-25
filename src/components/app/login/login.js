@@ -6,8 +6,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
-import FacebookLogin from './facebook-login';
 import { getUserLoginStatus, getUserData, getUserInformation, getAccessToken } from './login-actions';
+import FacebookLogin from './facebook-login';
 
 class Login extends Component {
   constructor(props) {
@@ -48,15 +48,11 @@ class Login extends Component {
       picture_address = picture.data.url;
     }
 
-    const { loginConnection } = this.props;
-    console.log('login: ', loginConnection);// eslint-disable-line
-
     return (
       <div style={styles.container}>
 
         <FacebookLogin
           appId="278320365928562"
-          isConnected={ loginConnection.isConnected }
           userDataState={this.login}
           onLoginState={this.login}
           onLogoutState={this.logout}
