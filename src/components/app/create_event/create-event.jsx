@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 //import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import {TransitionView, Calendar} from 'react-date-picker';
+import {TransitionView, Calendar, DateField} from 'react-date-picker';
 import 'react-date-picker/index.css';
 //import 'react-datepicker/dist/react-datepicker.css';
 
@@ -56,7 +56,7 @@ class CreateEvent extends React.Component {
 
     if (eventCreated) {
       return(
-        <div> { this.state.startDate } </div>
+        <div> { this.state.startDate + this.eventLocation.name + this.titleInput.value + this.descriptionInput.value} </div>
       );
     } else {
       return(
@@ -80,13 +80,17 @@ class CreateEvent extends React.Component {
               ref={ (el) => this.descriptionInput = el }
             />
             <br />
-            <TransitionView>
-              <Calendar
-                dateFormat="YYYY-MM-DD HH:mm:ss"
-                selected={ this.state.startDate }
-                onChange={ this.dateChanged }
-              />
-            </TransitionView>
+              Input date:
+            <br/>
+            <DateField
+              dateFormat="YYYY-MM-DD HH:mm:ss"
+              selected={ this.state.startDate }
+              onChange={ this.dateChanged }
+            >
+              <TransitionView>
+                <Calendar style={{padding: 10}}/>
+              </TransitionView>
+            </DateField>
             <br />
             <button type="submit">
               Submit
