@@ -1,19 +1,22 @@
-import Event from './events.jsx';
+import Events from './events.jsx';
 import { loadingPage } from '../../page-actions.js';
 import * as actions from './event-actions.js';
+import { loadEvents } from './event-actions.js';
 import { connect } from 'react-redux';
-
-function mapStateToProps(state) {
-  return {
-    events: state.events.events,
-  };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
     loadingPage: () => dispatch(loadingPage('events')),
     actions: () => dispatch(actions('actions')),
+    loadEvents: () => dispatch(loadEvents()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Event);
+function mapStateToProps(state) {
+  return {
+    events: state.events,
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);

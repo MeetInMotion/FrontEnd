@@ -12,10 +12,12 @@ class Locations extends React.Component {
     
     actions.loadingPage();
     actions.loadLocations(category.id);
+    console.log(this.props.locations); //eslint-disable-line
   }
 
   render() {
     const { locationsList } = this.props.locations;
+    console.log(locationsList); //eslint-disable-line
     return (
       <div>
         <h2>Locations</h2>
