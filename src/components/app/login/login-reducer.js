@@ -4,7 +4,7 @@
 */
 
 export default function (state = { isConnected: null, isWorking: null }, action) {
-  
+
   switch (action.type) {
   case 'loginResponse':
     if (action.payload === 'connected') {
@@ -18,9 +18,14 @@ export default function (state = { isConnected: null, isWorking: null }, action)
         isWorking: false,
       });
     }
+  case 'accessToken':
+    return ({
+      isConnected: true,
+      isWorking: false,
+    });
   case 'fetching':
     return ({
-      isConnected: state.isConnected,
+      isConnected: true,
       isWorking: true,
     });
   default:

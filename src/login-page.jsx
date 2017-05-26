@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
   render() {
     return(
       <div>
-        { this.requireAuth() }
+        { this.requireAuth() 
       </div>
     );
   }

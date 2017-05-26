@@ -6,8 +6,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { getUserLoginStatus, getUserData, getUserInformation, getAccessToken } from './login-actions';
 import FacebookLogin from './facebook-login';
-import { getUserLoginStatus, getUserData, getUserInformation } from './login-actions';
 
 class Login extends Component {
   constructor(props) {
@@ -29,15 +29,19 @@ class Login extends Component {
 
   login(response) {
     this.props.getUserLoginStatus(response.status);
+    if (this.props.loginConnection.isConnected){
+      this.props.getAccessToken(response.authResponse.accessToken);
+    }
+
   }
 
   logout(response) {
     this.props.getUserLoginStatus(response.status);
     this.props.getUserInformation(null);
   }
-  
+
   render() {
-    const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null };
+    const {name, picture} = this.props.userInformation || { id: null, name: null, email: null, picture: null};
     this.getUserInformation();
     var picture_address = '';
     if (picture) {
@@ -46,6 +50,7 @@ class Login extends Component {
 
     return (
       <div style={styles.container}>
+
         <FacebookLogin
           appId="278320365928562"
           userDataState={this.login}
@@ -53,10 +58,12 @@ class Login extends Component {
           onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}
         />
+
         <div className={this.props.userInformation}>
           <img src={picture_address}/>
           <div>{name}</div>
         </div>
+
       </div>
     );
   }
@@ -66,13 +73,14 @@ Login.propTypes = {
   getUserLoginStatus: PropTypes.func,
   getUserData: PropTypes.func,
   getUserInformation: PropTypes.func,
+  getAccessToken: PropTypes.func,
   userInformation: PropTypes.object,
   loginConnection: PropTypes.object,
 };
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getUserLoginStatus, getUserData, getUserInformation,
+    getUserLoginStatus, getUserData, getUserInformation, getAccessToken,
   }, dispatch);
 }
 
