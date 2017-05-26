@@ -9,14 +9,13 @@ class Settings extends React.Component{
     const {loadingPage} = this.props;
     loadingPage();
   }
+
   render() {
     return(
       <div>
         <h2>Settings</h2>
-
         <NavLink styleName="navigation-link" to='/'>Home</NavLink>
         <NavLink styleName="navigation-link" to='/login'>Logout</NavLink>
-
       </div>
     );
   }
