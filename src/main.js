@@ -1,16 +1,17 @@
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-// import Home from './components/app/home/home-page.js';
 import LoginPage from './login-page.jsx';
 import allReducers from './all-reducers.js';
 
 const store = createStore(
   allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(
-      thunkMiddleware
+    applyMiddleware(
+        thunkMiddleware
   )
 );
 
