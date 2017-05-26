@@ -5,7 +5,6 @@ import Login from './components/app/login/login.js';
 import Root from './root.jsx';
 
 class LoginPage extends React.Component {
-
   requireAuth() {
     const { store } = this.props;
     if (this.props.isConnected) {
@@ -25,9 +24,7 @@ class LoginPage extends React.Component {
   render() {
     return(
       <div>
-
-        { this.requireAuth() }
-
+        { this.requireAuth() 
       </div>
     );
   }
@@ -57,7 +54,6 @@ const styles = {
     height: '100vh',
     width: '100vw',
   },
-
 };
 
 export default connect(mapStateToProps)(LoginPage);

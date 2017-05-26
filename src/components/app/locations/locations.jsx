@@ -7,16 +7,15 @@ class Locations extends React.Component {
   componentWillMount() {
     const { actions, categories } = this.props;
     const category = categories.categoriesList.find(
-      (c) => c.PluralName === this.props.match.params.pluralName
+      (c) => c.name === this.props.match.params.name
     );
     
     actions.loadingPage();
-    actions.loadLocations(category.Id);
+    actions.loadLocations(category.id);
   }
 
   render() {
     const { locationsList } = this.props.locations;
-
     return (
       <div>
         <h2>Locations</h2>
@@ -25,8 +24,8 @@ class Locations extends React.Component {
           { locationsList.map(
             (location, i) => (
               <li key={ i }>
-                <NavLink to={ `/categories/locations/location/${location.Name}` } >
-                  { location.Name }
+                <NavLink to={ `/categories/locations/location/${location.name}` } >
+                  { location.name }
                 </NavLink>
               </li>
               )
@@ -58,7 +57,7 @@ Locations.propTypes = {
   
   match: PropTypes.shape({
     params: PropTypes.shape({
-      pluralName: PropTypes.string,
+      name: PropTypes.string,
     }),
   }),
 };

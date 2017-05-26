@@ -3,7 +3,6 @@ import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
@@ -13,6 +12,7 @@ import Favourites from './components/app/favourites/favourites-page.js';
 import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
+import CreateEvent from './components/app/create_event/create-event-page.js';
 import FacebookLogin from './components/app/login/login';
 
 class Root extends React.Component {
@@ -41,12 +41,17 @@ class Root extends React.Component {
               ></Route>
 
               <Route
-                path="/categories/locations/location/:Name"
+                path="/categories/locations/location/:name/create-event"
+                render={ matchProps => (<CreateEvent {...matchProps} />) }
+              ></Route>
+
+              <Route
+                path="/categories/locations/location/:name"
                 render={ matchProps => (<SingleLocation {...matchProps} />) }
               ></Route>
 
               <Route
-                path="/categories/locations/:pluralName"
+                path="/categories/locations/:name"
                 render={ matchProps => (<Locations {...matchProps} />) }
               ></Route>
 
@@ -64,7 +69,7 @@ class Root extends React.Component {
                 path="/login"
                 render={ matchProps => (<FacebookLogin {...matchProps} />) }
               ></Route>
-
+              
               <Route
                 exact
                 path="/"
@@ -80,13 +85,6 @@ class Root extends React.Component {
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  isConnected: PropTypes.bool,
 };
 
-function mapStateToProps(state) {
-  return {
-    isConnected: state.loginConnection.isConnected,
-  };
-}
-
-export default connect(mapStateToProps)(Root);
+export default Root;

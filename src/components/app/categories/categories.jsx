@@ -18,13 +18,12 @@ class Categories extends React.Component {
         <h2>
           Categories
         </h2>
-        <p>De två första kategorierna mappas till &quot; rätt &quot; locations genom fejkade api-anrop med hjälp av Id-numren</p>
         <ul>
           { categoriesList.map(
             (category, i) => (
               <li key={ i }>
-                <NavLink to={ `/categories/locations/${category.PluralName}` } >
-                  { category.PluralName }
+                <NavLink to={ `/categories/locations/${category.name}` } >
+                  { category.name }
                 </NavLink>
               </li>
               )
