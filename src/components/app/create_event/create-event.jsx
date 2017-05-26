@@ -1,25 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-import 'react-datepicker/dist/react-datepicker.css';
-
 class CreateEvent extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.submitInput = this.submitInput.bind(this);
-    this.dateChanged = this.dateChanged.bind(this);
-
     this.eventLocation = props.locations.locationsList.find(
       (el) => el.name === this.props.match.params.name
     );
-  
-    this.state = {
-      startDate: moment(),
-    };
   }
 
   componentWillMount() {
@@ -33,21 +23,15 @@ class CreateEvent extends React.Component {
     event.stopPropagation();
 
     const { actions, userInformation } = this.props;
-
     actions.createEvent(
       {
         title: this.titleInput.value,
         description: this.descriptionInput.value,
       },
       this.eventLocation.id,
-      userInformation.id
+      userInformation.id,
+      moment(this.datetimeInput.value).format() // iso 8601
     );
-  }
-
-  dateChanged(date) {
-    this.setState({
-      startDate: date,
-    });
   }
 
   conditionalRendering() {
@@ -55,7 +39,12 @@ class CreateEvent extends React.Component {
 
     if (eventCreated) {
       return(
-        <div>eventCreated</div>
+        <div> 
+          <div>{ this.datetimeInput.value }</div>
+          <div>{ this.eventLocation.name }</div>
+          <div>{ this.titleInput.value }</div>
+          <div>{ this.descriptionInput.value }</div>
+        </div>
       );
     } else {
       return(
@@ -79,10 +68,14 @@ class CreateEvent extends React.Component {
               ref={ (el) => this.descriptionInput = el }
             />
             <br />
-            <DatePicker
-              selected={ this.state.startDate }
-              onChange={ this.dateChanged }
-            />
+              Input date:
+            <br/>
+            <input 
+              type="datetime-local" 
+              name="datetime" 
+              id="datetime" 
+              ref={ (el) => this.datetimeInput = el }
+              />
             <br />
             <button type="submit">
               Submit

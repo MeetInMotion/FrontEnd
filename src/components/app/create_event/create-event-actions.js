@@ -35,13 +35,13 @@ function fuckYouEsLint(values, locationId, userId) {
   };
 }
 
-export function createEvent(values, locationId, userId) {
+export function createEvent(values, locationId, userId, time) {
 
   return function(dispatch) {
     dispatch(creatingEvent());
     dispatch(creatingEventSucceeded());
 
-    dispatch(fuckYouEsLint(values, locationId, userId));
+    dispatch(fuckYouEsLint(values, locationId, userId, time));
 
   // add validations
 
@@ -53,8 +53,7 @@ export function createEvent(values, locationId, userId) {
     //     location: locationId,
     //     sender: userId,
     //     participants: userId,
-    //     time: 'undefined',
-    //     date: 'undefined',
+    //     time: 'time',
     //   },
     // ];
 
