@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 class Favourites extends React.Component {
   componentWillMount() {
@@ -10,9 +9,8 @@ class Favourites extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <h2>Favourites</h2>
-        <NavLink to="/">Home</NavLink>
       </div>
     );
   }

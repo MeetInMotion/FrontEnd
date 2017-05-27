@@ -19,7 +19,7 @@ class Login extends Component {
 
   getUserInformation() {
     if (this.props.loginConnection.isConnected && !this.props.userInformation) {
-      window.FB.api('/me', 'GET', {fields: 'id,name,email,picture.width(100).height(100)'},
+      window.FB.api('/me', 'GET', {fields: 'id,name,email,picture.width(50).height(50)'},
         userInformation => {
           this.props.getUserInformation(userInformation);
         }
@@ -49,8 +49,8 @@ class Login extends Component {
     }
 
     return (
-      <div style={styles.container}>
-
+      <div className="container-fluid" style={styles.container}>
+        <br />
         <FacebookLogin
           appId="278320365928562"
           userDataState={this.login}
@@ -58,9 +58,9 @@ class Login extends Component {
           onLogoutState={this.logout}
           onClick={() => this.props.getUserData()}
         />
-
+        <br />
         <div className={this.props.userInformation}>
-          <img src={picture_address}/>
+          <img src={picture_address} className="img-circle"/>
           <div>{name}</div>
         </div>
 

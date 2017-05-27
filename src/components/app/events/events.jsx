@@ -14,17 +14,19 @@ class Events extends React.Component{
   render() {
     const { events } = this.props;
     return(
-      <div>
+      <div className="container-fluid">
         <h2>Upcoming events:</h2>
-        <ul>
-          {events.map((event, i) => 
-            <li key={i}>
-              <NavLink to={ `/events/${event.id}` } >
-                { event.title }
-              </NavLink>
-            </li>
-          )}
-        </ul>
+        <div className="alert alert-success">
+          <ul>
+            {events.map((event, i) =>
+              <li key={i}>
+                <NavLink to={ `/events/${event.id}` } >
+                  { event.title }
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     );
   }

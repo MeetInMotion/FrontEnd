@@ -14,11 +14,11 @@ class SingleEvent extends React.Component {
     );
 
     return(
-      <div>
+      <div className="container-fluid">
         <h2>
           { event.title }
         </h2>
-        <h3> Location </h3> 
+        <h3> Location </h3>
         { event.location_name }
         <h3> Geographical position </h3>
         <p> x: { event.geographical_position.X } </p>

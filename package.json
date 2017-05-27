@@ -80,9 +80,12 @@
   "homepage": "https://github.com/MeetInMotion/FrontEnd#readme",
   "dependencies": {
     "css-loader": "^0.28.1",
+    "file-loader": "^0.11.1",
     "moment": "^2.18.1",
+    "react-bootstrap": "^0.31.0",
     "react-date-picker": "^5.3.28",
     "react-datepicker": "^0.46.0",
+    "react-router-bootstrap": "^0.24.2",
     "redux-form": "^6.7.0",
     "style-loader": "^0.16.1"
   }
