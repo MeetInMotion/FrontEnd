@@ -7,17 +7,18 @@ import styles from './events.scss';
 class Events extends React.Component{
 
   componentWillMount() {
-    const { loadingPage } = this.props;
+    const { loadingPage, loadEvents } = this.props;
     loadingPage();
+    loadEvents();
   }
 
   render() {
-    const { events } = this.props;
+    const { eventsList } = this.props.events;
     return(
       <div>
         <h2>Upcoming events:</h2>
         <ul>
-          {events.map((event, i) => 
+          {eventsList.map((event, i) => 
             <li key={i}>
               <NavLink to={ `/events/${event.id}` } >
                 { event.title }
@@ -32,7 +33,10 @@ class Events extends React.Component{
 
 Events.propTypes = {
   loadingPage: PropTypes.func,
-  events: PropTypes.array,
+  loadEvents: PropTypes.func,
+  events: PropTypes.shape({
+    eventsList: PropTypes.array,
+  }),
 };
 
 export default CSSModules(Events, styles);

@@ -3,16 +3,17 @@ import { loadingPage } from '../../page-actions.js';
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
 
+function mapDispatchToProps(dispatch) {
+  return {
+    loadingPage: () => dispatch(loadingPage('single-location')),
+  };
+}
+
 function mapStateToProps(state) {
   return {
     locations: state.locations,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadingPage: () => dispatch(loadingPage('single-location')),
-  };
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleLocation);
