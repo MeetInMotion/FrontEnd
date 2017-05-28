@@ -16,7 +16,7 @@ class Events extends React.Component{
     const { eventsList } = this.props.events;
     return(
       <div>
-        <h2>Upcoming events:</h2>
+        <h2>Your upcoming events</h2>
         <div className="alert alert-success">
           <ul list-group>
             {eventsList.map((event, i) =>

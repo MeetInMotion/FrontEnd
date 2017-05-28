@@ -27,16 +27,18 @@ class SingleEvent extends React.Component {
     console.log(event); //eslint-disable-line
 
     return(
-      <div>
-        <h2>
-          { event.title }
-        </h2>
-        <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
-        <h3> { this.props.singleEvent.eventLocation.name } </h3>
-        <h4> { event.description } </h4>
-        <h3> Directions </h3>
-        <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
-      </div>
+      <center>
+        <div>
+          <h2>
+            { event.title }
+          </h2>
+          <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
+          <h3> { this.props.singleEvent.eventLocation.name } </h3>
+          <h6> { event.description } </h6>
+          <h3> Directions </h3>
+          <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
+        </div>
+      </center>
     );
   }
 }
