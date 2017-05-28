@@ -11,10 +11,6 @@ class SingleEvent extends React.Component {
       (e) => e.id == this.props.match.params.id
     );
 
-    console.log(this.props.match.params.id); //eslint-disable-line
-    console.log(event); //eslint-disable-line
-    console.log(this.props.events.eventsList); //eslint-disable-line
-    
 
     loadingPage();
     loadLocation(event.location_id);
@@ -24,16 +20,21 @@ class SingleEvent extends React.Component {
     const event = this.props.events.eventsList.find(
       (e) => e.id == this.props.match.params.id
     );
-    console.log(event); //eslint-disable-line
-
+    
+    const dateAndTimeArray = event.datetime.split("T");
+    const date = dateAndTimeArray[0];
+    const timeArray = dateAndTimeArray[1].split(":");
+    const time = timeArray[0] + ":" + timeArray[1];
+    
     return(
       <center>
         <div>
+          <h3> { this.props.singleEvent.eventLocation.name } </h3>
+          <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
           <h2>
             { event.title }
           </h2>
-          <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
-          <h3> { this.props.singleEvent.eventLocation.name } </h3>
+          <h4> {date + " " + time} </h4>
           <h6> { event.description } </h6>
           <h3> Directions </h3>
           <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
