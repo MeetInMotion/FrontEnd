@@ -11,7 +11,7 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 module.exports = new Config().merge({
   context: path.resolve(__dirname, 'src'),
   entry: './main.js',
-
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
