@@ -14,6 +14,8 @@ function locationsReducer(state = initialState, action) {
   const {type, ...rest} = action;
 
   switch (type) {
+
+    
   case LOADING_LOCATIONS: {
     state = {...state, ...rest};
     break;
