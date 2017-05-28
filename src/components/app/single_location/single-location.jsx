@@ -8,9 +8,10 @@ class SingleLocation extends React.Component {
   componentWillMount() {
     const { loadingPage } = this.props;
     loadingPage('single location');
+
   }
 
-  componentDidMount() {
+  componentDidMount(){
     const {loadLocation} = this.props;
     loadLocation(this.props.match.params.id);
   }
