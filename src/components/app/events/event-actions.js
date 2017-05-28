@@ -33,7 +33,6 @@ export function loadUserEvents(id) {
         return response.json();
       }) 
       .then(function(json) {
-        console.log(json);
         dispatch(loadingEventsSucceeded(json)); 
       });
     
