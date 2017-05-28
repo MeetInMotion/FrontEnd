@@ -15,6 +15,29 @@ export function getUserInformation(userInformation) {
   return { type: 'getUserInformation', payload: userInformation };
 }
 
-export function getAccessToken(status) {
+export function fetchAccessToken(status){
   return {type: 'accessToken', payload: status};
+}
+
+export function failUserloginStatus(error){
+  return {type: 'failLogin', error: error};
+}
+
+export function getAccessToken(status) {
+  var access_token = status;
+  return function(dispatch) {
+    dispatch(getUserLoginStatus(status));
+    fetch("http://api.localhost:8081/authenticate?access_token=" + access_token)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json){
+      localStorage.setItem('token', json.token);
+      dispatch(fetchAccessToken(json));
+    });
+    let isError = false;
+    if(isError){
+      dispatch(failUserloginStatus('error message'));
+    }
+  };
 }
