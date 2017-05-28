@@ -15,7 +15,7 @@ class SingleLocation extends React.Component {
     );
 
     return(
-      <div className="container-fluid">
+      <div >
         <h2>
           { myLocation.name }
         </h2>

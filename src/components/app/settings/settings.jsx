@@ -11,7 +11,7 @@ class Settings extends React.Component{
 
   render() {
     return(
-      <div className="container-fluid">
+      <div>
         <h2>Settings</h2>
         <div className="alert alert-success">
           <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
