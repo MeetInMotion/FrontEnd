@@ -27,24 +27,13 @@ function creatingEventFailed(error) {
   };
 }
 
-export const ESLINT_SUCKS = 'ESLINT_SUCKS';
-function fuckYouEsLint(values, locationId, userId) {
-  return {
-    type: ESLINT_SUCKS,
-    values: values,
-    locationId: locationId,
-    userId: userId,
-  };
-}
-
 export function createEvent(values, locationId, userId, time) {
 
   return function(dispatch) {
     dispatch(creatingEvent());
     dispatch(creatingEventSucceeded());
 
-    dispatch(fuckYouEsLint(values, locationId, userId, time));
-
+    // console.log('userID: ', userId);
 
     const eventData = 
       {
