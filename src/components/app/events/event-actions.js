@@ -10,7 +10,7 @@ export const LOADING_EVENTS_SUCCEEDED = 'LOADING_EVENTS_SUCCEEDED';
 function loadingEventsSucceeded(events) {
   return {
     type: LOADING_EVENTS_SUCCEEDED,
-    events: events,
+    eventList: events,
     loading: true,
     isError: false,
   };

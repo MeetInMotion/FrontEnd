@@ -7,7 +7,7 @@ import {
 const initialState = {
   loading: false,
   isError: false,
-  events: [],
+  eventList: [],
 };
 
 function eventReducer(state = initialState, action) {
