@@ -16,6 +16,7 @@ class LoginPage extends React.Component {
         <div style={styles.container}>
           <h3>MEET IN MOTION</h3>
           <Login store={ store } />
+          <i className="fa fa-cog fa-spin fa-5x"></i>
         </div>
       );
     }
@@ -51,8 +52,8 @@ const styles = {
     fontFamily: 'Arial',
     fontStyle: 'italic',
     backgroundColor: '#86D1B8',
-    height: '100vh',
-    width: '100vw',
+    height: '100%',
+    width: '100%',
   },
 };
 

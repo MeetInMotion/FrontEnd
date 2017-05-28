@@ -17,7 +17,7 @@ class SingleLocation extends React.Component {
     );
 
     return(
-      <div>
+      <div >
         <h2>
           { myLocation.name }
         </h2>

@@ -9,35 +9,30 @@ class Locations extends React.Component {
     const category = categories.categoriesList.find(
       (c) => c.name === this.props.match.params.name
     );
-    
+
     actions.loadingPage();
     actions.loadLocations(category.id);
-    console.log(this.props.locations); //eslint-disable-line
   }
 
   render() {
     const { locationsList } = this.props.locations;
-    console.log(locationsList); //eslint-disable-line
     return (
       <div>
         <h2>Locations</h2>
-        
-        <ul>
-          { locationsList.map(
-            (location, i) => (
-              <li key={ i }>
-                <NavLink to={ `/categories/locations/location/${location.name}` } >
-                  { location.name }
-                </NavLink>
-              </li>
+        <div>
+          <ul className="list-group">
+            { locationsList.map(
+              (location, i) => (
+                <li className="list-group-item" key={ i }>
+                  <NavLink to={ `/categories/locations/location/${location.name}` } >
+                    { location.name }
+                  </NavLink>
+                </li>
+                )
               )
-            )
-          }
-        </ul>
-
-        <NavLink to="/">
-          Home
-        </NavLink>
+            }
+          </ul>
+        </div>
       </div>
     );
   }
@@ -52,11 +47,11 @@ Locations.propTypes = {
     loadingPage: PropTypes.func,
     loadLocations: PropTypes.func,
   }),
-  
+
   locations: PropTypes.shape({
     locationsList: PropTypes.array,
   }),
-  
+
   match: PropTypes.shape({
     params: PropTypes.shape({
       name: PropTypes.string,
