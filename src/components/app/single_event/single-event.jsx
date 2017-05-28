@@ -31,13 +31,11 @@ class SingleEvent extends React.Component {
         <h2>
           { event.title }
         </h2>
-
-        <h3> Location </h3> 
-        <h2> { this.props.singleEvent.eventLocation.name } </h2>
-
-        <h3> Geographical position </h3>
-        <p> x: { this.props.singleEvent.eventLocation.coordinates.east } </p>
-        <p> y: { } </p>
+        <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
+        <h3> { this.props.singleEvent.eventLocation.name } </h3>
+        <h4> { event.description } </h4>
+        <h3> Directions </h3>
+        <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
       </div>
     );
   }
