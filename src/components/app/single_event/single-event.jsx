@@ -22,6 +22,11 @@ class SingleEvent extends React.Component {
       (e) => e.name === this.props.match.params.id
     );
 
+    
+
+    console.log(JSON.stringify(this.props.singleEvent.eventLocation.coordinates)); //eslint-disable-line
+    
+
     return(
       <div>
         <h2>
@@ -30,7 +35,7 @@ class SingleEvent extends React.Component {
         <h3> Location </h3> 
         <h2> { this.props.singleEvent.eventLocation.name } </h2>
         <h3> Geographical position </h3>
-        <p> x: { } </p>
+        <p> x: { this.props.singleEvent.eventLocation.coordinates.east } </p>
         <p> y: { } </p>
       </div>
     );

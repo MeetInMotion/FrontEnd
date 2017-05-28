@@ -7,7 +7,7 @@ import {
 const initialState = {
   loading: false,
   isError: false,
-  eventLocation: [],
+  eventLocation: {coordinates: {east: null,north: null}},
 };
 
 function singleEventReducer(state = initialState, action) {

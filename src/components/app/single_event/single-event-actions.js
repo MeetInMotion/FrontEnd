@@ -37,7 +37,7 @@ export function loadLocation(id) {
         dispatch(loadingLocationSucceeded(json)); 
       });
     let isError = false;
-
+    
     if (isError) {
       dispatch(loadingLocationFailed('error message'));
     }
