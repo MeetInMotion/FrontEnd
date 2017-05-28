@@ -17,22 +17,6 @@ class Events extends React.Component{
   }
 
   render() {
-<<<<<<< HEAD
-    const { eventsList } = this.props.events;
-    return(
-      <div>
-        <h2>Your upcoming events</h2>
-        <div className="alert alert-success">
-          <ul list-group>
-            {eventsList.map((event, i) =>
-              <li className='list-group-item' key={i}>
-                <NavLink to={ `/events/${event.id}` } >
-                  { event.title }
-                </NavLink>
-              </li>
-            )}
-          </ul>
-=======
     if (this.props.locationId) {       // det ska inte funka så här sen när API funkar
       return(
         <div>
@@ -43,7 +27,6 @@ class Events extends React.Component{
       return(
         <div>
           <h2>Upcoming user events:</h2>
->>>>>>> 6ab56d66a3b3dfde1ae9deb710bb2d824a9a144a
         </div>
       );
     }
