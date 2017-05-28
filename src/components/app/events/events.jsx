@@ -1,18 +1,23 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './events.scss';
 
 class Events extends React.Component{
 
   componentWillMount() {
-    const { loadingPage, loadEvents } = this.props;
-    loadingPage();
-    loadEvents();
+    const { actions } = this.props;
+    actions.loadingPage('Events');
+
+    if (this.props.locationId) {
+      actions.loadUserEvents(5); // loada riktiga userId när det är klart
+    }
+    // else { actions.loadLocationEvents(this.props.locationId)}
   }
 
   render() {
+<<<<<<< HEAD
     const { eventsList } = this.props.events;
     return(
       <div>
@@ -27,18 +32,31 @@ class Events extends React.Component{
               </li>
             )}
           </ul>
+=======
+    if (this.props.locationId) {       // det ska inte funka så här sen när API funkar
+      return(
+        <div>
+          <h2>Upcoming location events:</h2>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return(
+        <div>
+          <h2>Upcoming user events:</h2>
+>>>>>>> 6ab56d66a3b3dfde1ae9deb710bb2d824a9a144a
+        </div>
+      );
+    }
   }
 }
 
 Events.propTypes = {
-  loadingPage: PropTypes.func,
-  loadEvents: PropTypes.func,
-  events: PropTypes.shape({
-    eventsList: PropTypes.array,
+  actions: PropTypes.shape({
+    loadingPage: PropTypes.func,
+    loadUserEvents: PropTypes.func,
   }),
+  events: PropTypes.object,
+  locationId: PropTypes.string,
 };
 
 export default CSSModules(Events, styles);

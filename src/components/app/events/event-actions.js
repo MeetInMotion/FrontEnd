@@ -7,10 +7,10 @@ function loadingEvents() {
 }
 
 export const LOADING_EVENTS_SUCCEEDED = 'LOADING_EVENTS_SUCCEEDED';
-function loadingEventsSucceeded(eventsList) {
+function loadingEventsSucceeded(events) {
   return {
     type: LOADING_EVENTS_SUCCEEDED,
-    eventsList: eventsList,
+    events: events,
     loading: true,
     isError: false,
   };
@@ -24,24 +24,43 @@ function loadingEventsFailed(error) {
     error: error,
   };
 }
-
-export function loadEvents() {
+export function loadUserEvents(id) {
   return function(dispatch) {
-
     dispatch(loadingEvents());
 
-    fetch("http://api.localhost:8081/events")
+    fetch("http://api.localhost:8081/users/" + id + "/events")
       .then(function(response) {
         return response.json();
       }) 
       .then(function(json) {
         dispatch(loadingEventsSucceeded(json)); 
       });
-
-    let isError = false;
     
+    let isError = false;
+
     if (isError) {
       dispatch(loadingEventsFailed('error message'));
     }
   };
+
+  // export function loadLocationEvents(id) {
+  // return function(dispatch) {
+  //   dispatch(loadingEvents());
+
+  //   console.log('loadLocationEvents');
+
+  //   fetch("http://api.localhost:8081/locations/" + id + "/events")
+  //     .then(function(response) {
+  //       return response.json();
+  //     }) 
+  //     .then(function(json) {
+  //       dispatch(loadingEventsSucceeded(json)); 
+  //     });
+    
+  //   let isError = false;
+
+  //   if (isError) {
+  //     dispatch(loadingEventsFailed('error message'));
+  //   }
+  // };
 }
