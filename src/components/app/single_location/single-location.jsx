@@ -19,19 +19,21 @@ class SingleLocation extends React.Component {
   render() {
     const {location} = this.props;
     return(
-      <div >
+      <div>
         <h2>
           { location.name }
         </h2>
 
-        <h4>Geographical position(4 dev):</h4>
-        <p>X: { location.coordinates.east }</p>
-        <p>Y: { location.coordinates.north }</p>
+        <img src= {location.img_url} className="pic" height="150" width="250"/>
+        <br/>
+        <a href={'http://maps.google.com/maps?q=' + location.coordinates.north + ',' + location.coordinates.east}>Google maps directions</a>
+        <br/>
+        <br/>
+        <NavLink to={ `/categories/locations/location/${location.name}/create-event` } />
 
         <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
           Create event
         </NavLink>
-
       </div>
     );
   }
