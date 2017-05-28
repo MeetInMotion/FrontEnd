@@ -8,8 +8,12 @@ class SingleEvent extends React.Component {
 
 
     const event = this.props.events.eventsList.find(
-      (e) => e.name === this.props.match.params.id
+      (e) => e.id == this.props.match.params.id
     );
+
+    console.log(this.props.match.params.id); //eslint-disable-line
+    console.log(event); //eslint-disable-line
+    console.log(this.props.events.eventsList); //eslint-disable-line
     
 
     loadingPage();
@@ -18,13 +22,9 @@ class SingleEvent extends React.Component {
     
   render() {
     const event = this.props.events.eventsList.find(
-      (e) => e.name === this.props.match.params.id
+      (e) => e.id == this.props.match.params.id
     );
-
-    
-
-    console.log(JSON.stringify(this.props.singleEvent.eventLocation.coordinates)); //eslint-disable-line
-    
+    console.log(event); //eslint-disable-line
 
     return(
       <div>
@@ -55,9 +55,8 @@ SingleEvent.propTypes = {
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
       title: PropTypes.string,
-      location_id: PropTypes.string,
+      id: PropTypes.string,
     }),
   }),
 };
