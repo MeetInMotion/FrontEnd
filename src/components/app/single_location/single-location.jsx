@@ -1,6 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Events from '../events/event-page.js';
+import styles from './single_location.scss';
+import CSSModules from 'react-css-modules';
 
 class SingleLocation extends React.Component {
 
@@ -13,27 +16,25 @@ class SingleLocation extends React.Component {
     const myLocation = this.props.locations.locationsList.find(
       (l) => l.name === this.props.match.params.name
     );
-
+    
     return(
-      <div >
+
+      <div>
+        <NavLink styleName="create_event_link" to={ `/categories/locations/location/${myLocation.name}/create-event` } >
+          Create event
+        </NavLink>      
         <h2>
           { myLocation.name }
         </h2>
 
-        <h4>Geographical position(4 dev):</h4>
-        <p>X: { myLocation.coordinates.east }</p>
-        <p>Y: { myLocation.coordinates.north }</p>
+        <img src={myLocation.img_url}/>
 
-        <NavLink to={ `/categories/locations/location/${myLocation.name}/create-event` } >
-          Create event
-        </NavLink>
-
+        <h1>Hello</h1>
+        <Events locationId={ myLocation.id } {...this.props} />
       </div>
     );
   }
 }
-
-
 
 SingleLocation.propTypes = {
   loadingPage: PropTypes.func,
@@ -49,4 +50,4 @@ SingleLocation.propTypes = {
   }),
 };
 
-export default SingleLocation;
+export default CSSModules(SingleLocation, styles);

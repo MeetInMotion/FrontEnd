@@ -1,40 +1,36 @@
+import {
+  LOADING_EVENTS,
+  LOADING_EVENTS_SUCCEEDED,
+  LOADING_EVENTS_FAILED,
+} from './event-actions.js';
+
 const initialState = {
-  events: [
-    {
-      id: '1',
-      title: "Tyngdlyftning av luft",
-      location_name: "Rålambshovsparkens utegym",
-      geographical_position: {
-        X: 6587056,
-        Y: 1619460,
-      },
-    },
-    {
-      id: '2',
-      title: "Jaga flugor",
-      location_name: "Sveriges riksdag",
-      geographical_position: {
-        X: 6587056,
-        Y: 1619460,
-      },
-    },
-    {
-      id: '3',
-      title: "Benpass deluxe",
-      location_name: "Gärdets utegym",
-      geographical_position: {
-        X: 6587056,
-        Y: 1619460,
-      },
-    },
-  ],
+  loading: false,
+  isError: false,
+  events: [],
 };
 
-export default function (state = initialState, action) {
-  switch (action.type) {
-  case 'EVENT_SELECTED':
-    return action.payload;
+function eventReducer(state = initialState, action) {
+  const {type, ...rest} = action;
+
+  switch (type) {
+  case LOADING_EVENTS: {
+    state = {...state, ...rest};
+    break;
+  }
+
+  case LOADING_EVENTS_SUCCEEDED: {
+    state = {...state, ...rest};
+    break;
+  }
+
+  case LOADING_EVENTS_FAILED: {
+    state = {...state, ...rest};
+    break;
+  }
   }
 
   return state;
 }
+
+export default eventReducer;
