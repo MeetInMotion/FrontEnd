@@ -24,7 +24,7 @@ class Locations extends React.Component {
             { locationsList.map(
               (location, i) => (
                 <li className="list-group-item" key={ i }>
-                  <NavLink to={ `/categories/locations/location/${location.name}` } >
+                  <NavLink to={ `/categories/locations/location/${location.id}` } >
                     { location.name }
                   </NavLink>
                 </li>

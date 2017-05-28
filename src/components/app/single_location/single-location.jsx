@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+
 class SingleLocation extends React.Component {
 
   componentWillMount() {
@@ -10,23 +11,24 @@ class SingleLocation extends React.Component {
 
   }
 
-  render() {
-    
-    const myLocation = this.props.locations.locationsList.find(
-      (l) => l.name === this.props.match.params.name
-    );
+  componentDidMount(){
+    const {loadLocation} = this.props;
+    loadLocation(this.props.match.params.id);
+  }
 
+  render() {
+    const {location} = this.props;
     return(
       <div >
         <h2>
-          { myLocation.name }
+          { location.name }
         </h2>
 
         <h4>Geographical position(4 dev):</h4>
-        <p>X: { myLocation.coordinates.east }</p>
-        <p>Y: { myLocation.coordinates.north }</p>
+        <p>X: { location.coordinates.east }</p>
+        <p>Y: { location.coordinates.north }</p>
 
-        <NavLink to={ `/categories/locations/location/${myLocation.name}/create-event` } >
+        <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
           Create event
         </NavLink>
 
@@ -43,11 +45,25 @@ SingleLocation.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       name: PropTypes.string,
+      id: PropTypes.string,
     }),
   }),
 
-  locations: PropTypes.shape({
-    locationsList: PropTypes.array,
+  loadLocation: PropTypes.func,
+
+  location: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+    location: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      img_url: PropTypes.string,
+      coordinates: PropTypes.shape({
+        east: PropTypes.string,
+        north: PropTypes.string,
+      }),
+    }),
   }),
 };
 

@@ -51,7 +51,6 @@ const styles = {
     alignItems: 'center',
     fontFamily: 'Arial',
     fontStyle: 'italic',
-    backgroundColor: '#86D1B8',
     height: '100%',
     width: '100%',
   },

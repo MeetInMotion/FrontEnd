@@ -10,7 +10,7 @@ const initialState = {
   locationsList: [],
 };
 
-function locationReducer(state = initialState, action) {
+function locationsReducer(state = initialState, action) {
   const {type, ...rest} = action;
 
   switch (type) {
@@ -33,4 +33,4 @@ function locationReducer(state = initialState, action) {
   return state;
 }
 
-export default locationReducer;
+export default locationsReducer;
