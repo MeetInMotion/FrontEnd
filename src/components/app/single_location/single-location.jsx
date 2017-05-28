@@ -10,9 +10,11 @@ class SingleLocation extends React.Component {
   componentWillMount() {
     const { loadingPage } = this.props;
     loadingPage('single location');
+
   }
 
   render() {
+    
     const myLocation = this.props.locations.locationsList.find(
       (l) => l.name === this.props.match.params.name
     );

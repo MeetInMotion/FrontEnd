@@ -7,7 +7,6 @@ import styles from './events.scss';
 class Events extends React.Component{
 
   componentWillMount() {
-
     const { actions } = this.props;
     actions.loadingPage('Events');
 

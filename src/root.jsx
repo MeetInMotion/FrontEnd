@@ -31,7 +31,7 @@ class Root extends React.Component {
                ></Route>
 
               <Route
-                path="/events/:eventId"
+                path="/events/:id"
                 render={ matchProps => (<SingleEvent {...matchProps} />) }
               ></Route>
 

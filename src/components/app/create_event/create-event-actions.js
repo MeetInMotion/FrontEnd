@@ -43,24 +43,31 @@ export function createEvent(values, locationId, userId, time) {
 
     dispatch(fuckYouEsLint(values, locationId, userId, time));
 
-  // add validations
 
-    // const forTheAPI = [
-    //   {
-    //     title: values.title,
-    //     description: values.description,
-    //     // level?
-    //     location: locationId,
-    //     sender: userId,
-    //     participants: userId,
-    //     time: 'time',
-    //   },
-    // ];
-
-    //
-
-    // API sends back an eventID for rendering the new event
-      
+    const eventData = 
+      {
+        "title": values.title,
+        "datetime": time,
+        "user_id": 1,
+        "description": values.description,
+        "location_id": locationId,
+      };
+    
+    fetch('http://api.localhost:8081/events', 
+      { 
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }, 
+        body: JSON.stringify( eventData ),
+      }
+    )
+    .then(function(res) {
+      return res.json();
+    }).then(function(json) {
+      console.log(json); //eslint-disable-line
+    });
     
     let isError = false;
 
