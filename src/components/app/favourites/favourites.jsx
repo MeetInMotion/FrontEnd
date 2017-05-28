@@ -9,7 +9,7 @@ class Favourites extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div>
         <h2>Favourites</h2>
       </div>
     );

@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
 
   render() {
     return(
-      <div className="container-fluid">
+      <div>
         { this.requireAuth() }
       </div>
     );
@@ -52,8 +52,8 @@ const styles = {
     fontFamily: 'Arial',
     fontStyle: 'italic',
     backgroundColor: '#86D1B8',
-    height: '100vh',
-    width: '100vw',
+    height: '100%',
+    width: '100%',
   },
 };
 

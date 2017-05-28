@@ -49,7 +49,7 @@ class Login extends Component {
     }
 
     return (
-      <div className="container-fluid" style={styles.container}>
+      <div style={styles.container}>
         <br />
         <FacebookLogin
           appId="278320365928562"

@@ -14,24 +14,21 @@ class Categories extends React.Component {
     const { categoriesList } = this.props.categories;
 
     return (
-      <div className="container-fluid">
+      <div>
         <h2>
           Categories
         </h2>
-        <div className="alert alert-success">
-          <ul>
-            { categoriesList.map(
+        <ul className='list-group'>
+          { categoriesList.map(
               (category, i) => (
-                <li key={ i }>
+                <li className='list-group-item' key={ i }>
                   <NavLink to={ `/categories/locations/${category.name}` } >
                     { category.name }
                   </NavLink>
                 </li>
-                )
               )
-            }
-          </ul>
-        </div>
+          )}
+        </ul>
       </div>
     );
   }

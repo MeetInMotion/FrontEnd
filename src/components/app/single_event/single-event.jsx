@@ -14,7 +14,7 @@ class SingleEvent extends React.Component {
     );
 
     return(
-      <div className="container-fluid">
+      <div>
         <h2>
           { event.title }
         </h2>

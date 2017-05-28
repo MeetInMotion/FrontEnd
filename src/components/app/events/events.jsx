@@ -14,12 +14,12 @@ class Events extends React.Component{
   render() {
     const { events } = this.props;
     return(
-      <div className="container-fluid">
+      <div>
         <h2>Upcoming events:</h2>
         <div className="alert alert-success">
-          <ul>
+          <ul list-group>
             {events.map((event, i) =>
-              <li key={i}>
+              <li className='list-group-item' key={i}>
                 <NavLink to={ `/events/${event.id}` } >
                   { event.title }
                 </NavLink>

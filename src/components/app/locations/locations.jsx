@@ -17,13 +17,13 @@ class Locations extends React.Component {
   render() {
     const { locationsList } = this.props.locations;
     return (
-      <div className="container-fluid">
+      <div>
         <h2>Locations</h2>
-        <div className="alert alert-success">
-          <ul>
+        <div>
+          <ul className="list-group">
             { locationsList.map(
               (location, i) => (
-                <li key={ i }>
+                <li className="list-group-item" key={ i }>
                   <NavLink to={ `/categories/locations/location/${location.name}` } >
                     { location.name }
                   </NavLink>

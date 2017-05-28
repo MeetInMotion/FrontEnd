@@ -5,11 +5,14 @@
   font-style: italic;
   font-family: "Arial", Times, Sans-serif;
   line-height: 55px;
-  font-size: 35px;
 }
 
- .title {
+ .title{
+  top: 0;
+  position: fixed;
   background-color: white;
   text-align: center;
   vertical-align: middle;
+  width: 100%;
+  height: 60px;
 }
