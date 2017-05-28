@@ -60,7 +60,7 @@ export function createEvent(values, locationId, userId, time) {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }, 
-        body: JSON.stringify( eventDATA ),
+        body: JSON.stringify( eventData ),
       }
     )
     .then(function(res) {
