@@ -1,3 +1,4 @@
+
 export const CREATING_EVENT = 'CREATING_EVENT';
 function creatingEvent() {
   return {
@@ -5,6 +6,7 @@ function creatingEvent() {
     loading: true,
   };
 }
+
 
 export const CREATING_EVENT_SUCCEEDED = 'CREATING_EVENT_SUCCEEDED';
 function creatingEventSucceeded() {

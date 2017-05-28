@@ -14,6 +14,8 @@ function createEventReducer(state = initialState, action) {
   const {type, ...rest} = action;
 
   switch (type) {
+  
+  
   case CREATING_EVENT: {
     state = {...state, ...rest};
     break;

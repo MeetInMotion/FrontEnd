@@ -19,6 +19,7 @@ const initialState = {
 
 export default function locationReducer(state=initialState, action){
   switch (action.type){
+  
   case LOADING_LOCATION: {
     return {...state,
       loading: true,
