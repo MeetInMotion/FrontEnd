@@ -17,15 +17,17 @@ class Events extends React.Component{
     return(
       <div>
         <h2>Upcoming events:</h2>
-        <ul>
-          {eventsList.map((event, i) => 
-            <li key={i}>
-              <NavLink to={ `/events/${event.id}` } >
-                { event.title }
-              </NavLink>
-            </li>
-          )}
-        </ul>
+        <div className="alert alert-success">
+          <ul list-group>
+            {eventsList.map((event, i) =>
+              <li className='list-group-item' key={i}>
+                <NavLink to={ `/events/${event.id}` } >
+                  { event.title }
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     );
   }

@@ -37,7 +37,7 @@ module.exports = new Config().merge({
       },
       {
         exclude: path.resolve(__dirname, 'node_modules'),
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loaders:[ 'style-loader?sourceMap',
                   'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
                 'sass-loader']

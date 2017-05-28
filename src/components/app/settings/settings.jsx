@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 import CSSModules from 'react-css-modules';
 import styles from './settings.scss';
@@ -14,8 +13,14 @@ class Settings extends React.Component{
     return(
       <div>
         <h2>Settings</h2>
-        <NavLink styleName="navigation-link" to='/'>Home</NavLink>
-        <NavLink styleName="navigation-link" to='/login'>Logout</NavLink>
+        <div className="alert alert-success">
+          <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+            My events: temporary place holder
+        </div>
+        <div className="alert alert-danger">
+          <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+            Current events: temporary place holder
+        </div>
       </div>
     );
   }

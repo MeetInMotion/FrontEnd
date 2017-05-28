@@ -14,7 +14,6 @@ class SingleEvent extends React.Component {
 
     loadingPage();
     loadLocation(event.location_id);
-
   }
     
   render() {
@@ -32,8 +31,10 @@ class SingleEvent extends React.Component {
         <h2>
           { event.title }
         </h2>
+
         <h3> Location </h3> 
         <h2> { this.props.singleEvent.eventLocation.name } </h2>
+
         <h3> Geographical position </h3>
         <p> x: { this.props.singleEvent.eventLocation.coordinates.east } </p>
         <p> y: { } </p>
