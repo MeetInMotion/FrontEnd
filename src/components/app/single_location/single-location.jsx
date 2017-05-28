@@ -22,10 +22,11 @@ class SingleLocation extends React.Component {
           { myLocation.name }
         </h2>
 
-        <h4>Geographical position(4 dev):</h4>
-        <p>X: { myLocation.coordinates.east }</p>
-        <p>Y: { myLocation.coordinates.north }</p>
-
+        <img src= {myLocation.img_url} className="pic" height="150" width="250"/>
+        <br/>
+        <a href={'http://maps.google.com/maps?q=' + myLocation.coordinates.north + ',' + myLocation.coordinates.east}>Google maps directions</a>
+        <br/>
+        <br/>
         <NavLink to={ `/categories/locations/location/${myLocation.name}/create-event` } >
           Create event
         </NavLink>
