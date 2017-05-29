@@ -7,25 +7,25 @@ import {
 const initialState = {
   loading: false,
   isError: false,
-  eventsList: [],
+  eventList: [],
 };
 
 function eventReducer(state = initialState, action) {
-  const { type, ...rest} = action;
+  const {type, ...rest} = action;
 
   switch (type) {
   case LOADING_EVENTS: {
-    state = { ...state, ...rest };
+    state = {...state, ...rest};
     break;
   }
 
   case LOADING_EVENTS_SUCCEEDED: {
-    state = { ...state, ...rest };
+    state = {...state, ...rest};
     break;
   }
 
   case LOADING_EVENTS_FAILED: {
-    state = { ...state, ...rest };
+    state = {...state, ...rest};
     break;
   }
   }

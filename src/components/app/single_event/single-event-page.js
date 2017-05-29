@@ -1,15 +1,22 @@
 import SingleEvent from './single-event.jsx';
 import { loadingPage } from '../../page-actions.js';
-import {loadLocation} from './single-event-actions.js';
+import { loadLocation, clearEvents } from './single-event-actions.js';
 import { connect } from 'react-redux';
-//import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadingPage: () => dispatch(loadingPage('categories')),
-    loadLocation: (id) => dispatch(loadLocation(id)),
+    actions: bindActionCreators(
+      { 
+        loadingPage, 
+        loadLocation, 
+        clearEvents, 
+      },
+      dispatch
+    ),
   };
 }
+
 
 function mapStateToProps(state) {
   return {
