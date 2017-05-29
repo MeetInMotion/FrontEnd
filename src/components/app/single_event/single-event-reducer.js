@@ -5,6 +5,7 @@ import {
   LOADING_PARTICIPANTS_SUCCEEDED,
   LOADING_EVENT_SUCCEEDED,
   CLEARING_EVENT,
+  LOADING_EVENT,
 } from './single-event-actions.js';
 
 const initialState = {
@@ -41,6 +42,11 @@ function singleEventReducer(state = initialState, action) {
   }
 
   case CLEARING_EVENT: {
+    state = {...state, ...rest};
+    break;
+  }  
+
+  case LOADING_EVENT: {
     state = {...state, ...rest};
     break;
   }  

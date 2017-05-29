@@ -118,7 +118,8 @@ export function loadEvent(id) {
         return response.json();
       }) 
       .then(function(json) {
-        dispatch(loadingEventSucceeded(json)); 
+        dispatch(loadingEventSucceeded(json));
+        dispatch(loadLocation(json.location_id));
       });
     let isError = false;
     

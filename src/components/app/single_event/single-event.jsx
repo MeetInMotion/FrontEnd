@@ -5,15 +5,20 @@ class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-    // const event = this.props.events.eventList.find(
-    //   (e) => e.id == this.props.match.params.id
-    // );
-
+    
     actions.loadingPage();
     actions.loadEvent(this.props.match.params.id);
+    const { theEvent } = this.props.singleEvent;
+    console.log(theEvent); //eslint-disable-line
 
-    // const { event } = this.props;
-    actions.loadLocation(event.location_id);
+    actions.loadLocation(theEvent.location_id);
+  }
+
+  compontentDidMount() {
+    const { actions } = this.props;
+    const { theEvent } = this.props.singleEvent;
+    actions.loadEvent(this.props.match.params.id);
+    actions.loadLocation(theEvent.location_id);
   }
     
   render() {
@@ -36,32 +41,25 @@ class SingleEvent extends React.Component {
       
     );
   }
-  componentWillUnmount() {
-    const { actions } = this.props;
-    actions.clearEvent();
-  }
+//  componentWillUnmount() {
+//    const { actions } = this.props;
+//    actions.clearEvent();
+//  }
 }
 
-// <div>
-
-//       </div>
-
 SingleEvent.propTypes = {
-  
-  actions: PropTypes.shape({
+  actions: {
     loadingPage: PropTypes.func,
     loadLocation: PropTypes.func,
     loadEvent: PropTypes.func,
     clearEvent: PropTypes.func,
-  }),
-
-
+  },
   // events: PropTypes.shape({
   //   eventLocation: PropTypes.array,
   // }),
   singleEvent: PropTypes.shape({
     theEvent: PropTypes.object,
-    eventLocation: PropTypes.array,   
+    eventLocation: PropTypes.object,   
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({

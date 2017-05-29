@@ -10,8 +10,8 @@ export const LOADING_LOCATION_SUCCESS = "LOADING_LOCATION_SUCCESS";
 export function loadingLocationSuccess(location){
   return {
     type: LOADING_LOCATION_SUCCESS,
-    // payload: location,
-    eventLocation: location,
+    payload: location,
+//    eventLocation: location,
   };
 }
 
