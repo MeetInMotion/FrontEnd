@@ -3,7 +3,6 @@
       Liran Cohen and his repostory is:  github.com:iliran11/facebook-login-redux-react.git
 */
 
-import Icon from './icon.png';
 const styles = {
   loginBtn: {
     position: 'relative',
