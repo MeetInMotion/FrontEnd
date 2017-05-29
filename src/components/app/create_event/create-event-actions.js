@@ -31,9 +31,6 @@ export function createEvent(values, locationId, userId, time) {
 
   return function(dispatch) {
     dispatch(creatingEvent());
-    dispatch(creatingEventSucceeded());
-
-    console.log('locationId: ', locationId);
 
     const eventData = 
       {
@@ -56,7 +53,10 @@ export function createEvent(values, locationId, userId, time) {
     )
     .then(function(res) {
       return res.json();
-    }).then(function(json) {
+    }).
+    then(function(json) {
+      dispatch(creatingEventSucceeded());
+      console.log(json); //eslint-disable-line
     });
     
     let isError = false;

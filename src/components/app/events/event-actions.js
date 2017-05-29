@@ -101,7 +101,6 @@ export function loadLocationEvents(id) {
 export function clearEvents() {
   return function(dispatch) {
 
-    console.log('clear events');
     dispatch(clearingEvents([]));
 
     // check
