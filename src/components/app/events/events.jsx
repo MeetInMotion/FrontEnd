@@ -4,7 +4,14 @@ import { NavLink } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './events.scss';
 
-class Events extends React.Component{
+class Events extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.authentication = this.authentification(this);
+    this.renderEvents = this.renderEvents(this);
+  }
 
   componentWillMount() {
     const { actions } = this.props;
@@ -16,13 +23,27 @@ class Events extends React.Component{
       actions.loadUserEvents(1);
     }
   }
-  render() {
+
+  authentification() {
+    if (this.props.user.authenticated == true) {
+      this.renderEvents();
+    } else {
+      return(
+        <div>Log in!
+//      render login page
+        </div>
+      );
+    }
+  }
+
+  renderEvents() {
     const { eventList } = this.props.events;
     eventList.sort(function(a, b) {
       var eventA = a.datetime;
       var eventB = b.datetime;
       return (eventA < eventB) ? -1 : (eventA > eventB) ? 1 : 0;
     });
+
     return (
       <div>
         <h2>
@@ -43,6 +64,14 @@ class Events extends React.Component{
     );
   }
 
+  render() {
+    return(
+      <div>
+        { this.authentification() }
+      </div>
+    );
+  }
+
   componentWillUnmount() {
     const { actions } = this.props;
     actions.clearEvents();
@@ -50,6 +79,10 @@ class Events extends React.Component{
 }
 
 Events.propTypes = {
+  user: PropTypes.shape({
+    authenticated: PropTypes.bool,
+  }),
+
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadUserEvents: PropTypes.func,
