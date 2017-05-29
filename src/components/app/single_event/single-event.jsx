@@ -11,7 +11,7 @@ class SingleEvent extends React.Component {
   }
     
   render() {
-    const { theEvent, participants } = this.props.singleEvent;
+    const { theEvent } = this.props.singleEvent;
     // console.log(participants[0]);
     return(
       <div>
@@ -25,6 +25,9 @@ class SingleEvent extends React.Component {
             <h4> { theEvent.description } </h4>
             <h3> Directions </h3>
             <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
+
+            <h2>Deltagare:</h2>
+
           </center>        
         }
       </div>
