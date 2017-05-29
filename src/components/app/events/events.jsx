@@ -18,7 +18,11 @@ class Events extends React.Component{
   }
   render() {
     const { eventList } = this.props.events;
-
+    eventList.sort(function(a, b) {
+      var eventA = a.datetime;
+      var eventB = b.datetime;
+      return (eventA < eventB) ? -1 : (eventA > eventB) ? 1 : 0;
+    });
     return (
       <div>
         <h2>
@@ -29,7 +33,7 @@ class Events extends React.Component{
               (event, i) => (
                 <li className='list-group-item' key={ i }>
                   <NavLink to={ `/events/${event.id}` } >
-                    { event.title }
+                    { event.title + " " + event.datetime}
                   </NavLink>
                 </li>
               )
