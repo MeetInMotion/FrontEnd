@@ -58,7 +58,6 @@ class SingleEvent extends React.Component {
                 'flexDirection': 'column',
                 'borderRadius': '3px',
                 border: '1px solid #fff',
-                // 'background-color': '#ccc',
               } }
             >
               <div onClick={ this.toggleListParticipants } >
@@ -86,7 +85,6 @@ class SingleEvent extends React.Component {
           </center>        
         }
       </div>
-      
     );
   }
 
@@ -116,5 +114,4 @@ SingleEvent.propTypes = {
   }),
 };
 
-// export default CSSModules(SingleEvent, styles);
 export default SingleEvent;
