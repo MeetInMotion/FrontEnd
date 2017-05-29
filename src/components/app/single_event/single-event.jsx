@@ -4,52 +4,58 @@ import { PropTypes } from 'prop-types';
 class SingleEvent extends React.Component {
 
   componentWillMount() {
-    const { loadingPage, loadLocation } = this.props;
-
-
-    const event = this.props.events.eventsList.find(
-      (e) => e.id == this.props.match.params.id
-    );
-
-    console.log(this.props.match.params.id); //eslint-disable-line
-    console.log(event); //eslint-disable-line
-    console.log(this.props.events.eventsList); //eslint-disable-line
+    const { actions } = this.props;
     
+    actions.loadingPage();
+    actions.loadEvent(this.props.match.params.id);
+    const { theEvent } = this.props.singleEvent;
 
-    loadingPage();
-    loadLocation(event.location_id);
+    actions.loadLocation(theEvent.location_id);
+  }
+
+  compontentDidMount() {
+    const { actions } = this.props;
+    const { theEvent } = this.props.singleEvent;
+    actions.loadEvent(this.props.match.params.id);
+    actions.loadLocation(theEvent.location_id);
+
+    actions.loadingPage();
+    actions.loadEvent(this.props.match.params.id);
+    actions.loadLocation(event.location_id);
   }
     
   render() {
-    const event = this.props.events.eventsList.find(
-      (e) => e.id == this.props.match.params.id
-    );
-    console.log(event); //eslint-disable-line
-
+    const { theEvent } = this.props.singleEvent;
     return(
       <div>
-        <h2>
-          { event.title }
-        </h2>
-        <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
-        <h3> { this.props.singleEvent.eventLocation.name } </h3>
-        <h4> { event.description } </h4>
-        <h3> Directions </h3>
-        <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
+        <center>
+          <h2>
+            { theEvent.title }
+          </h2>
+          <h2> {} </h2>
+          <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
+          <h3> { this.props.singleEvent.eventLocation.name } </h3>
+          <h4> { theEvent.description } </h4>
+          <h3> Directions </h3>
+          <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
+        </center>        
+
       </div>
+      
     );
   }
 }
 
 SingleEvent.propTypes = {
-  loadingPage: PropTypes.func,
-  loadLocation: PropTypes.func,
-  events: PropTypes.shape({
-    eventsList: PropTypes.array,
-    eventLocation: PropTypes.array,
-  }),
+  actions: {
+    loadingPage: PropTypes.func,
+    loadLocation: PropTypes.func,
+    loadEvent: PropTypes.func,
+    clearEvent: PropTypes.func,
+  },
   singleEvent: PropTypes.shape({
-    eventLocation: PropTypes.Object,
+    theEvent: PropTypes.object,
+    eventLocation: PropTypes.object,   
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({

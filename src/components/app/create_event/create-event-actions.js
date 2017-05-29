@@ -27,24 +27,10 @@ function creatingEventFailed(error) {
   };
 }
 
-export const ESLINT_SUCKS = 'ESLINT_SUCKS';
-function fuckYouEsLint(values, locationId, userId) {
-  return {
-    type: ESLINT_SUCKS,
-    values: values,
-    locationId: locationId,
-    userId: userId,
-  };
-}
-
 export function createEvent(values, locationId, userId, time) {
 
   return function(dispatch) {
     dispatch(creatingEvent());
-    dispatch(creatingEventSucceeded());
-
-    dispatch(fuckYouEsLint(values, locationId, userId, time));
-
 
     const eventData = 
       {
@@ -67,7 +53,9 @@ export function createEvent(values, locationId, userId, time) {
     )
     .then(function(res) {
       return res.json();
-    }).then(function(json) {
+    }).
+    then(function(json) {
+      dispatch(creatingEventSucceeded());
       console.log(json); //eslint-disable-line
     });
     

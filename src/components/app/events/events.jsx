@@ -7,38 +7,54 @@ import styles from './events.scss';
 class Events extends React.Component{
 
   componentWillMount() {
-    const { loadingPage, loadEvents } = this.props;
-    loadingPage();
-    loadEvents();
-  }
+    const { actions } = this.props;
+    actions.loadingPage('Events');
 
+    if (this.props.locationId) {
+      actions.loadLocationEvents(this.props.locationId);
+    } else { 
+      actions.loadUserEvents(1);
+    }
+  }
   render() {
-    const { eventsList } = this.props.events;
-    return(
+    const { eventList } = this.props.events;
+
+    return (
       <div>
-        <h2>Upcoming events:</h2>
-        <div className="alert alert-success">
-          <ul list-group>
-            {eventsList.map((event, i) =>
-              <li className='list-group-item' key={i}>
-                <NavLink to={ `/events/${event.id}` } >
-                  { event.title }
-                </NavLink>
-              </li>
-            )}
-          </ul>
-        </div>
+        <h2>
+          Kommande event
+        </h2>
+        <ul className='list-events'>
+          { eventList.map(
+              (event, i) => (
+                <li className='list-group-item' key={ i }>
+                  <NavLink to={ `/events/${event.id}` } >
+                    { event.title }
+                  </NavLink>
+                </li>
+              )
+          )}
+        </ul>
       </div>
     );
+  }
+
+  componentWillUnmount() {
+    const { actions } = this.props;
+    actions.clearEvents();
   }
 }
 
 Events.propTypes = {
-  loadingPage: PropTypes.func,
-  loadEvents: PropTypes.func,
-  events: PropTypes.shape({
-    eventsList: PropTypes.array,
+  actions: PropTypes.shape({
+    loadingPage: PropTypes.func,
+    loadUserEvents: PropTypes.func,
+    clearEvents: PropTypes.func,
   }),
+  events: PropTypes.shape({
+    eventList: PropTypes.array,
+  }),
+  locationId: PropTypes.string,
 };
 
 export default CSSModules(Events, styles);
