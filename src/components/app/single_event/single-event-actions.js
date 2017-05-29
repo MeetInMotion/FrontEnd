@@ -63,25 +63,6 @@ function clearingEvent(emptyList) {
   };
 }
 
-// export const CLEARING_EVENTS_SUCCEEDED = 'CLEARING_EVENTS_SUCCEEDED';
-// function clearingEventsSucceeded() {
-//   return {
-//     type: CLEARING_EVENTS_SUCCEEDED,
-//     loading: true,
-//     isError: false,
-//   };
-// }
-
-// export const CLEARING_EVENTS_FAILED = 'CLEARING_EVENTS_FAILED';
-// function clearingEventsFailed(error) {
-//   return {
-//     type: CLEARING_EVENTS_FAILED,
-//     isError: false,
-//     error: error,
-//   };
-// 
-
-
 export const LOADING_PARTICIPANTS = 'LOADING_PARTICIPANTS';
 function loadingParticipants() {
   return {

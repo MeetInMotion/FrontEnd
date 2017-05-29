@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 function mapStateToProps(state) {
   return {
     events: state.events,
+    user: state.user,
   };
 }
 
