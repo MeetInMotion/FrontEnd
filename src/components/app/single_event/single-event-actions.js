@@ -25,9 +25,39 @@ function loadingLocationFailed(error) {
   };
 }
 
+export const CLEARING_EVENTS = 'CLEARING_EVENTS';
+function clearingEvents(emptyList) {
+  return {
+    type: CLEARING_EVENTS,
+    loading: true,
+    eventList: emptyList,
+  };
+}
+
+// export const CLEARING_EVENTS_SUCCEEDED = 'CLEARING_EVENTS_SUCCEEDED';
+// function clearingEventsSucceeded() {
+//   return {
+//     type: CLEARING_EVENTS_SUCCEEDED,
+//     loading: true,
+//     isError: false,
+//   };
+// }
+
+// export const CLEARING_EVENTS_FAILED = 'CLEARING_EVENTS_FAILED';
+// function clearingEventsFailed(error) {
+//   return {
+//     type: CLEARING_EVENTS_FAILED,
+//     isError: false,
+//     error: error,
+//   };
+// }
+
 export function loadLocation(id) {
   return function(dispatch) {
     dispatch(loadingLocation());
+
+    console.log('API id', id);
+
 
     fetch("http://api.localhost:8081/locations/" + id)
       .then(function(response) {
@@ -43,3 +73,14 @@ export function loadLocation(id) {
     }
   };
 }
+
+export function clearEvents() {
+  return function(dispatch) {
+
+    dispatch(clearingEvents([]));
+
+    // check
+
+  };
+}
+

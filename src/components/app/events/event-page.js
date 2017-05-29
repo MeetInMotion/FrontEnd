@@ -1,6 +1,6 @@
 import Event from './events.jsx';
 import { loadingPage } from '../../page-actions.js';
-import { loadUserEvents, loadLocationEvents, clearEvents } from './event-actions.js';
+import { loadUserEvents, loadLocationEvents } from './event-actions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -17,7 +17,6 @@ function mapDispatchToProps(dispatch) {
         loadingPage, 
         loadUserEvents, 
         loadLocationEvents, 
-        clearEvents,
       },
       dispatch
     ),

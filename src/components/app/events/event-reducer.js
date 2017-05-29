@@ -2,7 +2,6 @@ import {
   LOADING_EVENTS,
   LOADING_EVENTS_SUCCEEDED,
   LOADING_EVENTS_FAILED,
-  CLEARING_EVENTS,
 } from './event-actions.js';
 
 const initialState = {
@@ -26,11 +25,6 @@ function eventReducer(state = initialState, action) {
   }
 
   case LOADING_EVENTS_FAILED: {
-    state = {...state, ...rest};
-    break;
-  }
-
-  case CLEARING_EVENTS: {
     state = {...state, ...rest};
     break;
   }

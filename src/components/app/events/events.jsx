@@ -28,7 +28,7 @@ class Events extends React.Component{
               (event, i) => (
                 <li className='list-group-item' key={ i }>
                   <NavLink to={ `/events/${event.id}` } >
-                    { event.title + " " + event.locationId }
+                    { event.title }
                   </NavLink>
                 </li>
               )
@@ -36,10 +36,6 @@ class Events extends React.Component{
         </ul>
       </div>
     );
-  }
-  componentWillUnmount() {
-    const { actions } = this.props;
-    actions.clearEvents();
   }
 }
 

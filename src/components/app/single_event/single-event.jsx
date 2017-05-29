@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 class SingleEvent extends React.Component {
 
   componentWillMount() {
-    const { loadingPage, loadLocation } = this.props;
+    const { actions } = this.props;
 
 
     const event = this.props.events.eventList.find(
@@ -16,16 +16,14 @@ class SingleEvent extends React.Component {
     console.log(this.props.events.eventsList); //eslint-disable-line
     
 
-    loadingPage();
-    loadLocation(event.location_id);
+    actions.loadingPage();
+    actions.loadLocation(event.location_id);
   }
     
   render() {
     const event = this.props.events.eventList.find(
       (e) => e.id == this.props.match.params.id
     );
-
-    
 
     return(
       <div>
@@ -43,11 +41,19 @@ class SingleEvent extends React.Component {
       </div>
     );
   }
+  componentWillUnmount() {
+    const { actions } = this.props;
+    actions.clearEvents();
+  }
 }
 
 SingleEvent.propTypes = {
-  loadingPage: PropTypes.func,
-  loadLocation: PropTypes.func,
+  
+  actions: PropTypes.shape({
+    loadingPage: PropTypes.func,
+    loadLocation: PropTypes.func,
+    clearEvents: PropTypes.func,
+  }),
   events: PropTypes.shape({
     eventList: PropTypes.array,
     eventLocation: PropTypes.array,

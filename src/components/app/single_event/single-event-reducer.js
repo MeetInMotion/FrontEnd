@@ -2,12 +2,14 @@ import {
   LOADING_LOCATION,
   LOADING_LOCATION_SUCCEEDED,
   LOADING_LOCATION_FAILED,
+  CLEARING_EVENTS,
 } from './single-event-actions.js';
 
 const initialState = {
   loading: false,
   isError: false,
   eventLocation: {coordinates: {east: null,north: null}},
+  eventList: [],
 };
 
 function singleEventReducer(state = initialState, action) {
@@ -28,6 +30,12 @@ function singleEventReducer(state = initialState, action) {
     state = {...state, ...rest};
     break;
   }
+
+  case CLEARING_EVENTS: {
+    state = {...state, ...rest};
+    break;
+  }  
+
   }
 
   return state;
