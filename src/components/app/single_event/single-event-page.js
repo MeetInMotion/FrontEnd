@@ -1,6 +1,6 @@
 import SingleEvent from './single-event.jsx';
 import { loadingPage } from '../../page-actions.js';
-import { loadLocation, clearEvents } from './single-event-actions.js';
+import { loadLocation, loadParticipants, loadEvent, clearEvent } from './single-event-actions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -9,8 +9,10 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(
       { 
         loadingPage, 
-        loadLocation, 
-        clearEvents, 
+        loadLocation,
+        loadParticipants,
+        loadEvent,
+        clearEvent, 
       },
       dispatch
     ),
@@ -20,8 +22,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    events: state.events,
+    // events: state.events,
+//    location: state.location,
+//    theEvent: state.theEvent,
     singleEvent: state.singleEvent,
+//    participants: state.participants,
   };
 }
 

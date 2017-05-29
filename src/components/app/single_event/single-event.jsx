@@ -5,54 +5,57 @@ class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-    const event = this.props.events.eventList.find(
-      (e) => e.id == this.props.match.params.id
-    );
+    
+    actions.loadingPage();
+    actions.loadEvent(this.props.match.params.id);
+    const { theEvent } = this.props.singleEvent;
+
+    actions.loadLocation(theEvent.location_id);
+  }
+
+  compontentDidMount() {
+    const { actions } = this.props;
+    const { theEvent } = this.props.singleEvent;
+    actions.loadEvent(this.props.match.params.id);
+    actions.loadLocation(theEvent.location_id);
 
     actions.loadingPage();
+    actions.loadEvent(this.props.match.params.id);
     actions.loadLocation(event.location_id);
   }
     
   render() {
-    const event = this.props.events.eventList.find(
-      (e) => e.id == this.props.match.params.id
-    );
-
+    const { theEvent } = this.props.singleEvent;
     return(
       <div>
         <center>
           <h2>
-            { event.title }
+            { theEvent.title }
           </h2>
           <h2> {} </h2>
           <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
           <h3> { this.props.singleEvent.eventLocation.name } </h3>
-          <h4> { event.description } </h4>
+          <h4> { theEvent.description } </h4>
           <h3> Directions </h3>
           <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
-        </center>
+        </center>        
+
       </div>
+      
     );
-  }
-  componentWillUnmount() {
-    const { actions } = this.props;
-    actions.clearEvents();
   }
 }
 
 SingleEvent.propTypes = {
-  
-  actions: PropTypes.shape({
+  actions: {
     loadingPage: PropTypes.func,
     loadLocation: PropTypes.func,
-    clearEvents: PropTypes.func,
-  }),
-  events: PropTypes.shape({
-    eventList: PropTypes.array,
-    eventLocation: PropTypes.array,
-  }),
+    loadEvent: PropTypes.func,
+    clearEvent: PropTypes.func,
+  },
   singleEvent: PropTypes.shape({
-    eventLocation: PropTypes.Object,
+    theEvent: PropTypes.object,
+    eventLocation: PropTypes.object,   
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({

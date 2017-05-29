@@ -5,7 +5,6 @@ import Events from '../events/event-page.js';
 import styles from './single_location.scss';
 import CSSModules from 'react-css-modules';
 
-
 class SingleLocation extends React.Component {
 
   componentWillMount() {
@@ -20,26 +19,26 @@ class SingleLocation extends React.Component {
 
   render() {
     const { location } = this.props;
-
     return(
       <div>
-        <h2>
-          { location.name }
-        </h2>
-        <img src= {location.img_url} className="pic" height="150" width="250"/>
-        <br/>
-        <a href={'http://maps.google.com/maps?q=' + location.coordinates.north + ',' + location.coordinates.east}>Google maps directions</a>
-        <br/>
-        <br/>
+        <center>
+          <h2>
+            { location.name }
+          </h2>
+          <img src= {location.img_url} className="pic" height="150" width="250"/>
+          <br/>
+          <a href={'http://maps.google.com/maps?q=' + location.coordinates.north + ',' + location.coordinates.east}>Google maps directions</a>
+          <br/>
+          <br/>
 
-        <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
-          Create event
-        </NavLink>
+          <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
+            Create event
+          </NavLink>
 
-        { location.id &&
-          <Events locationId={ location.id } {...this.props} />
-        }
-
+          { location.id != null &&
+            <Events locationId={ location.id } {...this.props} />
+          }
+        </center>
       </div>
     );
   }

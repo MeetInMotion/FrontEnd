@@ -1,13 +1,13 @@
 
 export const LOADING_LOCATION = "LOADING_LOCATION";
-export function loadingLocation(){
+export function loadingLocation() {
   return {
     type: LOADING_LOCATION,
   };
 }
 
 export const LOADING_LOCATION_SUCCESS = "LOADING_LOCATION_SUCCESS";
-export function loadingLocationSuccess(location){
+export function loadingLocationSuccess(location) {
   return {
     type: LOADING_LOCATION_SUCCESS,
     payload: location,
@@ -15,14 +15,23 @@ export function loadingLocationSuccess(location){
 }
 
 export const LOADING_LOCATION_FAILED = "LOADING_LOCATION_FAILED";
-export function loadingLocationFailed(){
+export function loadingLocationFailed() {
   return {
     type: LOADING_LOCATION_FAILED,
   };
 }
 
+export const CLEAR_LOCATION = "CLEAR_LOCATION";
+export function clearLocation() {
+  return {
+    type: CLEAR_LOCATION,
+  };
+}
+
 export function loadLocation(id){
   return function(dispatch){
+    dispatch(clearLocation());
+
     dispatch(loadingLocation());
     fetch("http://api.localhost:8081/locations/"+id)
       .then(res => {
