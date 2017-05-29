@@ -50,14 +50,11 @@ function clearingEvents(emptyList) {
 //     isError: false,
 //     error: error,
 //   };
-// }
+// 
 
 export function loadLocation(id) {
   return function(dispatch) {
     dispatch(loadingLocation());
-
-    console.log('API id', id);
-
 
     fetch("http://api.localhost:8081/locations/" + id)
       .then(function(response) {
