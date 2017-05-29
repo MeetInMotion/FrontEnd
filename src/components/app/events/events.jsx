@@ -18,7 +18,7 @@ class Events extends React.Component{
   }
   render() {
     const { eventList } = this.props.events;
-    console.log(eventList);
+
     return (
       <div>
         <h2>

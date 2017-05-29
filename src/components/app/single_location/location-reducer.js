@@ -2,6 +2,7 @@ import{
   LOADING_LOCATION,
   LOADING_LOCATION_SUCCESS,
   LOADING_LOCATION_FAILED,
+  CLEAR_LOCATION,
 } from './actions';
 
 const initialState = {
@@ -42,6 +43,22 @@ export default function locationReducer(state=initialState, action){
       message: action.payload,
     };
   }
+
+  case CLEAR_LOCATION: {
+    return {
+      loading: false,
+      error: false,
+      id: null,
+      name: null,
+      description: null,
+      img_url: null,
+      coordinates: {
+        "east": null,
+        "north": null,
+      },
+    };
+  }
+
   default: {
     return state;
   }

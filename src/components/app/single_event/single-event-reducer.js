@@ -12,7 +12,6 @@ const initialState = {
   isError: false,
   theEvent: {},
   eventLocation: {coordinates: {east: null,north: null}},
-  
   participants: [],
 };
 
