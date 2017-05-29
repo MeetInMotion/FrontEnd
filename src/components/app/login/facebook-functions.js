@@ -1,7 +1,4 @@
-/*
- This Facebook React Redux login code is from:
-      Liran Cohen and his repostory is:  github.com:iliran11/facebook-login-redux-react.git
-*/
+
 
 export function loadFbSdk(appId, version) {
   return new Promise(resolve => {
@@ -11,8 +8,10 @@ export function loadFbSdk(appId, version) {
         xfbml: true,
         version,
         cookie: true,
+        status: true,
       });
       window.FB.AppEvents.logPageView();
+      console.log('sdk loaded!');
       resolve('SDK Loaded!');
     };
 
@@ -20,7 +19,7 @@ export function loadFbSdk(appId, version) {
       const fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       const js = d.createElement(s); js.id = id;
-      js.src = 'http://connect.facebook.net/en_US/sdk.js';
+      js.src = 'http://connect.facebook.net/sv_SE/sdk.js';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   });
@@ -34,13 +33,3 @@ export function getFbLoginStatus() {
   });
 }
 
-export function fbLogin(options) {
-  return new Promise(resolve => {
-    window.FB.login(response => resolve(response), options);
-  });
-}
-export function fbLogout() {
-  return new Promise(resolve => {
-    window.FB.logout(response => resolve(response));
-  });
-}

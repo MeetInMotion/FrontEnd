@@ -13,7 +13,7 @@ import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
 import CreateEvent from './components/app/create_event/create-event-page.js';
-import FacebookLogin from './components/app/login/login';
+import Login from './components/app/login/login-container';
 
 class Root extends React.Component {
 
@@ -67,7 +67,7 @@ class Root extends React.Component {
 
               <Route
                 path="/login"
-                render={ matchProps => (<FacebookLogin {...matchProps} />) }
+                render={ matchProps => (<Login {...matchProps} />) }
               ></Route>
               
               <Route

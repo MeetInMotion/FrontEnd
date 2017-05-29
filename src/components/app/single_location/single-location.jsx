@@ -34,6 +34,7 @@ class SingleLocation extends React.Component {
         <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
           Create event
         </NavLink>
+
       </div>
     );
   }
