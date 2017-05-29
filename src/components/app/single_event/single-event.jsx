@@ -5,14 +5,8 @@ class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-    // const event = this.props.events.eventList.find(
-    //   (e) => e.id == this.props.match.params.id
-    // );
-
     actions.loadingPage();
     actions.loadEvent(this.props.match.params.id);
-
-    // const { event } = this.props;
     actions.loadLocation(event.location_id);
   }
     
