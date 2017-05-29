@@ -32,6 +32,8 @@ export function getAccessToken(status) {
       return response.json();
     })
     .then(function(json){
+      console.log("here i am");
+      dispatch(getUserInformation(json.user));
       localStorage.setItem('token', json.token);
       dispatch(fetchAccessToken(json));
     });
