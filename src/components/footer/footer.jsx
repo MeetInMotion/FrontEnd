@@ -12,11 +12,6 @@ class Footer extends React.Component {
           <br/>
           CATEGORIES
         </NavLink>
-        <NavLink className='col-xs-3' styleName="navigation-link" to="/settings">
-          <i className="fa fa-heart-o" aria-hidden="true"/>
-          <br/>
-          SETTINGS
-        </NavLink>
         <NavLink className='col-xs-3' styleName="navigation-link" to="/events">
           <i className="fa fa-handshake-o" aria-hidden="true"/>
           <br/>
@@ -26,6 +21,11 @@ class Footer extends React.Component {
           <i className="fa fa-thumbs-up" aria-hidden="true"/>
           <br/>
           FAVOURITES
+        </NavLink>
+        <NavLink className='col-xs-3' styleName="navigation-link" to="/settings">
+          <i className="fa fa-heart-o" aria-hidden="true"/>
+          <br/>
+          SETTINGS
         </NavLink>
       </nav>
     );

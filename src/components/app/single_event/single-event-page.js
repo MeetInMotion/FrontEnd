@@ -23,10 +23,10 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     // events: state.events,
-    location: state.location,
-    theEvent: state.theEvent,
+//    location: state.location,
+//    theEvent: state.theEvent,
     singleEvent: state.singleEvent,
-    participants: state.participants,
+//    participants: state.participants,
   };
 }
 
