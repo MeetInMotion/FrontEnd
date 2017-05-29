@@ -5,16 +5,9 @@ class SingleEvent extends React.Component {
 
   componentWillMount() {
     const { actions } = this.props;
-
-
     const event = this.props.events.eventList.find(
       (e) => e.id == this.props.match.params.id
     );
-
-    console.log(this.props.match.params.id); //eslint-disable-line
-    console.log(event); //eslint-disable-line
-    console.log(this.props.events.eventsList); //eslint-disable-line
-    
 
     actions.loadingPage();
     actions.loadLocation(event.location_id);
