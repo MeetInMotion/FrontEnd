@@ -45,8 +45,6 @@ export function loadUserEvents(id) {
   };
 }
 
-
-
 export function loadLocationEvents(id) {
   return function(dispatch) {
     dispatch(loadingEvents());

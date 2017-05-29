@@ -11,7 +11,7 @@ class Events extends React.Component{
     actions.loadingPage('Events');
 
     if (this.props.locationId) {
-      actions.loadLocationEvents(this.props.locationId); 
+      actions.loadLocationEvents(this.props.locationId);
     } else { 
       actions.loadUserEvents(1);
     }

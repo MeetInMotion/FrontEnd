@@ -11,7 +11,6 @@ class SingleLocation extends React.Component {
   componentWillMount() {
     const { loadingPage } = this.props;
     loadingPage('single location');
-
   }
 
   componentDidMount(){
@@ -21,6 +20,7 @@ class SingleLocation extends React.Component {
 
   render() {
     const { location } = this.props;
+
     return(
       <div>
         <h2>
@@ -36,13 +36,14 @@ class SingleLocation extends React.Component {
           Create event
         </NavLink>
 
-        <Events locationId={ location.id } {...this.props} />
+        { location.id &&
+          <Events locationId={ location.id } {...this.props} />
+        }
 
       </div>
     );
   }
 }
-  // <NavLink to={ `/categories/locations/location/${location.name}/create-event` } />
 
 SingleLocation.propTypes = {
   loadingPage: PropTypes.func,
