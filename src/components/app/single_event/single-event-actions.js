@@ -119,6 +119,7 @@ export function loadEvent(id) {
       }) 
       .then(function(json) {
         dispatch(loadingEventSucceeded(json));
+        dispatch(loadParticipants(id));
         dispatch(loadLocation(json.location_id));
       });
     let isError = false;
@@ -150,7 +151,6 @@ export function loadLocation(id) {
 export function loadParticipants(id) {
   return function(dispatch) {
     dispatch(loadingParticipants());
-
 
     fetch("http://api.localhost:8081/events/" + id + "/users")
       .then(function(response) {
