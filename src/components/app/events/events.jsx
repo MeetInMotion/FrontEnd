@@ -18,6 +18,7 @@ class Events extends React.Component{
   }
   render() {
     const { eventList } = this.props.events;
+    console.log(eventList);
     return (
       <div>
         <h2>
@@ -38,13 +39,17 @@ class Events extends React.Component{
     );
   }
 
-  // clearEvents
+  componentWillUnmount() {
+    const { actions } = this.props;
+    actions.clearEvents();
+  }
 }
 
 Events.propTypes = {
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadUserEvents: PropTypes.func,
+    clearEvents: PropTypes.func,
   }),
   events: PropTypes.shape({
     eventList: PropTypes.array,

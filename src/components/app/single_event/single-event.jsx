@@ -35,11 +35,6 @@ class SingleEvent extends React.Component {
     actions.clearEvent();
   }
 }
-
-// <div>
-
-//       </div>
-
 SingleEvent.propTypes = {
   
   actions: PropTypes.shape({
