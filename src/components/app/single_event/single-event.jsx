@@ -21,25 +21,25 @@ class SingleEvent extends React.Component {
 
     actions.loadingPage();
     actions.loadEvent(this.props.match.params.id);
-    actions.loadLocation(event.location_id);
+    // actions.loadLocation(event.location_id);
   }
     
   render() {
     const { theEvent } = this.props.singleEvent;
     return(
       <div>
-        <center>
-          <h2>
-            { theEvent.title }
-          </h2>
-          <h2> {} </h2>
-          <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
-          <h3> { this.props.singleEvent.eventLocation.name } </h3>
-          <h4> { theEvent.description } </h4>
-          <h3> Directions </h3>
-          <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
-        </center>        
-
+        { this.props.singleEvent.eventLocation && 
+          <center>
+            <h2>
+              { theEvent.title }
+            </h2>
+            <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
+            <h3> { this.props.singleEvent.eventLocation.name } </h3>
+            <h4> { theEvent.description } </h4>
+            <h3> Directions </h3>
+            <a href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>Google maps</a>
+          </center>        
+        }
       </div>
       
     );
@@ -47,12 +47,12 @@ class SingleEvent extends React.Component {
 }
 
 SingleEvent.propTypes = {
-  actions: {
+  actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadLocation: PropTypes.func,
     loadEvent: PropTypes.func,
     clearEvent: PropTypes.func,
-  },
+  }),
   singleEvent: PropTypes.shape({
     theEvent: PropTypes.object,
     eventLocation: PropTypes.object,   
