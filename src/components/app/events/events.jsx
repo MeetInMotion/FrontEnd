@@ -37,6 +37,8 @@ class Events extends React.Component{
       </div>
     );
   }
+
+  // clearEvents
 }
 
 Events.propTypes = {

@@ -2,14 +2,18 @@ import {
   LOADING_LOCATION,
   LOADING_LOCATION_SUCCEEDED,
   LOADING_LOCATION_FAILED,
-  CLEARING_EVENTS,
+  LOADING_PARTICIPANTS_SUCCEEDED,
+  LOADING_EVENT_SUCCEEDED,
+  CLEARING_EVENT,
 } from './single-event-actions.js';
 
 const initialState = {
   loading: false,
   isError: false,
+  theEvent: {},
   eventLocation: {coordinates: {east: null,north: null}},
-  eventList: [],
+  
+  participants: [],
 };
 
 function singleEventReducer(state = initialState, action) {
@@ -31,7 +35,17 @@ function singleEventReducer(state = initialState, action) {
     break;
   }
 
-  case CLEARING_EVENTS: {
+  case LOADING_PARTICIPANTS_SUCCEEDED: {
+    state = {...state, ...rest};
+    break;
+  }
+
+  case CLEARING_EVENT: {
+    state = {...state, ...rest};
+    break;
+  }  
+
+  case LOADING_EVENT_SUCCEEDED: {
     state = {...state, ...rest};
     break;
   }  

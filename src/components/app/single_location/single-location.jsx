@@ -26,6 +26,9 @@ class SingleLocation extends React.Component {
         <h2>
           { location.name }
         </h2>
+        <h2>
+          { location.id }
+        </h2>
         <img src= {location.img_url} className="pic" height="150" width="250"/>
         <br/>
         <a href={'http://maps.google.com/maps?q=' + location.coordinates.north + ',' + location.coordinates.east}>Google maps directions</a>
