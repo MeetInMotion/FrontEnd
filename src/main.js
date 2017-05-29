@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import LoginPage from './login-page.jsx';
+import Root from './root.jsx';
 import allReducers from './all-reducers.js';
 
 const store = createStore(
@@ -15,4 +15,4 @@ const store = createStore(
   )
 );
 
-ReactDOM.render(<LoginPage store={store} />, document.getElementById('app'));
+ReactDOM.render(<Root store={store} />, document.getElementById('app'));

@@ -87,6 +87,7 @@
     "react-datepicker": "^0.46.0",
     "react-router-bootstrap": "^0.24.2",
     "redux-form": "^6.7.0",
-    "style-loader": "^0.16.1"
+    "style-loader": "^0.16.1",
+    "winston": "^2.3.1"
   }
 }
