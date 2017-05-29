@@ -9,7 +9,7 @@ class SingleEvent extends React.Component {
     actions.loadingPage();
     actions.loadEvent(this.props.match.params.id);
   }
-    
+  
   render() {
     const { theEvent } = this.props.singleEvent;
     // console.log(participants[0]);
