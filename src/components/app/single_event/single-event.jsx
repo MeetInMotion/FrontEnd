@@ -8,21 +8,21 @@ class SingleEvent extends React.Component {
     
     actions.loadingPage();
     actions.loadEvent(this.props.match.params.id);
-    const { theEvent } = this.props.singleEvent;
+    // const { theEvent } = this.props.singleEvent;
 
-    actions.loadLocation(theEvent.location_id);
+    // actions.loadLocation(theEvent.location_id);
   }
 
-  compontentDidMount() {
-    const { actions } = this.props;
-    const { theEvent } = this.props.singleEvent;
-    actions.loadEvent(this.props.match.params.id);
-    actions.loadLocation(theEvent.location_id);
+  // compontentDidMount() {
+  //   const { actions } = this.props;
+  //   // const { theEvent } = this.props.singleEvent;
+  //   actions.loadEvent(this.props.match.params.id);
+  //   // actions.loadLocation(theEvent.location_id);
 
-    actions.loadingPage();
-    actions.loadEvent(this.props.match.params.id);
-    // actions.loadLocation(event.location_id);
-  }
+  //   // actions.loadingPage();
+  //   // actions.loadEvent(this.props.match.params.id);
+  //   // actions.loadLocation(event.location_id);
+  // }
     
   render() {
     const { theEvent } = this.props.singleEvent;
