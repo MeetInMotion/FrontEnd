@@ -17,16 +17,13 @@ module.exports = new Config().merge({
     filename: 'bundle.js',
     publicPath: '/',
   },
-
   devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
       port: 8080,
       historyApiFallback: true,
   },
-
   module: {
     rules: [
-
       {
         test: /\.jsx?$/,
         exclude: path.resolve(__dirname, 'node_modules'),
@@ -38,9 +35,11 @@ module.exports = new Config().merge({
       {
         exclude: path.resolve(__dirname, 'node_modules'),
         test: /\.s?css$/,
-        loaders:[ 'style-loader?sourceMap',
-                  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
-                'sass-loader']
+        loaders: [
+          'style-loader?sourceMap',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(gif|png|svg)$/,
