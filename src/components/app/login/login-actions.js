@@ -24,7 +24,6 @@ export function authenticatingUserSuccess(user){
 export function authenticateUser(fb_response) {
   return function(dispatch) {
     dispatch(authenticatingUser());
-    console.log(fb_response);
     fetch("http://api.localhost:8081/authenticate?access_token="
       + fb_response.authResponse.accessToken)
       .then(function(response) {

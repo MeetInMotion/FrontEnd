@@ -11,7 +11,6 @@ export function loadFbSdk(appId, version) {
         status: true,
       });
       window.FB.AppEvents.logPageView();
-      console.log('sdk loaded!');
       resolve('SDK Loaded!');
     };
 

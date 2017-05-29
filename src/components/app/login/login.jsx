@@ -30,7 +30,6 @@ export default class Login extends Component {
         }
 
         window.FB.XFBML.parse();
-        console.log('here i am');
       });
   }
 
