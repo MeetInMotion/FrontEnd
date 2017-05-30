@@ -90,6 +90,15 @@ function loadingParticipantsFailed(error) {
   };
 }
 
+export const ATTEND_EVENT = 'ATTEND_EVENT';
+function attendingEvent(id) {
+  return {
+    type: ATTEND_EVENT,
+    loading: true,
+    participants: [id],
+  };
+}
+
 export function loadEvent(id) {
   return function(dispatch) {
     dispatch(loadingEvent());
@@ -137,7 +146,7 @@ export function loadParticipants(id) {
       .then(function(response) {
         return response.json();
       }) 
-      .then(function(json) {
+      .then(function(json) { 
         dispatch(loadingParticipantsSucceeded(json)); 
       });
     
@@ -149,13 +158,37 @@ export function loadParticipants(id) {
   };
 }
 
-export function clearEvent() {
+export function attendEvent(eventId) {
   return function(dispatch) {
 
+    const jwt = localStorage.getItem('token');
+    
+    fetch('http://api.localhost:8081/users/' + eventId + 'events', 
+      { 
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': jwt,
+
+        }, 
+        body: JSON.stringify( eventId ),
+      }
+    )
+    .then(function(res) {
+      dispatch(attendingEvent(eventId));
+      return res.json();
+    }).
+    then(function(json) {
+      console.log(json); //eslint-disable-line
+    });
+
+  };
+}
+
+export function clearEvent() {
+  return function(dispatch) {
     dispatch(clearingEvent([]));
-
-    // check
-
   };
 }
 

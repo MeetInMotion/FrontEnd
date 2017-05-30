@@ -33,6 +33,10 @@ module.exports = new Config().merge({
         loader: ['style-loader', 'css-loader']
       },
       {
+        test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
+        loader: 'file-loader?name=public/fonts/[name].[ext]'
+      },
+      {
         exclude: path.resolve(__dirname, 'node_modules'),
         test: /\.s?css$/,
         loaders: [

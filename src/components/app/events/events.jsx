@@ -19,7 +19,6 @@ class Events extends React.Component {
     actions.loadingPage('Events');
 
     if (this.props.locationId) {
-      console.log(this.props.locationId); //eslint-disable-line
       actions.loadLocationEvents(this.props.locationId);
     } else { 
       actions.loadUserEvents(1);
@@ -76,11 +75,10 @@ class Events extends React.Component {
 
     return (
       <div>
-        <center>
-          <h2>
-            Kommande event
-          </h2>
-        </center>
+        
+        <h2>
+          Upcomming events
+        </h2>
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
