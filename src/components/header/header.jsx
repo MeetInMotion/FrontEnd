@@ -15,10 +15,11 @@ class Header extends React.Component{
     window.FB.getLoginStatus(function(statusResponse){
       if(statusResponse.status == "unknown" || statusResponse.status == "not_authorized"){
         window.FB.login(function(loginResponse){
+          console.log(loginResponse);
           if(loginResponse.status == "connected"){
             authenticateUser(loginResponse.authResponse.accessToken);
           }
-        });
+        }, {scope: "public_profile,email"});
       }else {
         window.FB.logout(function(){
           signUserOut();
@@ -29,15 +30,17 @@ class Header extends React.Component{
   render () {
     const authenticated = this.props.user.authenticated;
     return(
-      <nav styleName='title'>
-        <NavLink styleName='nav' to="/"> <i className="fa fa-gears fa-spin 2x"/> MEET IN MOTION </NavLink>
-        <div className="dropdown">
-          <button type="button" data-toggle="dropdown">
-            <i className="fa fa-bars" />
-          </button>
-          <ul className="dropdown-menu">
-            <li onClick={this.onClick}>{ authenticated ? 'Log out' : 'Log in'}</li>
-          </ul>
+      <nav className="row container-fluid" styleName='title'>
+        <NavLink className="col-md-8" styleName='nav' to="/">  MEET IN MOTION </NavLink>
+        <div className="col-md-4">
+          <div className="dropdown">
+            <button type="button" data-toggle="dropdown">
+              <i className="fa fa-bars" />
+            </button>
+            <ul className="dropdown-menu">
+              <li onClick={this.onClick}>{ authenticated ? 'Log out' : 'Log in'}</li>
+            </ul>
+          </div>
         </div>
       </nav>
       
