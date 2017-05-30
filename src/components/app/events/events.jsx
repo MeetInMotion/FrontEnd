@@ -14,15 +14,9 @@ class Events extends React.Component {
     // this.renderEvents = this.renderEvents(this);
   }
 
-  componentWillMount() {
-    const { actions } = this.props;
-    actions.loadingPage('Events');
-
-    if (this.props.locationId) {
-      actions.loadLocationEvents(this.props.locationId);
-    } else { 
-      actions.loadUserEvents(1);
-    }
+  componentDidMount() {
+    const { loadEvents } = this.props;
+    loadEvents();
   }
 
   // authentification() {
@@ -116,7 +110,7 @@ Events.propTypes = {
   user: PropTypes.shape({
     authenticated: PropTypes.bool,
   }),
-
+  loadEvents: PropTypes.func,
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadUserEvents: PropTypes.func,
