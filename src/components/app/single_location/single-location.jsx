@@ -19,6 +19,7 @@ class SingleLocation extends React.Component {
 
   render() {
     const { location } = this.props;
+    const eventsUrl = "http://api.localhost:8081/locations/"+this.props.match.params.id+"/events";
     return(
       <div>
         <center>
@@ -38,9 +39,7 @@ class SingleLocation extends React.Component {
             Create event
           </NavLink>
 
-          { location.id != null &&
-            <Events locationId={ location.id } {...this.props} />
-          }
+          <Events url={ eventsUrl } {...this.props} />
         </center>
       </div>
     );

@@ -40,22 +40,16 @@ function clearingEvents() {
   };
 }
 
-export function loadUserEvents(id) {
-  return function(dispatch) {
+export function loadEvents(url){
+  return function(dispatch){
     dispatch(loadingEvents());
-    fetch("http://api.localhost:8081/users/" + id + "/events")
-      .then(function(response) {
+    fetch(url)
+      .then(response => {
         return response.json();
-      }) 
-      .then(function(json) {
+      })
+      .then(json => {
         dispatch(loadingEventsSucceeded(json));
       });
-    
-    let isError = false;
-
-    if (isError) {
-      dispatch(loadingEventsFailed('error message'));
-    }
   };
 }
 
