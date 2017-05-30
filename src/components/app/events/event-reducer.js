@@ -21,7 +21,6 @@ function eventReducer(state = initialState, action) {
   }
 
   case LOADING_EVENTS_SUCCEEDED: {
-    console.log("hellu");
     state = {...state, ...rest};
     break;
   }
