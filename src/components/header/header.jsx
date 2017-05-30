@@ -21,7 +21,6 @@ class Header extends React.Component{
         });
       }else {
         window.FB.logout(function(logoutResponse){
-          console.log(logoutResponse);
           signUserOut();
         });
       }
