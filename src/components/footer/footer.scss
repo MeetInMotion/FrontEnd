@@ -1,11 +1,31 @@
 .menuposition {
   position: fixed;
+  horizontal-align: center;
   bottom: 0;
   vertical-align: middle;
   text-align: center;
   width: 100%;
   background-color: white;
   height: 50px;
+}
+// bottom: 100%;
+.settings_nav {
+  color: black;
+}
+
+.icon {
+  // text-align: center;
+  color: red;
+}
+
+.drop-up {
+  color: black;
+}
+
+.drop-up-link {
+  text-decoration: none;
+  color: black;
+  text-align: left;
 }
 
 .navigation-link {
@@ -15,5 +35,15 @@
   padding: 0px 10px;
   word-wrap: normal;
   display: inline-block;
-  font-size: 10px;
+  font-size: 13px;
+}
+
+.navigation-link2 {
+  // text-decoration: none;
+  font-family: "Arial", Times, Sans-serif;
+  padding: 0px 10px;
+  word-wrap: normal;
+  display: inline-block;
+  font-size: 13px;
+  // vertical-align: middle;
 }
