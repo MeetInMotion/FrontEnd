@@ -15,6 +15,8 @@ import SingleLocation from './components/app/single_location/single-location-pag
 import CreateEvent from './components/app/create_event/create-event-page.js';
 import Login from './components/app/login/login-container';
 
+import './root.scss';
+
 class Root extends React.Component {
 
   render() {

@@ -75,11 +75,10 @@ class Events extends React.Component {
 
     return (
       <div>
-        <center>
-          <h2>
-            Upcomming events
-          </h2>
-        </center>
+        
+        <h2>
+          Upcomming events
+        </h2>
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
