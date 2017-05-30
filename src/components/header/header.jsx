@@ -15,7 +15,6 @@ class Header extends React.Component{
     window.FB.getLoginStatus(function(statusResponse){
       if(statusResponse.status == "unknown" || statusResponse.status == "not_authorized"){
         window.FB.login(function(loginResponse){
-          console.log(loginResponse);
           if(loginResponse.status == "connected"){
             authenticateUser(loginResponse.authResponse.accessToken);
           }
