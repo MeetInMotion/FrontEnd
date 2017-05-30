@@ -19,7 +19,6 @@ class Events extends React.Component {
     actions.loadingPage('Events');
 
     if (this.props.locationId) {
-      console.log(this.props.locationId); //eslint-disable-line
       actions.loadLocationEvents(this.props.locationId);
     } else { 
       actions.loadUserEvents(1);
@@ -78,7 +77,7 @@ class Events extends React.Component {
       <div>
         <center>
           <h2>
-            Kommande event
+            Upcomming events
           </h2>
         </center>
         <ul className='list-events'>
