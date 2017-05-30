@@ -1,5 +1,16 @@
 import {connect} from 'react-redux';
 import Header from './header.jsx';
+import {
+  loadFbSdk,
+} from './header-actions';
+
+import {
+  signUserOut,
+  authenticateUser,
+} from './user-actions';
+
+
+
 
 function mapStateToProps(state) {
   return {
@@ -8,4 +19,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Header);
+function mapDispatchToProps(dispatch){
+  return {
+    loadFbSdk: () => dispatch(loadFbSdk()), 
+    authenticateUser: (token) => dispatch(authenticateUser(token)),
+    signUserOut: () => dispatch(signUserOut()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
