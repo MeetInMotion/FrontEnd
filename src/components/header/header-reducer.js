@@ -3,11 +3,13 @@ import {
   LOADING_FB_SDK,
   LOADING_FB_SDK_SUCCESS,
 } from './header-actions';
+
 const initialState = {
   headerTitle: 'Meet in Motion',
   fb_sdk_loaded: false,
   loading_fb_sdk: false,
 };
+
 function headerReducer(state = initialState, action) {
   const { type } = action;
   switch (type) {
