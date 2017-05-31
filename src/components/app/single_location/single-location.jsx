@@ -5,6 +5,7 @@ import Events from '../events/event-page.js';
 import styles from './single_location.scss';
 import CSSModules from 'react-css-modules';
 
+
 class SingleLocation extends React.Component {
 
   componentWillMount() {
@@ -23,6 +24,8 @@ class SingleLocation extends React.Component {
 
     return(
       <div>
+
+        <NavLink to={'/weather'}>Weather</NavLink>
         <center>
           <h2>
             { location.name }
@@ -33,9 +36,9 @@ class SingleLocation extends React.Component {
           <img src= {location.img_url} className="pic" height="150" width="250"/>
           <br/>
           <br/>
-          
+
           <i className="fa icon-thumbs-up" aria-hidden="true" styleName="icon"/>
-          
+
           <br/>
 
           <a href={'http://maps.google.com/maps?q=' + location.coordinates.north + ',' + location.coordinates.east}>Google maps directions</a>

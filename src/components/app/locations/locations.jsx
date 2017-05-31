@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
-// import {Link} from 'react-router-dom';
 
 class Locations extends React.Component {
 
