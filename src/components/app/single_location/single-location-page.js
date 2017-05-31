@@ -1,12 +1,21 @@
 import SingleLocation from './single-location.jsx';
 import { loadingPage } from '../../page-actions.js';
-import {loadLocation} from './actions';
+import {loadLocation, addLocationToUser, removeLocationToUser, setFollowing} from './actions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadingPage: () => dispatch(loadingPage('single-location')),
-    loadLocation: (id) => dispatch(loadLocation(id)),
+    actions: bindActionCreators(
+      { 
+        loadingPage,
+        loadLocation,
+        addLocationToUser,
+        removeLocationToUser,
+        setFollowing,
+      },
+      dispatch
+    ),
   };
 }
 

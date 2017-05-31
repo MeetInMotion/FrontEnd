@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     location: state.location,
-    userInformation: state.userInformation,
+    user: state.user,
     eventCreated: state.createEvent.eventCreated,
   };
 }

@@ -36,20 +36,6 @@ class Footer extends React.Component {
       : "/events";
     return(
       <nav styleName="menuposition">
-        <div className="clearfix col-xs-3" styleName="navigation-link">
-          <div className="dropup">
-            <button type="button" data-toggle="dropdown">
-              <i className="fa fa-bars fa-2x" aria-hidden="true"/>
-              <br/>OPTIONS
-            </button> 
-            <ul className="dropdown-menu">
-              <li onClick={ this.onClick }>{ authenticated ? 'Log out' : 'Log in'}</li>
-              <br/>
-              <NavLink styleName="drop-up-link" to="/settings">Settings</NavLink>
-            </ul>
-          </div>
-        </div>
-
         <NavLink className="col-xs-3" styleName="navigation-link" to="/categories">
           <i className="fa fa-eye fa-2x" aria-hidden="true"/>
           <br/>
@@ -65,6 +51,19 @@ class Footer extends React.Component {
           <br/>
           FAVOURITES
         </NavLink>
+        <div className="clearfix col-xs-3" styleName="navigation-link">
+          <div className="dropup">
+            <button type="button" data-toggle="dropdown">
+              <i className="fa fa-bars fa-2x" aria-hidden="true"/>
+              <br/>OPTIONS
+            </button> 
+            <ul className="dropdown-menu">
+              <li onClick={ this.onClick }>{ authenticated ? 'Log out' : 'Log in'}</li>
+              <br/>
+              <NavLink styleName="drop-up-link" to="/settings">Settings</NavLink>
+            </ul>
+          </div>
+        </div>
 
         
       </nav>

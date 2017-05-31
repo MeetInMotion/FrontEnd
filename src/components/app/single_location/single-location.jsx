@@ -7,14 +7,51 @@ import CSSModules from 'react-css-modules';
 
 class SingleLocation extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+
+    this.toggleFollowEvent = this.toggleFollowEvent.bind(this);
+  }
+
   componentWillMount() {
-    const { loadingPage } = this.props;
-    loadingPage('single location');
+    const { actions } = this.props;
+    actions.loadingPage('single location');
   }
 
   componentDidMount(){
-    const { loadLocation } = this.props;
-    loadLocation(this.props.match.params.id);
+    const { actions } = this.props;
+    actions.loadLocation(this.props.match.params.id);
+    actions.setFollowing(false);
+  }
+
+  toggleFollowEvent() {
+    if (this.props.location.following) {
+      this.props.actions.removeLocationToUser(this.props.location.location.id, this.props.user.id);
+    } else {
+      this.props.actions.addLocationToUser(this.props.location.location, this.props.user.id);
+    }
+  }
+
+  followButton() {
+    if (this.props.location.following != null) {
+      // console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
+      if (this.props.location.following) {
+        return(
+          <div>
+            <i aria-hidden="true"/>
+          Following</div>
+        );
+      } else {
+        return(
+          <div>
+            <i aria-hidden="true"/>
+          Follow</div>
+        );
+      }
+    } else {
+      console.log("inget"); //eslint-disable-line
+    }
   }
 
   render() {
@@ -45,6 +82,11 @@ class SingleLocation extends React.Component {
             <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
               Create event 
             </NavLink> : "Log in to create event!" }
+          <br/>
+          { authenticated ? 
+            <div onClick= { this.toggleFollowEvent } >
+              { this.followButton() }
+            </div> : "Log in to follow event!" }
           
           <Events url={ eventsUrl } { ...this.props } />
           
@@ -55,7 +97,13 @@ class SingleLocation extends React.Component {
 }
 
 SingleLocation.propTypes = {
-  loadingPage: PropTypes.func,
+  actions: PropTypes.shape({
+    removeLocationToUser: PropTypes.func,
+    loadingPage: PropTypes.func,
+    addLocationToUser: PropTypes.func,
+    loadLocation: PropTypes.func,
+    setFollowing: PropTypes.func,
+  }),
 
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -65,12 +113,13 @@ SingleLocation.propTypes = {
   }),
 
   user: PropTypes.shape({
+    id: PropTypes.number,
     authenticated: PropTypes.bool,
   }),
 
-  loadLocation: PropTypes.func,
 
   location: PropTypes.shape({
+    following: PropTypes.bool,
     loading: PropTypes.bool,
     error: PropTypes.bool,
     location: PropTypes.shape({

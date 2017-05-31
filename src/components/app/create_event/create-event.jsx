@@ -17,6 +17,7 @@ class CreateEvent extends React.Component {
   submitInput(event) {
     event.preventDefault();
     event.stopPropagation();
+    const { user } = this.props;
 
     const { actions, location } = this.props;
 
@@ -26,7 +27,7 @@ class CreateEvent extends React.Component {
         description: this.descriptionInput.value,
       },
       location.id,
-      1,
+      user.id,
       moment(this.datetimeInput.value).format() // iso 8601
     );
   }
@@ -115,7 +116,9 @@ CreateEvent.propTypes = {
 
   loadLocation: PropTypes.func,
 
-  userInformation: PropTypes.object,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+  }),
   eventCreated: PropTypes.bool,
 };
 

@@ -8,6 +8,10 @@ import{
 const initialState = {
   loading: false,
   error: false,
+  location: {
+    following: false,
+  },
+  following: false,
   id: null,
   name: null,
   description: null,

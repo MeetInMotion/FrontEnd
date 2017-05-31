@@ -36,7 +36,7 @@ export function createEvent(values, locationId, userId, time) {
       {
         "title": values.title,
         "datetime": time,
-        "user_id": 1,
+        "user_id": userId,
         "description": values.description,
         "location_id": locationId,
       };
