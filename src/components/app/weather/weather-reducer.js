@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import { FETCHING_WEATHER } from './weather-actions';
+// import _ from 'lodash';
+// import { FETCHING_WEATHER } from './weather-actions';
 
 const initialState = {
   weather: {},
@@ -16,11 +16,12 @@ const initialState = {
 export default function(state = initialState, action) {  
   // const type = action.type;
   const type = action.type;
-  // console.log("in wr: ", action);
+  console.log("in wr: ", action);
 
   switch (type) {
-  case FETCHING_WEATHER: 
-    return _.mapKeys(action.payload.data, 'city');
+  // case FETCHING_WEATHER: 
+    // return [
+    //   action.payload.data, ...state];
 
   default:
     return state;
