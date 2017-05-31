@@ -9,37 +9,14 @@ class Events extends React.Component {
 
   constructor(props) {
     super(props);
-    this.authentication = this.authentification(this);
   }
 
   componentDidMount() {
     const { loadEvents } = this.props;
-    var { url } = this.props;
-    console.log(url); //eslint-disable-line
-    const eventsUrl = "http://api.localhost:8081/users/1/events";
-    this.props.url = eventsUrl;
     loadEvents();
   }
 
-  authentification() {
-    if (!this.props.byLocation) {
-      if (this.props.user.authenticated == true) {
-        return(
-          <div>
-            { this.renderEvents() }
-          </div>
-        );
-      } else {
-        return(
-          <div>
-            Log in!
-          </div>
-        );
-      }
-    }
-  }
-
-  renderEvents() {
+  render() {
     const { eventList } = this.props.events;
     eventList.sort(function(a, b) {
       var eventA = a.datetime;
@@ -72,15 +49,6 @@ class Events extends React.Component {
       </div>
     );
   }
-
-  render() {
-    return(
-      <div>
-        { this.authentification() }
-      </div>
-    );
-  }
-
   componentWillUnmount() {
     const { actions } = this.props;
     actions.clearEvents();

@@ -18,7 +18,8 @@ class SingleLocation extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, user } = this.props;
+    const { authenticated } = user;
     const eventsUrl = "http://api.localhost:8081/locations/"+this.props.match.params.id+"/events";
 
     return(
@@ -40,13 +41,13 @@ class SingleLocation extends React.Component {
 
           <br/>
           <br/>
-
-          <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
-            Create event
-          </NavLink>
-
-          <Events url={ eventsUrl } byLocation={ true } { ...this.props } />
-
+          { authenticated ? 
+            <NavLink to={ `/categories/locations/location/${location.id}/create-event` } >
+              Create event 
+            </NavLink> : "Log in to create event!" }
+          
+          <Events url={ eventsUrl } { ...this.props } />
+          
         </center>
       </div>
     );
@@ -61,6 +62,10 @@ SingleLocation.propTypes = {
       name: PropTypes.string,
       id: PropTypes.string,
     }),
+  }),
+
+  user: PropTypes.shape({
+    authenticated: PropTypes.bool,
   }),
 
   loadLocation: PropTypes.func,
