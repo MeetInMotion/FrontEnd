@@ -34,7 +34,7 @@ class Events extends React.Component {
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
-                <li className='list-group-item' key={ i }>
+                <li styleName="event-list" className='list-group-item' key={ i }>
                   <NavLink to={ `/events/${event.id}` } >
                     { event.title + ", " + moment().calendar(event.datetime, {
                       sameDay: '[Idag]',

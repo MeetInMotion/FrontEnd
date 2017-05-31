@@ -3,6 +3,17 @@ body{
   margin: 0;
 }
 
+.content {
+  color: black;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  overflow: auto;
+}
+
+:global(.list-group-item) {
+  positon: static;
+}
+
 @font-face {
   font-family: "Love Me";
   src: url('./fonts/Love-Me.ttf') format("truetype");

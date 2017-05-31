@@ -39,18 +39,20 @@ class SingleEvent extends React.Component {
   }
 
   attendButton() {
+    console.log('null? ', this.props.singleEvent.attending);
     if (this.props.singleEvent.attending != null) {
-      // console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
+      console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
       if (this.props.singleEvent.attending) {
         return(
           <div>
-            <i className="fa fa-check" aria-hidden="true" />
-          Attending</div>
+            <i className="fa fa-times" aria-hidden="true" styleName="attending" />
+          Unattend</div>
         );
       } else {
+        this.props.actions.attendEvent(this.props.match.params.id, this.props.user.id);
         return(
           <div>
-            <i className="fa fa-times" aria-hidden="true" />
+            <i className="fa fa-check" aria-hidden="true" styleName="not-attending"/>
           Attend</div>
         );
       }
@@ -65,7 +67,7 @@ class SingleEvent extends React.Component {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
 
-    // console.log(this.props.singleEvent.attending); //eslint-disable-line
+    console.log(this.props.singleEvent.attending); //eslint-disable-line
 
     var location_img = this.props.singleEvent.eventLocation.img_url;
     if (location_img == null) {
@@ -74,7 +76,6 @@ class SingleEvent extends React.Component {
 
     return(
       <div>
-        <i className="fa fa-eye fa-2x" aria-hidden="true"/>
         { this.props.singleEvent.eventLocation && 
           <div>
             <center>
@@ -82,8 +83,12 @@ class SingleEvent extends React.Component {
                 { theEvent.title }
               </h2>
 
+              { this.props.singleEvent.attending && 
+                <p>Attending </p>
+              }
+
               <img src= { location_img } className="pic" height="150" width="250"/>
-            
+
 
               <br/>
 

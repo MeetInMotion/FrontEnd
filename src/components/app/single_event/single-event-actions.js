@@ -90,24 +90,6 @@ function loadingParticipantsFailed(error) {
   };
 }
 
-// export const ATTEND_EVENT = 'ATTEND_EVENT';
-// function attendingEvent(id) {
-//   return {
-//     type: ATTEND_EVENT,
-//     loading: true,
-//     participants: [id],
-//   };
-// }
-
-// export const UNATTEND_EVENT = 'UNATTEND_EVENT';
-// function unAttendingEvent(list) {
-//   return {
-//     type: ATTEND_EVENT,
-//     loading: true,
-//     participants: [list], // fixa detta
-//   };
-// }
-
 
 export const ATTENDING_STATUS_UPDATE = 'ATTENDING_STATUS_UPDATE';
 function setUserAttendingStatus(status) {
@@ -189,17 +171,16 @@ export function attendEvent(eventId, userId) {
       { 
         method: 'POST',
         headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:',
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }, 
-        body: JSON.stringify( eventId ),
+        body: JSON.stringify({ id:eventId }),
       }
     )
     .then(function(res) {
       dispatch(getAttendStatus(eventId, userId));
       return res.json();
-    });
+    })
     .then(function(json) {
       console.log('attending ', json); //eslint-disable-line
     });
@@ -226,9 +207,9 @@ export function unAttendEvent(eventId, userId) {
 
       return res.json();
     })
-    // .then(function(json) {
-      // console.log('unattending ', json); //eslint-disable-line
-    // });
+    .then(function(json) {
+      console.log('unattending ', json); //eslint-disable-line
+    });
   };
 }
 
