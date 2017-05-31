@@ -3,7 +3,7 @@ import DefaultLayout from './components/default_layout/default-layout.jsx';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import config from '../config/config';
 import Home from './components/app/home/home-page.js';
 import Settings from './components/app/settings/settings-page.js';
 import Events from './components/app/events/event-page.js';
@@ -38,12 +38,12 @@ class Root extends React.Component {
               
               <Route
                 path="/events"
-                render={ matchProps => (<Events url="http://api.localhost:8081/events" {...matchProps} />)}
+                render={ matchProps => (<Events url={config.host +"/events"} {...matchProps} />)}
               ></Route>
 
               <Route
                 path="/users/:id/events"
-                render={matchProps => (<Events url={"http://api.localhost:8081/users/" + matchProps.match.params.id + "/events" }/>)} >
+                render={matchProps => (<Events url={config.host + "/users/" + matchProps.match.params.id + "/events" }/>)} >
               </Route>
 
               <Route

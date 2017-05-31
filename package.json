@@ -16,7 +16,6 @@
   },
   "pre-push": [
     "webpack",
-    "test"
   ],
   "repository": {
     "type": "git",

@@ -54,9 +54,8 @@ export function createEvent(values, locationId, userId, time) {
     .then(function(res) {
       return res.json();
     }).
-    then(function(json) {
+    then(function() {
       dispatch(creatingEventSucceeded());
-      console.log(json); //eslint-disable-line
     });
     
     let isError = false;
