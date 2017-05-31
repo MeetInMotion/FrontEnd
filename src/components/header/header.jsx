@@ -38,7 +38,7 @@ class Header extends React.Component{
     // const authenticated = this.props.user.authenticated;
     return(
       <nav styleName='title'>
-        <NavLink styleName='nav' to="/">  MEET IN MOTION </NavLink>
+        <NavLink styleName='nav' to="/">MEET IN MOTION</NavLink>
       </nav>
     );
   }

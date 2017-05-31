@@ -38,10 +38,11 @@ class Footer extends React.Component {
       <nav styleName="menuposition">
         <div className="clearfix col-xs-3" styleName="navigation-link">
           <div className="dropup">
-            <button type="button" data-toggle="dropdown">
+            <button type="button" data-toggle="dropdown" styleName="options-button">
               <i className="fa fa-bars fa-2x" aria-hidden="true"/>
               <br/>OPTIONS
             </button> 
+
             <ul className="dropdown-menu">
               <li onClick={ this.onClick }>{ authenticated ? 'Log out' : 'Log in'}</li>
               <br/>
@@ -65,8 +66,6 @@ class Footer extends React.Component {
           <br/>
           FAVOURITES
         </NavLink>
-
-        
       </nav>
     );
   }

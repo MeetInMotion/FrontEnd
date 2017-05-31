@@ -9,9 +9,6 @@ import {
   authenticateUser,
 } from './user-actions';
 
-
-
-
 function mapStateToProps(state) {
   return {
     header: state.header,

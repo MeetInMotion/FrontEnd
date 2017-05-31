@@ -1,13 +1,18 @@
 .menuposition {
   position: fixed;
-  horizontal-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   bottom: 0;
   left: 0;
-  vertical-align: middle;
+  right: 0;
   text-align: center;
   width: 100%;
-  height: 50px;
-  padding: 0px 10px;
+  height: 60px;
+  // padding: 10px 10px;
+  background-color: white;
+  border-top: 1px solid #efefef;
 }
 .settings_nav {
   color: black;
@@ -29,6 +34,22 @@
   font-size: 13px;
 }
 
-.navigation-link:hover {
-  color: #724e72;
+.navigation-link {
+  &:active {
+    color: #ffe;
   }
+
+  &:hover, &:hover:active, &:visited:hover {
+    color: #333;
+  }
+}
+
+button.options-button {
+  background-color: white;
+  border: none;
+
+  &:hover, &:hover:active, &:visited:hover {
+    text-decoration: underline;
+    color: #333;
+  }
+}

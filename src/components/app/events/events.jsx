@@ -6,7 +6,6 @@ import styles from './events.scss';
 import moment from 'moment';
 
 class Events extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -31,7 +30,7 @@ class Events extends React.Component {
             Upcomming events
           </h2>
         </center>
-        <ul className='list-events'>
+        <ul className='list-events' styleName="list-events">
           { eventList.map(
               (event, i) => (
                 <li styleName="event-list" className='list-group-item' key={ i }>
