@@ -24,7 +24,6 @@ class Events extends React.Component {
   }
 
   authentification() {
-    console.log(this.props.user.authenticated);
     if (this.props.user.authenticated == true) {
       return(
         <div>
