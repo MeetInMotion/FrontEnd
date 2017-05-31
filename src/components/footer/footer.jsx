@@ -67,24 +67,6 @@ class Footer extends React.Component {
   }
 }
 
-
-
-        // <nav className="row container-fluid">
-        //   <div className="col-md-4">
-        //     <div className="dropup">
-        //       <button type="button" data-toggle="dropdown">
-        //         <i className="fa fa-bars" />
-        //         OPTIONS
-        //       </button>
-        //       <ul className="dropdown-menu">
-        //         <li onClick={this.onClick}>{ authenticated ? 'Log out' : 'Log in'}</li>
-        //       </ul>
-        //     </div>
-        //   </div>
-        // </nav>
-
-
-
 Footer.propTypes = {
   loadFbSdk: PropTypes.func,
   authenticateUser: PropTypes.func,
