@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { fetchWeather } from './weather-actions';
 
 class Weather extends Component{
-
   componentDidMount() {
     this.props.actions.fetchWeather('2673730');
   }
@@ -37,7 +36,6 @@ class Weather extends Component{
   }
 
   render() {
-    // console.log('this props: ', this.props);
     return(
       <div>
         <h3>Nuvarande Väder</h3>
@@ -51,11 +49,11 @@ class Weather extends Component{
 }
 
 Weather.propTypes = {
-  weather: PropTypes.object({
-    data: PropTypes.object({
-      list: PropTypes.array,
-    }),
-  }),
+  // weather: PropTypes.object({
+  //   data: PropTypes.object({
+  //     list: PropTypes.array,
+  //   }),
+  // }),
 
   actions: PropTypes.shape({
     fetchWeather: PropTypes.func,
