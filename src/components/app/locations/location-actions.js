@@ -1,3 +1,4 @@
+import config from '../../../../config/config';
 export const LOADING_LOCATIONS = 'LOADING_LOCATIONS';
 function loadingLocations() {
   return {
@@ -29,7 +30,7 @@ export function loadLocations(id) {
   return function(dispatch) {
     dispatch(loadingLocations());
 
-    fetch("http://api.localhost:8081/categories/" + id)
+    fetch(config.host+"/categories/" + id)
       .then(function(response) {
         return response.json();
       }) 
