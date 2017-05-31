@@ -16,6 +16,10 @@ class Events extends React.Component {
 
   componentDidMount() {
     const { loadEvents } = this.props;
+    var { url } = this.props;
+    console.log(url); //eslint-disable-line
+    const eventsUrl = "http://api.localhost:8081/users/1/events";
+    this.props.url = eventsUrl;
     loadEvents();
   }
 
@@ -69,10 +73,11 @@ class Events extends React.Component {
 
     return (
       <div>
-        
-        <h2>
-          Upcomming events
-        </h2>
+        <center>
+          <h2>
+            Upcomming events
+          </h2>
+        </center>
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
@@ -107,6 +112,7 @@ class Events extends React.Component {
 }
 
 Events.propTypes = {
+  url: PropTypes.string,
   user: PropTypes.shape({
     authenticated: PropTypes.bool,
   }),

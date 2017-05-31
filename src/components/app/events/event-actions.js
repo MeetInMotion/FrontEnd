@@ -13,6 +13,7 @@ function loadingEventsSucceeded(events) {
   //     console.log(event.id)
   //   )
   // );
+  console.log(events); //eslint-disable-line
   return {
     type: LOADING_EVENTS_SUCCEEDED,
     eventList: events,
@@ -43,6 +44,7 @@ function clearingEvents() {
 export function loadEvents(url){
   return function(dispatch){
     dispatch(loadingEvents());
+    console.log(url); //eslint-disable-line
     fetch(url)
       .then(response => {
         return response.json();

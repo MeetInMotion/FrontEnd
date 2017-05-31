@@ -38,7 +38,7 @@ class Root extends React.Component {
 
               <Route
                 path="/events"
-                render={ matchProps => (<Events {...matchProps} />) }
+                render={ matchProps => (<Events url={"http://api.localhost:8081/users/1/events"}{...matchProps} />) }
               ></Route>
 
               <Route

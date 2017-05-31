@@ -20,6 +20,7 @@ class SingleLocation extends React.Component {
   render() {
     const { location } = this.props;
     const eventsUrl = "http://api.localhost:8081/locations/"+this.props.match.params.id+"/events";
+    console.log(eventsUrl); //eslint-disable-line
     return(
       <div>
         <center>
