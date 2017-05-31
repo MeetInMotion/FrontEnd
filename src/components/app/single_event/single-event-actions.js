@@ -183,7 +183,7 @@ export function loadParticipants(id) {
 
 export function attendEvent(eventId, userId) {
   return function(dispatch) {
-    console.log('attend event' );
+    // console.log('attend event' ); 
     
     fetch('http://api.localhost:8081/users/' + userId + '/events', 
       { 
@@ -201,14 +201,14 @@ export function attendEvent(eventId, userId) {
       return res.json();
     })
     .then(function(json) {
-      console.log('attending ', json); //eslint-disable-line
+      // console.log('attending ', json); //eslint-disable-line
     });
   };
 }
 
 export function unAttendEvent(eventId, userId) {
   return function(dispatch) {
-    console.log('unattend ');
+    // console.log('unattend '); //eslint-disable-line
 
     fetch('http://api.localhost:8081/users/' + userId + '/events/' + eventId, 
       { 
@@ -227,7 +227,7 @@ export function unAttendEvent(eventId, userId) {
       return res.json();
     }).
     then(function(json) {
-      console.log('unattending ', json); //eslint-disable-line
+      // console.log('unattending ', json); //eslint-disable-line
     });
   };
 }
@@ -240,7 +240,7 @@ export function getAttendStatus(eventId, userId) {
         return response.json();
       }) 
       .then(function(json) {
-        console.log('current status', json.attending);
+        // console.log('current status', json.attending);
         dispatch(setUserAttendingStatus(json.attending)); 
       });
   };
