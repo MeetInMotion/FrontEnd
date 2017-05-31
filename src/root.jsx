@@ -13,8 +13,8 @@ import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
 import CreateEvent from './components/app/create_event/create-event-page.js';
-import Login from './components/app/login/login-container';
 import Weather from './components/app/weather/weather-list';
+
 
 import './root.scss';
 
@@ -44,7 +44,7 @@ class Root extends React.Component {
 
               <Route
                 path="/events"
-                render={ matchProps => (<Events {...matchProps} />) }
+                render={ matchProps => (<Events url={"http://api.localhost:8081/users/1/events"}{...matchProps} />) }
               ></Route>
 
               <Route
@@ -70,11 +70,6 @@ class Root extends React.Component {
               <Route
                 path="/favourites"
                 render={ matchProps => (<Favourites {...matchProps} />) }
-              ></Route>
-
-              <Route
-                path="/login"
-                render={ matchProps => (<Login {...matchProps} />) }
               ></Route>
 
               <Route

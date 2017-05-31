@@ -13,6 +13,7 @@ function loadingEventsSucceeded(events) {
   //     console.log(event.id)
   //   )
   // );
+  console.log(events); //eslint-disable-line
   return {
     type: LOADING_EVENTS_SUCCEEDED,
     eventList: events,
@@ -40,22 +41,17 @@ function clearingEvents() {
   };
 }
 
-export function loadUserEvents(id) {
-  return function(dispatch) {
+export function loadEvents(url){
+  return function(dispatch){
     dispatch(loadingEvents());
-    fetch("http://api.localhost:8081/users/" + id + "/events")
-      .then(function(response) {
+    console.log(url); //eslint-disable-line
+    fetch(url)
+      .then(response => {
         return response.json();
-      }) 
-      .then(function(json) {
+      })
+      .then(json => {
         dispatch(loadingEventsSucceeded(json));
       });
-    
-    let isError = false;
-
-    if (isError) {
-      dispatch(loadingEventsFailed('error message'));
-    }
   };
 }
 

@@ -97,3 +97,45 @@ export function loadFooter(page) {
     dispatch(loadingFooterSucceeded(payload));
   };
 }
+
+export const LOADING_FB_SDK = 'LOADING_FB_SDK';
+export function loadingFbSdk() {
+  return {
+    type: LOADING_FB_SDK, 
+  };
+}
+
+export const LOADING_FB_SDK_SUCCESS = "LOADING_FB_SDK_SUCCESS";
+export function loadingFbSdkSuccess(){
+  return {
+    type: LOADING_FB_SDK_SUCCESS,
+  };
+}
+
+export function loadFbSdk(){
+  return function(dispatch){
+    dispatch(loadingFbSdk());
+    new Promise(resolve => {
+      window.fbAsyncInit = function () {
+        window.FB.init({
+          appId: "278320365928562",
+          xfbml: true,
+          version: "v2.9",
+          cookie: true,
+          status: true,
+        });
+        window.FB.AppEvents.logPageView();
+        resolve();
+      };
+      
+      (function (d, s, id) {
+        const fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        const js = d.createElement(s); js.id = id;
+        js.src = 'http://connect.facebook.net/sv_SE/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    }).then(() => dispatch(loadingFbSdkSuccess()));
+    
+  };
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import styles from './single-event.scss';
+import CSSModules from 'react-css-modules';
+import moment from 'moment';
 
 class SingleEvent extends React.Component {
   constructor(props) {
@@ -32,57 +35,76 @@ class SingleEvent extends React.Component {
     const listParticipantsStyle = {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
+    var location_img = this.props.singleEvent.eventLocation.img_url;
+    if(location_img == null) {
+      location_img = 'http://i.imgur.com/avnhoaZ.jpg';
+    }
 
     return(
       <div>
         { this.props.singleEvent.eventLocation && 
-          <center>
-            <h2>
-              { theEvent.title }
-            </h2>
+          <div>
+            <center>
+              <h2>
+                { theEvent.title }
+              </h2>
 
-            <img src= {this.props.singleEvent.eventLocation.img_url} className="pic" height="150" width="250"/>
+              <img src= {location_img} className="pic" height="150" width="250"/>
+            
 
-            <h3> { this.props.singleEvent.eventLocation.name } </h3>
-            <h4> { theEvent.description } </h4>
+              <br/>
 
-            <a  href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>
-              Google maps directions
-            </a>
+              <h3 styleName="test2"> { this.props.singleEvent.eventLocation.name } </h3>
+           
+              <h5 styleName="test">{moment().calendar(theEvent.datetime, {
+                sameDay: '[Idag]',
+                lastDay: '[Imorgon]',
+                sameElse: moment(theEvent.datetime).format('YYYY-MM-DD'),
+              }) + " " + moment(theEvent.datetime).format("HH:mm")}</h5>
+              <br/>
+            </center>
 
-            <div
-              style={ {
-                'marginTop': '20px',
-                display: 'flex',
-                width: 200,
-                'flexDirection': 'column',
-                'borderRadius': '3px',
-                border: '1px solid #fff',
-              } }
-            >
-              <div onClick={ this.toggleListParticipants } >
-                Participants ({ participantsLength }):
+            <center>
+              <h6> { theEvent.description } </h6>
+
+              <a  href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>
+                Google maps directions
+              </a>
+
+              <div
+                style={ {
+                  'marginTop': '20px',
+                  display: 'flex',
+                  width: 200,
+                  'flexDirection': 'column',
+                  'borderRadius': '3px',
+                  border: '1px solid #fff',
+                } }
+              >
+                <div onClick={ this.toggleListParticipants } >
+                  Participants ({ participantsLength }):
+                </div>
+
+                <div style={ listParticipantsStyle } >
+                  { participants.map(
+                      (user, index) => (
+                        <div
+                          key={ index }
+                          style={ {
+                            'borderTop': '1px solid #f99',
+                            'borderBottom': index + 1 === participants.length ? 'none' : '1px solid #999',
+                          } }
+                        >
+                          <NavLink to={ `/users/${user.id}` } >
+                            { user.name }
+                          </NavLink>
+                        </div>
+                      )
+                  )}
+                </div>
               </div>
-
-              <div style={ listParticipantsStyle } >
-                { participants.map(
-                    (user, index) => (
-                      <div
-                        key={ index }
-                        style={ {
-                          'borderTop': '1px solid #f99',
-                          'borderBottom': index + 1 === participants.length ? 'none' : '1px solid #999',
-                        } }
-                      >
-                        <NavLink to={ `/users/${user.id}` } >
-                          { user.name }
-                        </NavLink>
-                      </div>
-                    )
-                )}
-              </div>
-            </div>
-          </center>        
+            </center>
+          </div>        
         }
       </div>
     );
@@ -114,4 +136,4 @@ SingleEvent.propTypes = {
   }),
 };
 
-export default SingleEvent;
+export default CSSModules(SingleEvent, styles);

@@ -9,63 +9,37 @@ class Events extends React.Component {
 
   constructor(props) {
     super(props);
-
-    // this.authentication = this.authentification(this);
-    // this.renderEvents = this.renderEvents(this);
+    this.authentication = this.authentification(this);
   }
 
-  componentWillMount() {
-    const { actions } = this.props;
-    actions.loadingPage('Events');
+  componentDidMount() {
+    const { loadEvents } = this.props;
+    var { url } = this.props;
+    console.log(url); //eslint-disable-line
+    const eventsUrl = "http://api.localhost:8081/users/1/events";
+    this.props.url = eventsUrl;
+    loadEvents();
+  }
 
-    if (this.props.locationId) {
-      actions.loadLocationEvents(this.props.locationId);
-    } else { 
-      actions.loadUserEvents(1);
+  authentification() {
+    if (!this.props.byLocation) {
+      if (this.props.user.authenticated == true) {
+        return(
+          <div>
+            { this.renderEvents() }
+          </div>
+        );
+      } else {
+        return(
+          <div>
+            Log in!
+          </div>
+        );
+      }
     }
   }
 
-  // authentification() {
-  //   console.log(this.props.user.authenticated);
-  //   if (this.props.user.authenticated == true) {
-  //     this.renderEvents();
-  //   } else {
-  //     return(
-  //       <div>Log in!
-  //       </div>
-  //     );
-  //   }
-  // }
-
-  // renderEvents() {
-  //   const { eventList } = this.props.events;
-  //   eventList.sort(function(a, b) {
-  //     var eventA = a.datetime;
-  //     var eventB = b.datetime;
-  //     return (eventA < eventB) ? -1 : (eventA > eventB) ? 1 : 0;
-  //   });
-
-  //   return (
-  //     <div>
-  //       <h2>
-  //         Kommande event
-  //       </h2>
-  //       <ul className='list-events'>
-  //         { eventList.map(
-  //             (event, i) => (
-  //               <li className='list-group-item' key={ i }>
-  //                 <NavLink to={ `/events/${event.id}` } >
-  //                   { event.title + " " + event.datetime}
-  //                 </NavLink>
-  //               </li>
-  //             )
-  //         )}
-  //       </ul>
-  //     </div>
-  //   );
-  // }
-
-  render() {
+  renderEvents() {
     const { eventList } = this.props.events;
     eventList.sort(function(a, b) {
       var eventA = a.datetime;
@@ -75,10 +49,11 @@ class Events extends React.Component {
 
     return (
       <div>
-        
-        <h2>
-          Upcomming events
-        </h2>
+        <center>
+          <h2>
+            Upcomming events
+          </h2>
+        </center>
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
@@ -98,13 +73,13 @@ class Events extends React.Component {
     );
   }
 
-  // render() {
-  //   return(
-  //     <div>
-  //       { this.authentification() }
-  //     </div>
-  //   );
-  // }
+  render() {
+    return(
+      <div>
+        { this.authentification() }
+      </div>
+    );
+  }
 
   componentWillUnmount() {
     const { actions } = this.props;
@@ -113,10 +88,11 @@ class Events extends React.Component {
 }
 
 Events.propTypes = {
+  url: PropTypes.string,
   user: PropTypes.shape({
     authenticated: PropTypes.bool,
   }),
-
+  loadEvents: PropTypes.func,
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadUserEvents: PropTypes.func,
@@ -125,7 +101,7 @@ Events.propTypes = {
   events: PropTypes.shape({
     eventList: PropTypes.array,
   }),
-  locationId: PropTypes.string,
+  byLocation: PropTypes.bool,
 };
 
 export default CSSModules(Events, styles);
