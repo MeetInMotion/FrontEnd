@@ -4,6 +4,7 @@ import {
   LOADING_LOCATION_FAILED,
   LOADING_PARTICIPANTS_SUCCEEDED,
   LOADING_EVENT_SUCCEEDED,
+  ATTENDING_STATUS_UPDATE,
   ATTEND_EVENT,
   CLEARING_EVENT,
   LOADING_EVENT,
@@ -15,6 +16,7 @@ const initialState = {
   theEvent: {},
   eventLocation: {coordinates: {east: null,north: null}},
   participants: [],
+  attending: null,
 };
 
 function singleEventReducer(state = initialState, action) {
@@ -52,6 +54,11 @@ function singleEventReducer(state = initialState, action) {
   }  
 
   case LOADING_EVENT_SUCCEEDED: {
+    state = {...state, ...rest};
+    break;
+  }
+
+  case ATTENDING_STATUS_UPDATE: {
     state = {...state, ...rest};
     break;
   }

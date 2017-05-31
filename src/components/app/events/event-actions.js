@@ -8,12 +8,6 @@ function loadingEvents() {
 
 export const LOADING_EVENTS_SUCCEEDED = 'LOADING_EVENTS_SUCCEEDED';
 function loadingEventsSucceeded(events) {
-  // events.map(
-  //   (event) => (
-  //     console.log(event.id)
-  //   )
-  // );
-  console.log(events); //eslint-disable-line
   return {
     type: LOADING_EVENTS_SUCCEEDED,
     eventList: events,

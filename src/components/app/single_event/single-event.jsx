@@ -11,7 +11,6 @@ class SingleEvent extends React.Component {
 
     this.state = {
       listParticipantsExpanded: false,
-      attending: false, // api-anrop för att kolla? eller loopa igenom deltagarlistan?
     };
 
     this.toggleListParticipants = this.toggleListParticipants.bind(this);
@@ -22,7 +21,7 @@ class SingleEvent extends React.Component {
     const { actions } = this.props;
     
     actions.loadingPage();
-    actions.loadEvent(this.props.match.params.id);
+    actions.loadEvent(this.props.match.params.id, this.props.user.id);
   }
 
   toggleListParticipants() {
@@ -31,22 +30,24 @@ class SingleEvent extends React.Component {
     });
   }
 
+
+
   toggleAttendEvent() {
-    this.setState({
-      attending: !this.state.attending,
-    });
+    if (this.props.singleEvent.attending) {
+      this.props.actions.unAttendEvent(this.props.match.params.id, this.props.user.id);
+    } else {
+      this.props.actions.attendEvent(this.props.match.params.id, this.props.user.id);
+    }
   }
 
   attendButton() {
-    if (this.state.attending) {
-      this.props.actions.attendEvent(this.props.match.params.id);
+    if (this.props.singleEvent.attending) {
       return(
         <div>
           <i className="fa fa-icon-thumbs-up" aria-hidden="true" styleName="attending" />
         Attending</div>
       );
     } else {
-      this.props.actions.unAttendEvent(this.props.match.params.id);
       return(
         <div>
           <i className="fa fa-icon-thumbs-up" aria-hidden="true" />
@@ -54,6 +55,10 @@ class SingleEvent extends React.Component {
       );
     }
   }
+
+
+
+
   
   render() {
     const { theEvent, participants } = this.props.singleEvent;
@@ -91,9 +96,19 @@ class SingleEvent extends React.Component {
               }) + " " + moment(theEvent.datetime).format("HH:mm")}</h5>
               <br/>
 
+
+
+
+//                    attend button
               <label className="switch" onClick={ this.toggleAttendEvent }>
                 { this.attendButton() }
               </label>
+
+
+
+
+
+
 
               <h6> { theEvent.description } </h6>
 
@@ -151,14 +166,19 @@ SingleEvent.propTypes = {
     loadingPage: PropTypes.func,
     loadLocation: PropTypes.func,
     loadEvent: PropTypes.func,
+    getAttendStatus: PropTypes.func,
     clearEvent: PropTypes.func,
     attendEvent: PropTypes.func,
     unAttendEvent: PropTypes.func,
   }),
+  user: PropTypes.shape({
+    id: PropTypes.number,
+  }),
   singleEvent: PropTypes.shape({
     theEvent: PropTypes.object,
     eventLocation: PropTypes.object,
-    participants: PropTypes.array,  
+    participants: PropTypes.array,
+    attending: PropTypes.func,
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({

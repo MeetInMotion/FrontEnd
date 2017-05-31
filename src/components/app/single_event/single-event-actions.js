@@ -108,7 +108,17 @@ function unAttendingEvent(list) {
   };
 }
 
-export function loadEvent(id) {
+
+export const ATTENDING_STATUS_UPDATE = 'ATTENDING_STATUS_UPDATE';
+function setUserAttendingStatus(status) {
+  return {
+    type: ATTENDING_STATUS_UPDATE,
+    loading: true,
+    attending: status,
+  };
+}
+
+export function loadEvent(id, userId) {
   return function(dispatch) {
     dispatch(loadingEvent());
 
@@ -119,7 +129,9 @@ export function loadEvent(id) {
       .then(function(json) {
         dispatch(loadingEventSucceeded(json));
         dispatch(loadParticipants(id));
-        dispatch(loadLocation(json.location_id));
+        
+
+        dispatch(loadLocation(json.location_id, id, userId));
       });
     let isError = false;
     
@@ -129,7 +141,7 @@ export function loadEvent(id) {
   };
 }
 
-export function loadLocation(id) {
+export function loadLocation(id, eventId, userId) {
   return function(dispatch) {
     dispatch(loadingLocation());
     fetch("http://api.localhost:8081/locations/" + id)
@@ -137,7 +149,9 @@ export function loadLocation(id) {
         return response.json();
       }) 
       .then(function(json) {
-        dispatch(loadingLocationSucceeded(json)); 
+        dispatch(loadingLocationSucceeded(json));
+        dispatch(getAttendStatus(eventId, userId));
+
       });
     let isError = false;
     
@@ -167,18 +181,15 @@ export function loadParticipants(id) {
   };
 }
 
-export function attendEvent(eventId) {
+export function attendEvent(eventId, userId) {
   return function(dispatch) {
-    const jwt = localStorage.getItem('token');
     
-    fetch('http://api.localhost:8081/users/' + eventId + '/events', 
+    fetch('http://api.localhost:8081/users/' + userId + '/events', 
       { 
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': jwt,
-
         }, 
         body: JSON.stringify( eventId ),
       }
@@ -194,12 +205,10 @@ export function attendEvent(eventId) {
   };
 }
 
-export function unAttendEvent(eventId) {
+export function unAttendEvent(eventId, userId) {
   return function(dispatch) {
-    const jwt = localStorage.getItem('token');
 
-     // anrop: /users/:id/events/:id            v v v
-    fetch('http://api.localhost:8081/users/' + jwt.id + '/events/' + eventId, 
+    fetch('http://api.localhost:8081/users/' + userId + '/events/' + eventId, 
       { 
         method: 'DELETE',
         headers: {
@@ -210,10 +219,10 @@ export function unAttendEvent(eventId) {
     )
     .then(function(res) {
 
-      // remove userId from the participants list
+    //   // remove userId from the participants list
       const newList = [];
       dispatch(unAttendingEvent(newList));
-      //
+    //   //
 
       return res.json();
     }).
@@ -222,6 +231,23 @@ export function unAttendEvent(eventId) {
     });
   };
 }
+
+export function getAttendStatus(eventId, userId) {
+  return function(dispatch) {
+    // console.log('get status : http://api.localhost:8081/events/' + eventId + '/users/' + userId);
+
+    fetch('http://api.localhost:8081/events/' + eventId + '/users/' + userId)
+      .then(function(response) {
+        return response.json();
+      }) 
+      .then(function(json) { 
+        console.log('json', json);
+        dispatch(setUserAttendingStatus(json)); 
+      });
+  };
+}
+
+
 
 export function clearEvent() {
   return function(dispatch) {
