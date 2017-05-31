@@ -1,3 +1,34 @@
+//import _ from 'lodash';
+import { FETCHING_WEATHER } from './weather-actions';
+
+/*const initialState = {
+  weather: [],
+};
+*/
+
+export default function(state = [], action) {
+  // const type = action.type;
+  const type = action.type;
+
+  switch (type) {
+  case FETCHING_WEATHER:
+  console.log('Action received', action);//eslint-disable-line
+  console.log('payload', action.payload);//eslint-disable-line
+    //return _.mapKeys(action.payload.data, 'city');
+    return [action.payload, ...state];
+  default:
+    return state;
+  }
+}
+  // case FETCHING_WEATHER:
+    // return [
+    //   action.payload.data, ...state];
+
+//  default:
+//    return state;
+//  }
+//}
+/*
 import _ from 'lodash';
 import { FETCHING_WEATHER } from './weather-actions';
 
@@ -26,3 +57,4 @@ export default function(state = initialState, action) {
     return state;
   }
 }
+*/

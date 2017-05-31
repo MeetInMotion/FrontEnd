@@ -6,6 +6,7 @@ import styles from './single_location.scss';
 import CSSModules from 'react-css-modules';
 
 
+
 class SingleLocation extends React.Component {
 
   componentWillMount() {
@@ -16,6 +17,7 @@ class SingleLocation extends React.Component {
   componentDidMount(){
     const { loadLocation } = this.props;
     loadLocation(this.props.match.params.id);
+    this.props.actions.fetchWeather('Stockholm');
   }
 
   render() {
@@ -30,9 +32,6 @@ class SingleLocation extends React.Component {
           <h2>
             { location.name }
           </h2>
-
-          <NavLink to="/weather">Weather</NavLink>
-
           <img src= {location.img_url} className="pic" height="150" width="250"/>
           <br/>
           <br/>
@@ -60,6 +59,9 @@ class SingleLocation extends React.Component {
 
 SingleLocation.propTypes = {
   loadingPage: PropTypes.func,
+  actions: PropTypes.shape({
+    fetchWeather: PropTypes.func,
+  }),
 
   match: PropTypes.shape({
     params: PropTypes.shape({
