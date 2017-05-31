@@ -8,7 +8,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export function fetchWeather(city){
   const request = axios.get(`${ROOT_URL}&q=${city},se`);
 
-  console.log('Request:', request);//eslint-disable-line
+  console.log('Request from promise:', request);//eslint-disable-line
 
   return{
     type: FETCH_WEATHER,
