@@ -30,7 +30,10 @@ class Footer extends React.Component {
   }
 
   render() {
-    const authenticated = this.props.user.authenticated;
+    const { authenticated, id } = this.props.user;
+    var eventsUrl = authenticated
+      ? "/users/"+id+"/events"
+      : "/events";
     return(
       <nav styleName="menuposition">
         <div className="clearfix col-xs-3" styleName="navigation-link">
@@ -52,7 +55,7 @@ class Footer extends React.Component {
           <br/>
           EXPLORE
         </NavLink>
-        <NavLink className="col-xs-3" styleName="navigation-link" to="/events">
+        <NavLink className="col-xs-3" styleName="navigation-link" to={eventsUrl}>
           <i className="fa fa-calendar fa-2x" aria-hidden="true"/>
           <br/>
           EVENTS
@@ -75,6 +78,7 @@ Footer.propTypes = {
   signUserOut: PropTypes.func,
   user: PropTypes.shape({
     authenticated: PropTypes.bool,
+    id: PropTypes.number,
   }),
 };
 
