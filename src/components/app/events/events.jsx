@@ -22,18 +22,20 @@ class Events extends React.Component {
   }
 
   authentification() {
-    if (this.props.user.authenticated == true) {
-      return(
-        <div>
-          { this.renderEvents() }
-        </div>
-      );
-    } else {
-      return(
-        <div>
-          Log in!
-        </div>
-      );
+    if (!this.props.byLocation) {
+      if (this.props.user.authenticated == true) {
+        return(
+          <div>
+            { this.renderEvents() }
+          </div>
+        );
+      } else {
+        return(
+          <div>
+            Log in!
+          </div>
+        );
+      }
     }
   }
 
@@ -99,7 +101,7 @@ Events.propTypes = {
   events: PropTypes.shape({
     eventList: PropTypes.array,
   }),
-  locationId: PropTypes.string,
+  byLocation: PropTypes.bool,
 };
 
 export default CSSModules(Events, styles);

@@ -40,7 +40,7 @@ class SingleLocation extends React.Component {
             Create event
           </NavLink>
 
-          <Events url={ eventsUrl } {...this.props} />
+          <Events url={ eventsUrl } byLocation={true} {...this.props} />
         </center>
       </div>
     );
