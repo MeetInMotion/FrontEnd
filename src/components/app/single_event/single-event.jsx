@@ -99,7 +99,6 @@ class SingleEvent extends React.Component {
 
 
 
-//                    attend button
               <label className="switch" onClick={ this.toggleAttendEvent }>
                 { this.attendButton() }
               </label>
