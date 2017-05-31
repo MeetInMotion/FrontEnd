@@ -5,7 +5,7 @@ import {
   LOADING_PARTICIPANTS_SUCCEEDED,
   LOADING_EVENT_SUCCEEDED,
   ATTENDING_STATUS_UPDATE,
-  ATTEND_EVENT,
+  // ATTEND_EVENT,
   CLEARING_EVENT,
   LOADING_EVENT,
 } from './single-event-actions.js';
@@ -62,11 +62,6 @@ function singleEventReducer(state = initialState, action) {
     state = {...state, ...rest};
     break;
   }
-
-  case ATTEND_EVENT: {
-    state = {...state, ...rest};
-    break;
-  } 
 
   }
 

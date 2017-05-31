@@ -30,8 +30,6 @@ class SingleEvent extends React.Component {
     });
   }
 
-
-
   toggleAttendEvent() {
     if (this.props.singleEvent.attending) {
       this.props.actions.unAttendEvent(this.props.match.params.id, this.props.user.id);
@@ -41,25 +39,24 @@ class SingleEvent extends React.Component {
   }
 
   attendButton() {
-    if (this.props.singleEvent.attending) {
-      return(
-        <div>
-          <i className="fa fa-icon-thumbs-up" aria-hidden="true" styleName="attending" />
-        Attending</div>
-      );
-    } else {
-      return(
-        <div>
-          <i className="fa fa-icon-thumbs-up" aria-hidden="true" />
-        Attend</div>
-      );
+    if (this.props.singleEvent.attending != null) {
+      console.log('button clicked, state ', this.props.singleEvent.attending);
+      if (this.props.singleEvent.attending) {
+        return(
+          <div>
+            <i className="fa fa-check" aria-hidden="true" />
+          Attending</div>
+        );
+      } else {
+        return(
+          <div>
+            <i className="fa fa-times" aria-hidden="true" />
+          Attend</div>
+        );
+      }
     }
   }
 
-
-
-
-  
   render() {
     const { theEvent, participants } = this.props.singleEvent;
     const participantsLength = participants.length;
@@ -68,6 +65,8 @@ class SingleEvent extends React.Component {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
 
+    console.log(this.props.singleEvent.attending);
+
     var location_img = this.props.singleEvent.eventLocation.img_url;
     if (location_img == null) {
       location_img = 'http://i.imgur.com/avnhoaZ.jpg';
@@ -75,6 +74,7 @@ class SingleEvent extends React.Component {
 
     return(
       <div>
+        <i className="fa fa-eye fa-2x" aria-hidden="true"/>
         { this.props.singleEvent.eventLocation && 
           <div>
             <center>
@@ -99,9 +99,9 @@ class SingleEvent extends React.Component {
 
 
 
-              <label className="switch" onClick={ this.toggleAttendEvent }>
+              <div className="switch" onClick={ this.toggleAttendEvent }>
                 { this.attendButton() }
-              </label>
+              </div>
 
 
 
@@ -177,7 +177,7 @@ SingleEvent.propTypes = {
     theEvent: PropTypes.object,
     eventLocation: PropTypes.object,
     participants: PropTypes.array,
-    attending: PropTypes.func,
+    attending: PropTypes.bool,
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({

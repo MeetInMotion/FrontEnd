@@ -18,6 +18,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
+    user: state.user,
     location: state.location,
     userInformation: state.userInformation,
     eventCreated: state.createEvent.eventCreated,

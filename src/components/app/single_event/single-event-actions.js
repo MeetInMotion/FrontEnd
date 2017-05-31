@@ -90,23 +90,23 @@ function loadingParticipantsFailed(error) {
   };
 }
 
-export const ATTEND_EVENT = 'ATTEND_EVENT';
-function attendingEvent(id) {
-  return {
-    type: ATTEND_EVENT,
-    loading: true,
-    participants: [id],
-  };
-}
+// export const ATTEND_EVENT = 'ATTEND_EVENT';
+// function attendingEvent(id) {
+//   return {
+//     type: ATTEND_EVENT,
+//     loading: true,
+//     participants: [id],
+//   };
+// }
 
-export const UNATTEND_EVENT = 'UNATTEND_EVENT';
-function unAttendingEvent(list) {
-  return {
-    type: ATTEND_EVENT,
-    loading: true,
-    participants: [list], // fixa detta
-  };
-}
+// export const UNATTEND_EVENT = 'UNATTEND_EVENT';
+// function unAttendingEvent(list) {
+//   return {
+//     type: ATTEND_EVENT,
+//     loading: true,
+//     participants: [list], // fixa detta
+//   };
+// }
 
 
 export const ATTENDING_STATUS_UPDATE = 'ATTENDING_STATUS_UPDATE';
@@ -183,11 +183,13 @@ export function loadParticipants(id) {
 
 export function attendEvent(eventId, userId) {
   return function(dispatch) {
+    console.log('attend event' );
     
     fetch('http://api.localhost:8081/users/' + userId + '/events', 
       { 
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:',
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }, 
@@ -195,18 +197,18 @@ export function attendEvent(eventId, userId) {
       }
     )
     .then(function(res) {
-      dispatch(attendingEvent(eventId));
+      dispatch(getAttendStatus(eventId, userId));
       return res.json();
-    }).
-    then(function(json) {
-      console.log(json); //eslint-disable-line
+    })
+    .then(function(json) {
+      console.log('attending ', json); //eslint-disable-line
     });
-
   };
 }
 
 export function unAttendEvent(eventId, userId) {
   return function(dispatch) {
+    console.log('unattend ');
 
     fetch('http://api.localhost:8081/users/' + userId + '/events/' + eventId, 
       { 
@@ -219,29 +221,27 @@ export function unAttendEvent(eventId, userId) {
     )
     .then(function(res) {
 
-    //   // remove userId from the participants list
-      const newList = [];
-      dispatch(unAttendingEvent(newList));
-    //   //
+      // dispatch(getAttendStatus(eventId, userId)); // broken always returns true?
+      dispatch(setUserAttendingStatus(false));
 
       return res.json();
     }).
     then(function(json) {
-      console.log(json); //eslint-disable-line
+      console.log('unattending ', json); //eslint-disable-line
     });
   };
 }
 
 export function getAttendStatus(eventId, userId) {
   return function(dispatch) {
-    // console.log('get status : http://api.localhost:8081/events/' + eventId + '/users/' + userId);
 
     fetch('http://api.localhost:8081/events/' + eventId + '/users/' + userId)
       .then(function(response) {
         return response.json();
       }) 
-      .then(function(json) { 
-        dispatch(setUserAttendingStatus(json)); 
+      .then(function(json) {
+        console.log('current status', json.attending);
+        dispatch(setUserAttendingStatus(json.attending)); 
       });
   };
 }
