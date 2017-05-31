@@ -12,7 +12,7 @@ class Favourites extends React.Component {
     return (
       <div>
         <h2>Favourites</h2>
-        <Link to="/weather-list" className="btn btn-warning">Weather</Link>
+        <Link to="/weather" >Weather</Link>
       </div>
     );
   }

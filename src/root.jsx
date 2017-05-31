@@ -13,7 +13,7 @@ import Categories from './components/app/categories/categories-page.js';
 import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
 import CreateEvent from './components/app/create_event/create-event-page.js';
-import Weather from './components/app/weather/weather-list';
+import Weather from './components/app/weather/weather';
 
 
 import './root.scss';

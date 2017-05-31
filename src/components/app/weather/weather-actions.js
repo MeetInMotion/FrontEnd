@@ -5,11 +5,8 @@ const ROOT_URL=`http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
-export function fetchWeather(city){
-
-  const url = `${ROOT_URL}&q=${city},us`;//us is the country code, need to get sweden country code
-  //make an ajax Promise request, this is a redux promise which use axios for ajax
-  const request = axios.get(url);
+export function fetchWeather(){
+  const request = axios.get(`${ROOT_URL}&q=Stockholm,se`);
 
   console.log('Request:', request);//eslint-disable-line
 
