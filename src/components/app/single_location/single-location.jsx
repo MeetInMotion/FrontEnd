@@ -17,24 +17,26 @@ class SingleLocation extends React.Component {
   componentWillMount() {
     const { actions } = this.props;
     actions.loadingPage('single location');
+    actions.loadLocation(this.props.match.params.id);
   }
 
   componentDidMount(){
-    const { actions } = this.props;
-    actions.loadLocation(this.props.match.params.id);
-    actions.setFollowing(false);
   }
 
   toggleFollowEvent() {
-    if (this.props.location.following) {
+    const { location } = this.props;
+    console.log(location.following); //eslint-disable-line
+    if (location.following) {
       this.props.actions.removeLocationToUser(this.props.location.location.id, this.props.user.id);
     } else {
-      this.props.actions.addLocationToUser(this.props.location.location, this.props.user.id);
+      this.props.actions.addLocationToUser(this.props.location, this.props.user.id);
     }
   }
 
   followButton() {
-    if (this.props.location.following != null) {
+    const { location } = this.props;
+    console.log(location.following); //eslint-disable-line
+    if (location.following != null) {
       // console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
       if (this.props.location.following) {
         return(
@@ -55,10 +57,17 @@ class SingleLocation extends React.Component {
   }
 
   render() {
-    const { location, user } = this.props;
+    const { user } = this.props;
+    const { location } = this.props;
+//    console.log(location); //eslint-disable-line
+//    console.log(this.props.location); //eslint-disable-line
     const { authenticated } = user;
     const eventsUrl = "http://api.localhost:8081/locations/"+this.props.match.params.id+"/events";
-
+//    console.log(location.name); //eslint-disable-line
+//    const { theLocation } = this.props;
+//    console.log(theLocation + "hej"); //eslint-disable-line
+//    console.log(following); //eslint-disable-line
+    console.log(this.props.location.following); //eslint-disable-line
     return(
       <div>
         <center>
@@ -116,7 +125,6 @@ SingleLocation.propTypes = {
     id: PropTypes.number,
     authenticated: PropTypes.bool,
   }),
-
 
   location: PropTypes.shape({
     following: PropTypes.bool,

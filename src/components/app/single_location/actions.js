@@ -3,6 +3,7 @@ export const LOADING_LOCATION = "LOADING_LOCATION";
 export function loadingLocation() {
   return {
     type: LOADING_LOCATION,
+    loading:true,
   };
 }
 
@@ -10,7 +11,7 @@ export const LOADING_LOCATION_SUCCESS = "LOADING_LOCATION_SUCCESS";
 export function loadingLocationSuccess(location) {
   return {
     type: LOADING_LOCATION_SUCCESS,
-    payload: location,
+    theLocation: location,
   };
 }
 
@@ -32,7 +33,7 @@ export const ADDING_LOCATION_USER_SUCCESS = "ADDING_LOCATION_USER_SUCCESS";
 export function addingLocationUserSuccess(added) {
   return {
     type: ADDING_LOCATION_USER_SUCCESS,
-    payload: added,
+    follower: added,
   };
 }
 
@@ -65,6 +66,7 @@ export function addLocationToUser(location, userId) {
     dispatch(addingLocationUser());
     setUserFollowingStatus(true);
     console.log(location, userId); //eslint-disable-line
+    console.log(location.payload.id); //eslint-disable-line
     fetch('http://api.localhost:8081/users/' + userId + '/locations', 
       { 
         method: 'POST',
@@ -72,10 +74,11 @@ export function addLocationToUser(location, userId) {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }, 
-        body: JSON.stringify( location.id ),
+        body: JSON.stringify({"location": location.payload.id}),
       }
     )
     .then(function(res) {
+      console.log(res); //eslint-disable-line
       return res.json();
     }).
     then(function(json) {
@@ -128,7 +131,7 @@ export function setFollowing(status) {
 
 export function loadLocation(id){
   return function(dispatch){
-    setUserFollowingStatus(false);
+//    dispatch(setUserFollowingStatus(false));
     dispatch(clearLocation());
 
     dispatch(loadingLocation());

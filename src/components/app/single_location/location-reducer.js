@@ -2,15 +2,13 @@ import{
   LOADING_LOCATION,
   LOADING_LOCATION_SUCCESS,
   LOADING_LOCATION_FAILED,
-  CLEAR_LOCATION,
-} from './actions';
+  CLEAR_LOCATION, 
+  FOLLOWING_STATUS_UPDATE,
+} from './actions.js';
 
 const initialState = {
   loading: false,
   error: false,
-  location: {
-    following: false,
-  },
   following: false,
   id: null,
   name: null,
@@ -23,8 +21,9 @@ const initialState = {
 };
 
 export default function locationReducer(state=initialState, action){
-  switch (action.type){
+  const {type} = action;
   
+  switch (type){
   case LOADING_LOCATION: {
     return {...state,
       loading: true,
@@ -36,7 +35,7 @@ export default function locationReducer(state=initialState, action){
       ...state,
       loading: false,
       error: false,
-      ...action.payload,
+      ...action.theLocation,
     };
   }
   case LOADING_LOCATION_FAILED: {
@@ -60,6 +59,12 @@ export default function locationReducer(state=initialState, action){
         "east": null,
         "north": null,
       },
+    };
+  }
+  case FOLLOWING_STATUS_UPDATE: {
+    return {
+      ...state,
+      following: action.following,
     };
   }
 
