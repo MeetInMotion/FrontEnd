@@ -74,6 +74,21 @@ export function loadFooter(page) {
         };
         break;
       }
+      case 'weather': {
+        payload = {
+          navLinks: [
+            {
+              text: 'Weather',
+              path: 'weather-list',
+            },
+            {
+              text: 'Categories',
+              path: 'Categories',
+            },
+          ],
+        };
+        break;
+      }
       case 'error': {
         dispatch(loadingFooterFailed('could not load'));
       }

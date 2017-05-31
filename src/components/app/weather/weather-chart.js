@@ -1,10 +1,7 @@
-//epi 64, a class base component or a function component
-//need to decide what is the function to do
-//epi 65, we adding the SparklinesReferenceLine for average line and will do the text for teh chart
+/*
 import _ from 'lodash';
-import React from 'react';
+import React, {PropTypes }from 'react';
 import {Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
-
 
 function average(data){
   //using lodash sum function and round function, this is average helper function
@@ -30,7 +27,7 @@ export default (props) => {
   temps will be used in the weather_list file
   */
   //epi 65, need to get teh aveage data from the props.data
-
+/*
   return (
     <div>
       <Sparklines height={120} width={180} data={props.data}>
@@ -39,5 +36,6 @@ export default (props) => {
       </Sparklines>
       <div>{average(props.data)} {props.units}</div>
     </div>
-  )
-}
+  );
+};
+*/

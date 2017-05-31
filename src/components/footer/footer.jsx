@@ -27,6 +27,11 @@ class Footer extends React.Component {
           <br/>
           SETTINGS
         </NavLink>
+        <NavLink className='col-xs-3' styleName="navigation-link" to="/weather-list">
+          <i className="fa fa-sun-o fa-2x" aria-hidden="true"/>
+          <br/>
+          WEATHER
+        </NavLink>
       </nav>
     );
   }

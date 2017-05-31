@@ -14,6 +14,7 @@ import Locations from './components/app/locations/locations-page.js';
 import SingleLocation from './components/app/single_location/single-location-page.js';
 import CreateEvent from './components/app/create_event/create-event-page.js';
 import Login from './components/app/login/login-container';
+import Weather from './components/app/weather/weather-list';
 
 import './root.scss';
 
@@ -27,6 +28,10 @@ class Root extends React.Component {
         <Router>
           <DefaultLayout>
             <Switch>
+              <Route
+                path="/weather"
+                render={ matchProps => (<Weather {...matchProps} />) }
+              ></Route>
               <Route
                 path="/settings"
                 render={ matchProps => (<Settings {...matchProps} />) }
@@ -71,7 +76,7 @@ class Root extends React.Component {
                 path="/login"
                 render={ matchProps => (<Login {...matchProps} />) }
               ></Route>
-              
+
               <Route
                 exact
                 path="/"
