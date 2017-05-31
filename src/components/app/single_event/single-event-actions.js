@@ -200,9 +200,9 @@ export function attendEvent(eventId, userId) {
       dispatch(getAttendStatus(eventId, userId));
       return res.json();
     });
-    // .then(function(json) {
-      // console.log('attending ', json); //eslint-disable-line
-    // });
+    .then(function(json) {
+      console.log('attending ', json); //eslint-disable-line
+    });
   };
 }
 
