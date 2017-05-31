@@ -13,6 +13,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     location: state.location,
+    user: state.user,
   };
 }
 

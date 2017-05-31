@@ -35,11 +35,16 @@ class Root extends React.Component {
                 path="/events/:id"
                 render={ matchProps => (<SingleEvent {...matchProps} />) }
               ></Route>
-
+              
               <Route
                 path="/events"
-                render={ matchProps => (<Events url={"http://api.localhost:8081/users/1/events"}{...matchProps} />) }
+                render={ matchProps => (<Events url="http://api.localhost:8081/events" {...matchProps} />)}
               ></Route>
+
+              <Route
+                path="/users/:id/events"
+                render={matchProps => (<Events url={"http://api.localhost:8081/users/" + matchProps.match.params.id + "/events" }/>)} >
+              </Route>
 
               <Route
                 path="/categories/locations/location/:id/create-event"
