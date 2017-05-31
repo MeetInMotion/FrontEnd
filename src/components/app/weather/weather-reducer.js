@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
   const {type, ...rest} = action;
 
 
-  console.log("in wr: ", action); // eslint disable-line
+  // console.log("in wr: ", action);
 
   switch (type) {
   case FETCHING_WEATHER: 
