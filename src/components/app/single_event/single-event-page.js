@@ -1,6 +1,6 @@
 import SingleEvent from './single-event.jsx';
 import { loadingPage } from '../../page-actions.js';
-import { loadLocation, loadParticipants, loadEvent, attendEvent, clearEvent } from './single-event-actions.js';
+import { loadLocation, loadParticipants, loadEvent, attendEvent, unAttendEvent, clearEvent } from './single-event-actions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -13,6 +13,7 @@ function mapDispatchToProps(dispatch) {
         loadParticipants,
         loadEvent,
         attendEvent,
+        unAttendEvent,
         clearEvent, 
       },
       dispatch

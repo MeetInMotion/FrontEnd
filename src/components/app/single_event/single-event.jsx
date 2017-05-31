@@ -11,9 +11,11 @@ class SingleEvent extends React.Component {
 
     this.state = {
       listParticipantsExpanded: false,
+      attending: false, // api-anrop för att kolla? eller loopa igenom deltagarlistan?
     };
 
     this.toggleListParticipants = this.toggleListParticipants.bind(this);
+    this.toggleAttendEvent = this.toggleAttendEvent.bind(this);
   }
 
   componentWillMount() {
@@ -28,15 +30,41 @@ class SingleEvent extends React.Component {
       listParticipantsExpanded: !this.state.listParticipantsExpanded,
     });
   }
+
+  toggleAttendEvent() {
+    this.setState({
+      attending: !this.state.attending,
+    });
+  }
+
+  attendButton() {
+    if (this.state.attending) {
+      this.props.actions.attendEvent(this.props.match.params.id);
+      return(
+        <div>
+          <i className="fa fa-icon-thumbs-up" aria-hidden="true" styleName="attending" />
+        Attending</div>
+      );
+    } else {
+      this.props.actions.unAttendEvent(this.props.match.params.id);
+      return(
+        <div>
+          <i className="fa fa-icon-thumbs-up" aria-hidden="true" />
+        Attend</div>
+      );
+    }
+  }
   
   render() {
     const { theEvent, participants } = this.props.singleEvent;
     const participantsLength = participants.length;
+
     const listParticipantsStyle = {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
+
     var location_img = this.props.singleEvent.eventLocation.img_url;
-    if(location_img == null) {
+    if (location_img == null) {
       location_img = 'http://i.imgur.com/avnhoaZ.jpg';
     }
 
@@ -49,7 +77,7 @@ class SingleEvent extends React.Component {
                 { theEvent.title }
               </h2>
 
-              <img src= {location_img} className="pic" height="150" width="250"/>
+              <img src= { location_img } className="pic" height="150" width="250"/>
             
 
               <br/>
@@ -63,6 +91,10 @@ class SingleEvent extends React.Component {
               }) + " " + moment(theEvent.datetime).format("HH:mm")}</h5>
               <br/>
             </center>
+
+            <label className="switch" onClick={ this.toggleAttendEvent }>
+              { this.attendButton() }
+            </label>
 
             <center>
               <h6> { theEvent.description } </h6>
@@ -122,6 +154,8 @@ SingleEvent.propTypes = {
     loadLocation: PropTypes.func,
     loadEvent: PropTypes.func,
     clearEvent: PropTypes.func,
+    attendEvent: PropTypes.func,
+    unAttendEvent: PropTypes.func,
   }),
   singleEvent: PropTypes.shape({
     theEvent: PropTypes.object,

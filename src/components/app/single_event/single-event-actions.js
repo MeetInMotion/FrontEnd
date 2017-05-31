@@ -99,6 +99,15 @@ function attendingEvent(id) {
   };
 }
 
+export const UNATTEND_EVENT = 'UNATTEND_EVENT';
+function unAttendingEvent(list) {
+  return {
+    type: ATTEND_EVENT,
+    loading: true,
+    participants: [list], // fixa detta
+  };
+}
+
 export function loadEvent(id) {
   return function(dispatch) {
     dispatch(loadingEvent());
@@ -160,10 +169,9 @@ export function loadParticipants(id) {
 
 export function attendEvent(eventId) {
   return function(dispatch) {
-
     const jwt = localStorage.getItem('token');
     
-    fetch('http://api.localhost:8081/users/' + eventId + 'events', 
+    fetch('http://api.localhost:8081/users/' + eventId + '/events', 
       { 
         method: 'POST',
         headers: {
@@ -183,6 +191,35 @@ export function attendEvent(eventId) {
       console.log(json); //eslint-disable-line
     });
 
+  };
+}
+
+export function unAttendEvent(eventId) {
+  return function(dispatch) {
+    const jwt = localStorage.getItem('token');
+
+     // anrop: /users/:id/events/:id            v v v
+    fetch('http://api.localhost:8081/users/' + jwt.id + '/events/' + eventId, 
+      { 
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }, 
+      }
+    )
+    .then(function(res) {
+
+      // remove userId from the participants list
+      const newList = [];
+      dispatch(unAttendingEvent(newList));
+      //
+
+      return res.json();
+    }).
+    then(function(json) {
+      console.log(json); //eslint-disable-line
+    });
   };
 }
 
