@@ -24,10 +24,12 @@
 	display: inline;
 }
 
-.attending {
-    color: red;
+.attend {
+  size: 35px;
+  color: green;
 }
 
-.not-attending {
-  color: green;
+.unattend {
+  size: 35px;
+  color: red;
 }

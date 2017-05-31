@@ -46,13 +46,13 @@ class SingleEvent extends React.Component {
       if (this.props.singleEvent.attending) {
         return(
           <div>
-            <i className="fa fa-check" aria-hidden="true" />
-          Attending</div>
+            <i className="fa fa-times fa-1x" aria-hidden="true" styleName="unattend"/>
+          Cancel</div>
         );
       } else {
         return(
           <div>
-            <i className="fa fa-times" aria-hidden="true" />
+            <i className="fa fa-check fa-1x" aria-hidden="true" styleName="attend"/>
           Attend</div>
         );
       }
@@ -81,10 +81,6 @@ class SingleEvent extends React.Component {
               <h2>
                 { theEvent.title }
               </h2>
-
-              { this.props.singleEvent.attending && 
-                <p>Attending </p>
-              }
 
               <img src= { location_img } className="pic" height="150" width="250"/>
               <br/>
