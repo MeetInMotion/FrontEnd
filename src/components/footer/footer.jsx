@@ -31,14 +31,12 @@ class Footer extends React.Component {
 
   render() {
     const authenticated = this.props.user.authenticated;
-
     return(
       <nav styleName="menuposition">
-
-        <div className="col-xs-3">
-          <div className="dropup" styleName="navigation-link">
-            <button className="col-xs-3" type="button" data-toggle="dropdown">
-              <i className="fa fa-bars fa-2x" />
+        <div className="clearfix col-xs-3" styleName="navigation-link">
+          <div className="dropup">
+            <button type="button" data-toggle="dropdown">
+              <i className="fa fa-bars fa-2x" aria-hidden="true"/>
               <br/>OPTIONS
             </button> 
             <ul className="dropdown-menu">
@@ -70,24 +68,6 @@ class Footer extends React.Component {
     );
   }
 }
-
-
-
-        // <nav className="row container-fluid">
-        //   <div className="col-md-4">
-        //     <div className="dropup">
-        //       <button type="button" data-toggle="dropdown">
-        //         <i className="fa fa-bars" />
-        //         OPTIONS
-        //       </button> 
-        //       <ul className="dropdown-menu">
-        //         <li onClick={this.onClick}>{ authenticated ? 'Log out' : 'Log in'}</li>
-        //       </ul>
-        //     </div>
-        //   </div>
-        // </nav>
-
-
 
 Footer.propTypes = {
   loadFbSdk: PropTypes.func,

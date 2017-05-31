@@ -2,23 +2,14 @@
   position: fixed;
   horizontal-align: center;
   bottom: 0;
+  left: 0;
   vertical-align: middle;
   text-align: center;
   width: 100%;
-  background-color: white;
   height: 50px;
+  padding: 0px 10px;
 }
-// bottom: 100%;
 .settings_nav {
-  color: black;
-}
-
-.icon {
-  // text-align: center;
-  color: red;
-}
-
-.drop-up {
   color: black;
 }
 
@@ -38,12 +29,6 @@
   font-size: 13px;
 }
 
-.navigation-link2 {
-  // text-decoration: none;
-  font-family: "Arial", Times, Sans-serif;
-  padding: 0px 10px;
-  word-wrap: normal;
-  display: inline-block;
-  font-size: 13px;
-  // vertical-align: middle;
-}
+.navigation-link:hover {
+  color: #724e72;
+  }
