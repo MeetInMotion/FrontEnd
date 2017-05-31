@@ -182,6 +182,7 @@ export function attendEvent(eventId, userId) {
       return res.json();
     })
     .then(function(json) {
+      dispatch(loadParticipants(eventId));
       console.log('attending ', json); //eslint-disable-line
     });
   };
@@ -208,6 +209,7 @@ export function unAttendEvent(eventId, userId) {
       return res.json();
     })
     .then(function(json) {
+      dispatch(loadParticipants(eventId));
       console.log('unattending ', json); //eslint-disable-line
     });
   };

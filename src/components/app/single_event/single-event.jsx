@@ -41,7 +41,6 @@ class SingleEvent extends React.Component {
   }
 
   attendButton() {
-
     if (this.props.singleEvent.attending != null) {
       console.log('button clicked, state ', this.props.singleEvent.attending);
       if (this.props.singleEvent.attending) {
@@ -58,34 +57,6 @@ class SingleEvent extends React.Component {
         );
       }
     }
-    // const { singleEvent, actions, match, user} = this.props;
-
-    // console.log('null? ', singleEvent.attending);
-
-    // if (singleEvent.attending != null) {
-    //   console.log('button clicked, state ', singleEvent.attending); //eslint-disable-line
-    //   if (singleEvent.attending) {
-    //     return(
-    //       <div>
-    //         <i className="fa fa-times" aria-hidden="true" styleName="attending" />
-    //         Unattend
-    //       </div>
-    //     );
-    //   } else {
-    //     actions.attendEvent(match.params.id, user.id);
-
-    //     return(
-    //       <div>
-    //         <i
-    //           className="fa fa-check"
-    //           aria-hidden="true"
-    //           styleName="not-attending"
-    //         />
-    //         Attend
-    //       </div>
-    //     );
-    //   }
-    // }
   }
 
   render() {
@@ -95,8 +66,6 @@ class SingleEvent extends React.Component {
     const listParticipantsStyle = {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
-
-    console.log(this.props.singleEvent.attending); //eslint-disable-line
 
     let location_img = this.props.singleEvent.eventLocation.img_url;
 
