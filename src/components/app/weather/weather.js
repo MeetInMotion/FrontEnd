@@ -6,16 +6,17 @@ import {fetchWeather} from './weather-actions';
 class Weather extends Component{
 
   componentDidMount(){
-    console.log('fetch:' + fetchWeather());//eslint-disable-line
-    this.props.fetchWeather();
+    const { data } = this.props.match.params;
+    console.log('fetch:' + fetchWeather(data));//eslint-disable-line
+    this.props.fetchWeather(data);
   }
 
   renderData(){
-    return _.map(this.props.weather, list => {
+    return _.map(this.props.data, list => {
       return(
-        <li className="list-group-item" key={list.main}>
+        <div>
           {list.main.temp}
-        </li>
+        </div>
       );
     });
   }
@@ -34,18 +35,21 @@ class Weather extends Component{
 }
 
 Weather.propTypes = {
-  weather: PropTypes.array,
+  data: PropTypes.array,
   fetchWeather: PropTypes.func,
+  city: PropTypes.object,
   match: PropTypes.shape({
     params: PropTypes.shape({
+      data: PropTypes.array,
       list: PropTypes.array,
       main: PropTypes.object,
       temp: PropTypes.string,
     }),
   }),
 };
+
 function mapStateToProps(state) {
-  return  { weather: state.weather };
+  return  { data: state.data };
 }
 
 export default connect( mapStateToProps, { fetchWeather })(Weather);
