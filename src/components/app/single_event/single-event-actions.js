@@ -200,9 +200,9 @@ export function attendEvent(eventId, userId) {
       dispatch(getAttendStatus(eventId, userId));
       return res.json();
     })
-    .then(function(json) {
+    // .then(function(json) {
       // console.log('attending ', json); //eslint-disable-line
-    });
+    // });
   };
 }
 
@@ -225,10 +225,10 @@ export function unAttendEvent(eventId, userId) {
       dispatch(setUserAttendingStatus(false));
 
       return res.json();
-    }).
-    then(function(json) {
+    })
+    // .then(function(json) {
       // console.log('unattending ', json); //eslint-disable-line
-    });
+    // });
   };
 }
 
