@@ -90,13 +90,11 @@ class SingleEvent extends React.Component {
                 sameElse: moment(theEvent.datetime).format('YYYY-MM-DD'),
               }) + " " + moment(theEvent.datetime).format("HH:mm")}</h5>
               <br/>
-            </center>
 
-            <label className="switch" onClick={ this.toggleAttendEvent }>
-              { this.attendButton() }
-            </label>
+              <label className="switch" onClick={ this.toggleAttendEvent }>
+                { this.attendButton() }
+              </label>
 
-            <center>
               <h6> { theEvent.description } </h6>
 
               <a  href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>
