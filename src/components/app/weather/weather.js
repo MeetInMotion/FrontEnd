@@ -8,24 +8,7 @@ class Weather extends Component{
 
   componentDidMount() {
     this.props.actions.fetchWeather('Stockholm');
-/*
-    const { data } = this.props.match.params;
-    console.log('fetch:' + fetchWeather());//eslint-disable-line
-*/
   }
-
-  // renderData() {
-  //   //const { data } = this.props.match.params;
-  //   console.log('what is this:' + this.props.weather);//eslint-disable-line
-  //   return _.map(this.props.weather, list => {
-  //     console.log('renderData: ' + data);//eslint-disable-line
-  //     return(
-  //       <div>
-  //         {list.main.temp}
-  //       </div>
-  //     );
-  //   });
-  // }
 
   render() {
     // console.log('this props: ', this.props);
