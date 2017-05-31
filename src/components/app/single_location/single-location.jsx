@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import {Link} from 'react-router-dom';
 import Events from '../events/event-page.js';
 import styles from './single_location.scss';
 import CSSModules from 'react-css-modules';
@@ -26,7 +25,7 @@ class SingleLocation extends React.Component {
     return(
       <div>
 
-        <Link to="/weather">Weather</Link>
+        <NavLink to={'/weather'}>Weather</NavLink>
         <center>
           <h2>
             { location.name }
