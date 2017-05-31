@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Locations extends React.Component {
 
@@ -19,6 +20,7 @@ class Locations extends React.Component {
     return (
       <div>
         <h2>Locations</h2>
+        <Link to="/weather">Weather</Link>
         <div>
           <ul className="list-group">
             { locationsList.map(

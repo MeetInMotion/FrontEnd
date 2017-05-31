@@ -7,15 +7,20 @@ class Weather extends Component{
 
   componentDidMount(){
     this.props.fetchWeather('Stockholm');
+/*
+    const { data } = this.props.match.params;
+    console.log('fetch:' + fetchWeather());//eslint-disable-line
+*/
   }
 
   renderData(){
     //const { data } = this.props.match.params;
-    //console.log('fetch:' + data);//eslint-disable-line
-    return _.map(this.props.weather, data => {
+    console.log('what is this:' + this.props.weather);//eslint-disable-line
+    return _.map(this.props.weather, list => {
+      console.log('renderData: ' + data);//eslint-disable-line
       return(
         <div>
-          {data.list.main.temp}
+          {list.main.temp}
         </div>
       );
     });
@@ -26,7 +31,7 @@ class Weather extends Component{
       <div>
         <h3>Nuvarande Väder</h3>
         <ul className="list-group">
-          {this.renderData()}
+          {this.renderData}
         </ul>
       </div>
     );
