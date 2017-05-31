@@ -241,7 +241,6 @@ export function getAttendStatus(eventId, userId) {
         return response.json();
       }) 
       .then(function(json) { 
-        console.log('json', json);
         dispatch(setUserAttendingStatus(json)); 
       });
   };
