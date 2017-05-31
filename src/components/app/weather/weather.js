@@ -12,8 +12,11 @@ class Weather extends Component{
 
   renderWeather(weatherdata){
     console.log('weatherdata: ', weatherdata);//eslint-disable-line
-    const temp = _.map(weatherdata, 'temp');
+    const temp2 = weatherdata.map(function(x) {return x.data.list.temp;});
+    console.log('temp: ', temp2);//eslint-disable-line
+    const temp = _.map(weatherdata.data.list,'temp');
     console.log('temp: ', temp);//eslint-disable-line
+
     return(
       <div>
         <h3> {temp} </h3>
