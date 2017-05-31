@@ -1,3 +1,5 @@
+import config from '../../../../config/config';
+
 export const LOADING_EVENTS = 'LOADING_EVENTS';
 function loadingEvents() {
   return {
@@ -44,7 +46,6 @@ function clearingEvents() {
 export function loadEvents(url){
   return function(dispatch){
     dispatch(loadingEvents());
-    console.log(url); //eslint-disable-line
     fetch(url)
       .then(response => {
         return response.json();
@@ -59,7 +60,7 @@ export function loadLocationEvents(id) {
   return function(dispatch) {    
     dispatch(loadingEvents());
 
-    fetch("http://api.localhost:8081/locations/" + id + "/events")
+    fetch(config.host + "/locations/" + id + "/events")
       .then(function(response) {
         return response.json();
       }) 

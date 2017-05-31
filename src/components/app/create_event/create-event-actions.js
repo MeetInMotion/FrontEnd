@@ -1,4 +1,4 @@
-
+import config from '../../../../config/config';
 export const CREATING_EVENT = 'CREATING_EVENT';
 function creatingEvent() {
   return {
@@ -41,7 +41,7 @@ export function createEvent(values, locationId, userId, time) {
         "location_id": locationId,
       };
     
-    fetch('http://api.localhost:8081/events', 
+    fetch(config.host+'/events', 
       { 
         method: 'POST',
         headers: {
@@ -54,9 +54,8 @@ export function createEvent(values, locationId, userId, time) {
     .then(function(res) {
       return res.json();
     }).
-    then(function(json) {
+    then(function() {
       dispatch(creatingEventSucceeded());
-      console.log(json); //eslint-disable-line
     });
     
     let isError = false;

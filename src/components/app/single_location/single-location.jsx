@@ -1,3 +1,4 @@
+import config from '../../../../config/config';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -20,7 +21,7 @@ class SingleLocation extends React.Component {
   render() {
     const { location, user } = this.props;
     const { authenticated } = user;
-    const eventsUrl = "http://api.localhost:8081/locations/"+this.props.match.params.id+"/events";
+    const eventsUrl = config.host + "/locations/"+this.props.match.params.id+"/events";
 
     return(
       <div>

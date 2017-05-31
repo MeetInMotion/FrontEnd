@@ -15,8 +15,7 @@
     "test:watch:dev": "cross-env NODE_ENV=develop mocha-webpack -w --reporter min"
   },
   "pre-push": [
-    "webpack",
-    "test"
+    "webpack"
   ],
   "repository": {
     "type": "git",
