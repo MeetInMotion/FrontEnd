@@ -40,7 +40,7 @@ class SingleEvent extends React.Component {
 
   attendButton() {
     if (this.props.singleEvent.attending != null) {
-      console.log('button clicked, state ', this.props.singleEvent.attending);
+      console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
       if (this.props.singleEvent.attending) {
         return(
           <div>
@@ -65,7 +65,7 @@ class SingleEvent extends React.Component {
       display: this.state.listParticipantsExpanded ? 'block' : 'none',
     };
 
-    console.log(this.props.singleEvent.attending);
+    console.log(this.props.singleEvent.attending); //eslint-disable-line
 
     var location_img = this.props.singleEvent.eventLocation.img_url;
     if (location_img == null) {
