@@ -10,7 +10,6 @@ class Weather extends Component{
   }
 
   render() {
-    console.log('this props: ', this.props);
     return(
       <div>
         <h3>Nuvarande Väder</h3>

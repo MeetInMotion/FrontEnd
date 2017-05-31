@@ -16,7 +16,6 @@ const initialState = {
 export default function(state = initialState, action) {  
   // const type = action.type;
   const type = action.type;
-  console.log("in wr: ", action);
 
   switch (type) {
   // case FETCHING_WEATHER: 
