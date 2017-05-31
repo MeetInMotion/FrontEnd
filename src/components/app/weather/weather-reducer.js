@@ -1,12 +1,23 @@
-//import _ from 'lodash';
-import {FETCH_WEATHER} from './weather-actions';
+import { FETCHING_WEATHER } from './weather-actions';
 
-export default function(state = [], action){
-  //console.log('Action received', action);
-  switch(action.type){
-  case FETCH_WEATHER:
-    //return _.mapKeys(action.payload.data, 'city');
-    return [action.payload.data, ...state];
+const initialState = {
+  weather: {},
+};
+
+export default function(state = initialState, action) {  
+  // const type = action.type;
+  const {type, ...rest} = action;
+
+
+  console.log("in wr: ", action); // eslint disable-line
+
+  switch (type) {
+  case FETCHING_WEATHER: 
+    return {
+      ...state,
+      ...rest,
+    };
+  default:
+    return state;
   }
-  return state;
 }

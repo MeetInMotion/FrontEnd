@@ -28,6 +28,8 @@ class SingleLocation extends React.Component {
             { location.name }
           </h2>
 
+          <NavLink to="/weather">Weather</NavLink>
+
           <img src= {location.img_url} className="pic" height="150" width="250"/>
           <br/>
           <br/>
