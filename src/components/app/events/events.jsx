@@ -12,15 +12,13 @@ class Events extends React.Component {
     this.authentication = this.authentification(this);
   }
 
-  componentWillMount() {
-    const { actions } = this.props;
-    actions.loadingPage('Events');
-
-    if (this.props.locationId) {
-      actions.loadLocationEvents(this.props.locationId);
-    } else { 
-      actions.loadUserEvents(1);
-    }
+  componentDidMount() {
+    const { loadEvents } = this.props;
+    var { url } = this.props;
+    console.log(url); //eslint-disable-line
+    const eventsUrl = "http://api.localhost:8081/users/1/events";
+    this.props.url = eventsUrl;
+    loadEvents();
   }
 
   authentification() {
@@ -49,10 +47,11 @@ class Events extends React.Component {
 
     return (
       <div>
-        
-        <h2>
-          Upcomming events
-        </h2>
+        <center>
+          <h2>
+            Upcomming events
+          </h2>
+        </center>
         <ul className='list-events'>
           { eventList.map(
               (event, i) => (
@@ -87,10 +86,11 @@ class Events extends React.Component {
 }
 
 Events.propTypes = {
+  url: PropTypes.string,
   user: PropTypes.shape({
     authenticated: PropTypes.bool,
   }),
-
+  loadEvents: PropTypes.func,
   actions: PropTypes.shape({
     loadingPage: PropTypes.func,
     loadUserEvents: PropTypes.func,
