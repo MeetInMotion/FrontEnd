@@ -174,7 +174,7 @@ export function attendEvent(eventId, userId) {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         }, 
-        body: JSON.stringify({ id:eventId }),
+        body: JSON.stringify({ "event":eventId }),
       }
     )
     .then(function(res) {

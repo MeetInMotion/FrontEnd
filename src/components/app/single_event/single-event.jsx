@@ -31,32 +31,61 @@ class SingleEvent extends React.Component {
   }
 
   toggleAttendEvent() {
-    if (this.props.singleEvent.attending) {
-      this.props.actions.unAttendEvent(this.props.match.params.id, this.props.user.id);
+    const { singleEvent, actions, user, match } = this.props;
+    console.log('toggle', singleEvent.attending);
+    if (singleEvent.attending) {
+      actions.unAttendEvent(match.params.id, user.id);
     } else {
-      this.props.actions.attendEvent(this.props.match.params.id, this.props.user.id);
+      actions.attendEvent(match.params.id, user.id);
     }
   }
 
   attendButton() {
-    console.log('null? ', this.props.singleEvent.attending);
+
     if (this.props.singleEvent.attending != null) {
-      console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
+      console.log('button clicked, state ', this.props.singleEvent.attending);
       if (this.props.singleEvent.attending) {
         return(
           <div>
-            <i className="fa fa-times" aria-hidden="true" styleName="attending" />
-          Unattend</div>
+            <i className="fa fa-check" aria-hidden="true" />
+          Attending</div>
         );
       } else {
-        this.props.actions.attendEvent(this.props.match.params.id, this.props.user.id);
         return(
           <div>
-            <i className="fa fa-check" aria-hidden="true" styleName="not-attending"/>
+            <i className="fa fa-times" aria-hidden="true" />
           Attend</div>
         );
       }
     }
+    // const { singleEvent, actions, match, user} = this.props;
+
+    // console.log('null? ', singleEvent.attending);
+
+    // if (singleEvent.attending != null) {
+    //   console.log('button clicked, state ', singleEvent.attending); //eslint-disable-line
+    //   if (singleEvent.attending) {
+    //     return(
+    //       <div>
+    //         <i className="fa fa-times" aria-hidden="true" styleName="attending" />
+    //         Unattend
+    //       </div>
+    //     );
+    //   } else {
+    //     actions.attendEvent(match.params.id, user.id);
+
+    //     return(
+    //       <div>
+    //         <i
+    //           className="fa fa-check"
+    //           aria-hidden="true"
+    //           styleName="not-attending"
+    //         />
+    //         Attend
+    //       </div>
+    //     );
+    //   }
+    // }
   }
 
   render() {
@@ -69,7 +98,8 @@ class SingleEvent extends React.Component {
 
     console.log(this.props.singleEvent.attending); //eslint-disable-line
 
-    var location_img = this.props.singleEvent.eventLocation.img_url;
+    let location_img = this.props.singleEvent.eventLocation.img_url;
+
     if (location_img == null) {
       location_img = 'http://i.imgur.com/avnhoaZ.jpg';
     }
@@ -88,8 +118,6 @@ class SingleEvent extends React.Component {
               }
 
               <img src= { location_img } className="pic" height="150" width="250"/>
-
-
               <br/>
 
               <h3 styleName="test2"> { this.props.singleEvent.eventLocation.name } </h3>
@@ -101,20 +129,13 @@ class SingleEvent extends React.Component {
               }) + " " + moment(theEvent.datetime).format("HH:mm")}</h5>
               <br/>
 
-
-
-
               <div className="switch" onClick={ this.toggleAttendEvent }>
                 { this.attendButton() }
               </div>
 
-
-
-
-
-
-
-              <h6> { theEvent.description } </h6>
+              <h6>
+                { theEvent.description }
+              </h6>
 
               <a  href={'http://maps.google.com/maps?q=' + this.props.singleEvent.eventLocation.coordinates.north + ',' + this.props.singleEvent.eventLocation.coordinates.east}>
                 Google maps directions

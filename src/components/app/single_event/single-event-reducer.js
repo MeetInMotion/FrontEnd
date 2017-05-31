@@ -22,6 +22,8 @@ const initialState = {
 function singleEventReducer(state = initialState, action) {
   const {type, ...rest} = action;
 
+  console.log(action);
+
   switch (type) {
   case LOADING_LOCATION: {
     state = {...state, ...rest};
