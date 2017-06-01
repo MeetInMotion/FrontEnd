@@ -8,7 +8,6 @@ node_js:
 cache: yarn
 script:
 - yarn run webpack
-- yarn run test
 env:
 - CXX=g++-4.8
 addons:
