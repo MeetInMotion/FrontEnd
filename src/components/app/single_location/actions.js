@@ -60,7 +60,10 @@ function setUserFollowingStatus(status) {
   };
 }
 
+
+
 export function addLocationToUser(location, userId) {
+  console.log('add Location');
 
   return function(dispatch) {
     dispatch(addingLocationUser());
@@ -95,12 +98,16 @@ export function addLocationToUser(location, userId) {
 }
 
 export function removeLocationToUser(locationId, userId) {
+  console.log('add Location');
 
   return function() {
 //    dispatch(addingLocationUser());
     setUserFollowingStatus(false);
+
     console.log(location, userId); //eslint-disable-line
-    fetch('http://api.localhost:8081/users/' + userId + '/locations/' + locationId, 
+
+    fetch(
+      'http://api.localhost:8081/users/' + userId + '/locations/' + locationId, 
       { 
         method: 'DELETE',
         headers: {
@@ -108,42 +115,49 @@ export function removeLocationToUser(locationId, userId) {
           'Content-Type': 'application/json',
         },
       }
-    )
-    .then(function(res) {
-      return res.json();
-    }).
-    then(function(json) {
-//      dispatch(addingLocationUserSuccess());
-      console.log(json); //eslint-disable-line
-    });
-    
-    let isError = false;
-
-    if (isError) {
-//      dispatch(addingLocationUserFailed('creating event failed'));
-    }
+    ).then(
+      function(res) {
+        return res.json();
+      }
+    );
   };
 }
 
-export function setFollowing(status) {
-  setUserFollowingStatus(status);
+
+
+export function getFollowStatus(userId) {
+  console.log('get status for user  ', userId);
+
+  return function(dispatch) {
+
+    // api
+    let update = true;
+    dispatch(setUserFollowingStatus(update));
+  };
 }
 
-export function loadLocation(id){
-  return function(dispatch){
+
+export function loadLocation(id, userId) {
+  return function(dispatch) {
+    console.log('eslint ', userId);
 //    dispatch(setUserFollowingStatus(false));
     dispatch(clearLocation());
 
     dispatch(loadingLocation());
     fetch("http://api.localhost:8081/locations/"+id)
       .then(res => {
-        if(res.ok){
-          res.json()
-            .then(json => {
-              dispatch(loadingLocationSuccess(json));
-            });
-        }else{
+        if (res.ok) {
+          res.json().then(json => {
+            dispatch(loadingLocationSuccess(json));
+          });
+        } else {
           dispatch(loadingLocationFailed(res.body));
+
+          if (userId) {
+            dispatch(getFollowStatus(userId));
+          } else {
+            dispatch(setUserFollowingStatus(false));
+          }
         }
       });
   };

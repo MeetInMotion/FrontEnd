@@ -10,35 +10,38 @@ class SingleLocation extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.toggleFollowEvent = this.toggleFollowEvent.bind(this);
   }
 
   componentWillMount() {
     const { actions } = this.props;
     actions.loadingPage('single location');
-    actions.loadLocation(this.props.match.params.id);
+
+    if (this.props.user.authenticated) {
+      actions.loadLocation(this.props.match.params.id, this.props.user.id);
+    } else {
+      actions.loadLocation(this.props.match.params.id, 'undefined');
+    }
+    
   }
 
-  componentDidMount(){
+  componentDidMount() {
   }
 
   toggleFollowEvent() {
     const { location } = this.props;
     console.log(location.following); //eslint-disable-line
-    if (location.following) {
-      this.props.actions.removeLocationToUser(this.props.location.location.id, this.props.user.id);
-    } else {
-      this.props.actions.addLocationToUser(this.props.location, this.props.user.id);
-    }
+    // if (location.following) {
+    //   this.props.actions.removeLocationToUser(this.props.location.location.id, this.props.user.id);
+    // } else {
+    //   this.props.actions.addLocationToUser(this.props.location, this.props.user.id);
+    // }
   }
 
   followButton() {
     const { location } = this.props;
-    console.log(location.following); //eslint-disable-line
     if (location.following != null) {
-      // console.log('button clicked, state ', this.props.singleEvent.attending); //eslint-disable-line
-      if (this.props.location.following) {
+      if (location.following) {
         return(
           <div>
             <i aria-hidden="true"/>
@@ -59,6 +62,8 @@ class SingleLocation extends React.Component {
   render() {
     const { user } = this.props;
     const { location } = this.props;
+    console.log('this location.following ', this.props.location.following);
+
 //    console.log(location); //eslint-disable-line
 //    console.log(this.props.location); //eslint-disable-line
     const { authenticated } = user;
@@ -67,7 +72,7 @@ class SingleLocation extends React.Component {
 //    const { theLocation } = this.props;
 //    console.log(theLocation + "hej"); //eslint-disable-line
 //    console.log(following); //eslint-disable-line
-    console.log(this.props.location.following); //eslint-disable-line
+    // console.log(this.props.location.following); //eslint-disable-line
     return(
       <div>
         <center>
@@ -128,9 +133,10 @@ SingleLocation.propTypes = {
 
   location: PropTypes.shape({
     following: PropTypes.bool,
-    loading: PropTypes.bool,
+
     error: PropTypes.bool,
     location: PropTypes.shape({
+      loading: PropTypes.bool,
       id: PropTypes.string,
       name: PropTypes.string,
       description: PropTypes.string,

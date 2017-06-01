@@ -9,7 +9,7 @@ import{
 const initialState = {
   loading: false,
   error: false,
-  following: false,
+  following: null,
   id: null,
   name: null,
   description: null,
